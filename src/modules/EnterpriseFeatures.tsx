@@ -14,7 +14,9 @@ import EdgesensorHighRoundedIcon from "@mui/icons-material/EdgesensorHighRounded
 import ViewQuiltRoundedIcon from "@mui/icons-material/ViewQuiltRounded";
 
 import collectiveCoachingPic from "@assets/images/entreprises-collective-coaching.jpeg";
+import collectiveCoachingPicWebp from "@assets/images/entreprises-collective-coaching.webp";
 import teamBuildingPic from "@assets/images/entreprises-team-building.jpeg";
+import teamBuildingPicWebp from "@assets/images/entreprises-team-building.webp";
 
 const items = [
   {
@@ -23,7 +25,7 @@ const items = [
     title: "Cours collectifs en société",
     description:
       "Offrez à vos salariés le confort d'un coach qui se déplace sur site à l'année.",
-    image: `url("${collectiveCoachingPic}")`,
+    image: `image-set(url("${collectiveCoachingPicWebp}") type("image/webp"), url("${collectiveCoachingPic}") type("image/jpeg"))`,
   },
   {
     icon: <EdgesensorHighRoundedIcon />,
@@ -31,7 +33,7 @@ const items = [
     title: "Team building",
     description:
       "Créer un moment de partage, d'effort et de cohésion pour développer l'esprit d'équipe.",
-    image: `url("${teamBuildingPic}")`,
+    image: `image-set(url("${teamBuildingPicWebp}") type("image/webp"), url("${teamBuildingPic}") type("image/jpeg"))`,
   },
   {
     icon: <DevicesRoundedIcon />,
@@ -39,7 +41,7 @@ const items = [
     title: "Création d'espace forme",
     description:
       "Aménagez vos locaux en fonction de vos besoins afin de permettre à vos salariés de faire du sport en toute autonomie.",
-    image: `url("${collectiveCoachingPic}")`,
+    image: `image-set(url("${collectiveCoachingPicWebp}") type("image/webp"), url("${collectiveCoachingPic}") type("image/jpeg"))`,
   },
 ];
 

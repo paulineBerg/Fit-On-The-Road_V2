@@ -6,17 +6,26 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { alpha, Box, Container } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import qrcode from "@app/assets/images/qrcode-appli.jpg";
-import application from "@app/assets/images/application.jpg";
+import qrcodeJpg from "@app/assets/images/qrcode-appli.jpg";
+import qrcodeWebp from "@app/assets/images/qrcode-appli.webp";
+import applicationJpg from "@app/assets/images/application.jpg";
+import applicationWebp from "@app/assets/images/application.webp";
 
 const userTestimonials = [
   {
     avatar: (
-      <img
-        alt="Aperçu de l'application web Fit On The Road"
-        src={application}
-        className="rounded object-cover md:w-[50%] w-[50%] object-top"
-      />
+      <picture>
+        <source srcSet={applicationWebp} type="image/webp" />
+        <img
+          alt="Aperçu de l'application web Fit On The Road"
+          src={applicationJpg}
+          className="rounded object-cover md:w-[50%] w-[50%] object-top"
+          loading="lazy"
+          decoding="async"
+          width={695}
+          height={1458}
+        />
+      </picture>
     ),
     name: "WEB Application",
     occupation: "",
@@ -34,11 +43,18 @@ const userTestimonials = [
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img
-          alt="QR code vers le planning des cours Fit On The Road"
-          src={qrcode}
-          className="rounded object-cover md:w-[80%] w-[80%] object-top"
-        />
+        <picture>
+          <source srcSet={qrcodeWebp} type="image/webp" />
+          <img
+            alt="QR code vers le planning des cours Fit On The Road"
+            src={qrcodeJpg}
+            className="rounded object-cover md:w-[80%] w-[80%] object-top"
+            loading="lazy"
+            decoding="async"
+            width={350}
+            height={429}
+          />
+        </picture>
       </a>
     ),
     name: "QRCODE",

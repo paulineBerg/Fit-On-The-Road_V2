@@ -14,7 +14,9 @@ import EdgesensorHighRoundedIcon from "@mui/icons-material/EdgesensorHighRounded
 import ViewQuiltRoundedIcon from "@mui/icons-material/ViewQuiltRounded";
 
 import collectiveCoachingPic from "@assets/images/individual-collective-coaching.jpeg";
+import collectiveCoachingPicWebp from "@assets/images/individual-collective-coaching.webp";
 import privateCoachingPic from "@assets/images/individual-private-coaching.jpg";
+import privateCoachingPicWebp from "@assets/images/individual-private-coaching.webp";
 
 const items = [
   {
@@ -22,20 +24,20 @@ const items = [
     title: "Cours collectifs",
     description:
       "Retrouvez les cours collectifs en plein air à Bois d'Arcy. Grâce à l’émulation du groupe, l’entraînement devient plus simple, plus sûr, plus efficace et vous permet de sortir de votre zone de confort.",
-    image: `url("${collectiveCoachingPic}")`,
+    image: `image-set(url("${collectiveCoachingPicWebp}") type("image/webp"), url("${collectiveCoachingPic}") type("image/jpeg"))`,
   },
   {
     icon: <EdgesensorHighRoundedIcon />,
     title: "Coaching privé et/ou à distance",
     description:
       "Nos coachs vous accompagnes et vous proposent une prestation sur-mesure s’adaptant à votre niveau, vos souhaits et à vos agendas.",
-    image: `url("${privateCoachingPic}")`,
+    image: `image-set(url("${privateCoachingPicWebp}") type("image/webp"), url("${privateCoachingPic}") type("image/jpeg"))`,
   },
   {
     icon: <DevicesRoundedIcon />,
     title: "Évènements",
     description: "Organisez un moment sportif pour une occasion particulière.",
-    image: `url("${collectiveCoachingPic}")`,
+    image: `image-set(url("${collectiveCoachingPicWebp}") type("image/webp"), url("${collectiveCoachingPic}") type("image/jpeg"))`,
   },
 ];
 

@@ -54,6 +54,10 @@ function LogoCollection() {
                   alt={`${name} logo`}
                   className="object-contain"
                   style={logoStyle}
+                  loading="lazy"
+                  decoding="async"
+                  width={logo === s2sAuto ? 300 : 400}
+                  height={logo === s2sAuto ? 181 : 107}
                 />
               )}
               {!logo && (

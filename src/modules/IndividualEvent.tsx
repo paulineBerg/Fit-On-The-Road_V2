@@ -7,6 +7,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import ThumbUpAltRoundedIcon from "@mui/icons-material/ThumbUpAltRounded";
 import Pickup from "@app/assets/images/Pick-up.jpeg";
+import PickupWebp from "@app/assets/images/Pick-up.webp";
 
 const items = [
   {
@@ -292,11 +293,18 @@ function IndividualEvent() {
         </div>
       </Container>
       <div style={{ textAlign: "center" }}>
-        <img
-          src={Pickup}
-          alt="Pick-up Fit on the road"
-          style={{ width: "100%" }}
-        />
+        <picture>
+          <source srcSet={PickupWebp} type="image/webp" />
+          <img
+            src={Pickup}
+            alt="Pick-up Fit on the road"
+            style={{ width: "100%" }}
+            loading="lazy"
+            decoding="async"
+            width={2000}
+            height={802}
+          />
+        </picture>
       </div>
     </Box>
   );

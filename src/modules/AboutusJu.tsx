@@ -6,6 +6,7 @@ import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import { Typography, alpha, Box, Container, Button } from "@mui/material";
 import julien from "@assets/images/julien.jpg";
+import julienWebp from "@assets/images/julien.webp";
 import SettingsSuggestRoundedIcon from "@mui/icons-material/SettingsSuggestRounded";
 
 const items = [
@@ -14,12 +15,12 @@ const items = [
     title: "Notre raison d’être",
     description:
       "Quand il s’agit de votre santé et bien-être, vous ne devriez pas avoir à adapter votre vie autour des cours de gym et des horaires, traitant l’exercice comme une autre corvée.",
-    image: `url("${julien}")`,
+    image: `image-set(url("${julienWebp}") type("image/webp"), url("${julien}") type("image/jpeg"))`,
   },
   {
     description:
       "Ainsi, quel que soit votre niveau de pratique, vos besoins et votre localisation, nos Coachs viennent à vous et vous donnent rendez-vous dans l’espace de votre choix, intérieur ou extérieur, pour une pratique sportive pleine d’énergie et de bonne humeur.",
-    image: `url("${julien}")`,
+    image: `image-set(url("${julienWebp}") type("image/webp"), url("${julien}") type("image/jpeg"))`,
   },
 ];
 

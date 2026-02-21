@@ -5,7 +5,8 @@ import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
-import cover from "../../assets/images/individual-collective-coaching.jpeg";
+import coverJpeg from "../../assets/images/individual-collective-coaching.jpeg";
+import coverWebp from "../../assets/images/individual-collective-coaching.webp";
 
 function Hero() {
   // #region SCROLLING FUNCTION
@@ -30,7 +31,7 @@ function Hero() {
         width: "100%",
         height: "100vh",
         display: "flex",
-        backgroundImage: `url("${cover}")`,
+        backgroundImage: `image-set(url("${coverWebp}") type("image/webp"), url("${coverJpeg}") type("image/jpeg"))`,
         // backgroundImage: `linear-gradient(#000, ${alpha("#690000", 0.0)})`,
         // backgroundImage: `diamond-gradient(#000, ${alpha("#000000", 0.7)})`,
         backgroundSize: "cover",

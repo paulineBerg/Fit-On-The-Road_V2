@@ -2,27 +2,32 @@ import React from "react";
 import { alpha, Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import BusinessTwoToneIcon from "@mui/icons-material/BusinessTwoTone";
-import ph00 from "@app/assets/images/Pick-up - Histo 00.jpg";
-import ph01 from "@app/assets/images/Pick-up - Histo 01.jpg";
-import ph02 from "@app/assets/images/Pick-up - Histo 02.jpg";
-import ph03 from "@app/assets/images/Pick-up - Histo 03.jpg";
-import ph04 from "@app/assets/images/Pick-up - Histo 04.jpg";
+import ph00Jpg from "@app/assets/images/Pick-up - Histo 00.jpg";
+import ph00Webp from "@app/assets/images/Pick-up - Histo 00.webp";
+import ph01Jpg from "@app/assets/images/Pick-up - Histo 01.jpg";
+import ph01Webp from "@app/assets/images/Pick-up - Histo 01.webp";
+import ph02Jpg from "@app/assets/images/Pick-up - Histo 02.jpg";
+import ph02Webp from "@app/assets/images/Pick-up - Histo 02.webp";
+import ph03Jpg from "@app/assets/images/Pick-up - Histo 03.jpg";
+import ph03Webp from "@app/assets/images/Pick-up - Histo 03.webp";
+import ph04Jpg from "@app/assets/images/Pick-up - Histo 04.jpg";
+import ph04Webp from "@app/assets/images/Pick-up - Histo 04.webp";
 
 const pickups = [
   {
-    pickup: ph00,
+    pickup: { webp: ph00Webp, fallback: ph00Jpg, width: 1125, height: 2000 },
   },
   {
-    pickup: ph01,
+    pickup: { webp: ph01Webp, fallback: ph01Jpg, width: 1125, height: 2000 },
   },
   {
-    pickup: ph02,
+    pickup: { webp: ph02Webp, fallback: ph02Jpg, width: 1125, height: 2000 },
   },
   {
-    pickup: ph03,
+    pickup: { webp: ph03Webp, fallback: ph03Jpg, width: 1168, height: 2000 },
   },
   {
-    pickup: ph04,
+    pickup: { webp: ph04Webp, fallback: ph04Jpg, width: 946, height: 2000 },
   },
 ];
 
@@ -59,12 +64,19 @@ function PickupCollection() {
           <div className="flex flex-col gap-2 items-center justify-center w-[5%]">
             <div className="h-[300px] w-[250px] flex align-middle justify-center">
               {pickup && (
-                <img
-                  src={pickup}
-                  alt={`${pickup} pickup`}
-                  className="object-contain"
-                  style={pickupStyle}
-                />
+                <picture>
+                  <source srcSet={pickup.webp} type="image/webp" />
+                  <img
+                    src={pickup.fallback}
+                    alt="Pick-up Fit On The Road"
+                    className="object-contain"
+                    style={pickupStyle}
+                    loading="lazy"
+                    decoding="async"
+                    width={pickup.width}
+                    height={pickup.height}
+                  />
+                </picture>
               )}
               {!pickup && (
                 <BusinessTwoToneIcon

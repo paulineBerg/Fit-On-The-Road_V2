@@ -6,17 +6,26 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import corinne from "@app/assets/images/client-corinne.jpg";
-import vincent from "@app/assets/images/client-vincent.jpg";
+import corinneJpg from "@app/assets/images/client-corinne.jpg";
+import corinneWebp from "@app/assets/images/client-corinne.webp";
+import vincentJpg from "@app/assets/images/client-vincent.jpg";
+import vincentWebp from "@app/assets/images/client-vincent.webp";
 
 const userTestimonials = [
   {
     avatar: (
-      <img
-        alt="vincent"
-        src={vincent}
-        className="rounded object-cover md:w-full w-[50%] object-top"
-      />
+      <picture>
+        <source srcSet={vincentWebp} type="image/webp" />
+        <img
+          alt="Portrait de Vincent, client Fit On The Road"
+          src={vincentJpg}
+          className="rounded object-cover md:w-full w-[50%] object-top"
+          loading="lazy"
+          decoding="async"
+          width={248}
+          height={279}
+        />
+      </picture>
     ),
     name: "Vincent",
     occupation: "38 ans, ex sportif de haut niveau",
@@ -31,11 +40,18 @@ const userTestimonials = [
   },
   {
     avatar: (
-      <img
-        alt="corinne"
-        src={corinne}
-        className="rounded object-cover md:w-full w-[50%] object-top object"
-      />
+      <picture>
+        <source srcSet={corinneWebp} type="image/webp" />
+        <img
+          alt="Portrait de Corinne, cliente Fit On The Road"
+          src={corinneJpg}
+          className="rounded object-cover md:w-full w-[50%] object-top object"
+          loading="lazy"
+          decoding="async"
+          width={248}
+          height={279}
+        />
+      </picture>
     ),
     name: "Corinne",
     occupation: "60 ans, en recherche d'ajustement à sa santé",

@@ -6,19 +6,20 @@ import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import { alpha, Typography, Box, Container, Button } from "@mui/material";
 import Overview from "@assets/images/Overview.jpg";
+import OverviewWebp from "@assets/images/Overview.webp";
 
 const items = [
   {
     title: "*",
     description:
       "Nous vous proposons des séances personnalisées en présentiel, au poids du corps ou équipées pour coller au mieux à vos besoins et votre progression.",
-    image: `url("${Overview}")`,
+    image: `image-set(url("${OverviewWebp}") type("image/webp"), url("${Overview}") type("image/jpeg"))`,
   },
   {
     title: "*",
     description:
       "En groupe ou individuel, le suivi proposé a toujours pour objectif de vous permettre de terminer votre session et de progresser quel que soit votre niveau.",
-    image: `url("${Overview}")`,
+    image: `image-set(url("${OverviewWebp}") type("image/webp"), url("${Overview}") type("image/jpeg"))`,
   },
 ];
 
