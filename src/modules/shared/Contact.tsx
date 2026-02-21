@@ -41,8 +41,7 @@ function Contact(props: ContactProps) {
 
   const validateEmail = (value: string) => /\S+@\S+\.\S+/.test(value);
 
-  const validateMessage = (value: string) =>
-    !value || value.trim().length >= 5;
+  const validateMessage = (value: string) => !value || value.trim().length >= 5;
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
