@@ -10,7 +10,25 @@
     "prettier",
     "plugin:react-hooks/recommended"
   ],
-  "overrides": [],
+  "overrides": [
+    {
+      "files": [
+        "**/*.test.{ts,tsx,js,jsx}",
+        "**/setupTests.{ts,tsx,js,jsx}"
+      ],
+      "env": {
+        "jest": true
+      },
+      "rules": {
+        "import/no-extraneous-dependencies": [
+          "error",
+          {
+            "devDependencies": true
+          }
+        ]
+      }
+    }
+  ],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
