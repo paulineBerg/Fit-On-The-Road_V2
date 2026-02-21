@@ -27,8 +27,9 @@ function Contact(props: ContactProps) {
   const [emailError, setEmailError] = React.useState<string>("");
   const [messageError, setMessageError] = React.useState<string>("");
   const [snackbarOpen, setSnackbarOpen] = React.useState<boolean>(false);
-  const [snackbarSeverity, setSnackbarSeverity] =
-    React.useState<"success" | "error">("success");
+  const [snackbarSeverity, setSnackbarSeverity] = React.useState<
+    "success" | "error"
+  >("success");
   const [snackbarMessage, setSnackbarMessage] = React.useState<string>("");
 
   const handleChange = (
@@ -38,8 +39,7 @@ function Contact(props: ContactProps) {
     setUserType(value);
   };
 
-  const validateEmail = (value: string) =>
-    /^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,}$/.test(value);
+  const validateEmail = (value: string) => /\S+@\S+\.\S+/.test(value);
 
   const validateMessage = (value: string) =>
     !value || value.trim().length >= 5;
