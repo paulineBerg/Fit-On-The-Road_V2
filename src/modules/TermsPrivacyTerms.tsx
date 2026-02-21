@@ -50,7 +50,7 @@ function TermsPrivacyTerms() {
                 <br />
                 France
                 <br />
-                Email : [À RENSEIGNER]
+                Email : [contact@fit-ontheroad.fr]
               </Typography>
             </div>
 
@@ -100,8 +100,8 @@ function TermsPrivacyTerms() {
               <Typography variant="h6">7. Vos droits</Typography>
               <Typography variant="body1" color="text.secondary">
                 Accès, rectification, effacement, opposition, limitation,
-                portabilité. Pour exercer vos droits : [EMAIL À RENSEIGNER].
-                Réclamation possible auprès de la CNIL (www.cnil.fr).
+                portabilité. Pour exercer vos droits : contact@fit-ontheroad.fr
+                . Réclamation possible auprès de la CNIL (www.cnil.fr).
               </Typography>
             </div>
 
