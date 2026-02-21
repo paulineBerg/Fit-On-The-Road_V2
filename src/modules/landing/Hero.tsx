@@ -55,33 +55,21 @@ function Hero() {
           spacing={2}
           useFlexGap
           sx={{
-            // backdropFilter: "sepia(90%)",
             width: { xs: "100%", sm: "70%" },
           }}
         >
-          {/* <Card
+          <Typography
+            component="h1"
+            variant="h1"
+            fontWeight="bold"
             sx={{
-              p: "8px",
-              display: "flex",
-              flexDirection: "column",
-              backgroundColor: "rgb(34, 31, 29, 0.50)",
+              fontSize: "clamp(3rem, 10vw, 3.4rem)",
+              textAlign: "center",
+              color: "primary.light",
             }}
-          > */}
-          {/* HERO CATCHPHRASE */}
-          <h1>
-            <Typography
-              component="h1"
-              variant="h1"
-              fontWeight="bold"
-              sx={{
-                fontSize: "clamp(3rem, 10vw, 3.4rem)",
-                textAlign: "center",
-                color: "primary.light",
-              }}
-            >
-              FIT ON THE ROAD : La salle de sport qui se déplace
-            </Typography>
-          </h1>
+          >
+            FIT ON THE ROAD : La salle de sport qui se déplace
+          </Typography>
           {/* HERO SUBTEXT */}
           <Typography
             textAlign="center"

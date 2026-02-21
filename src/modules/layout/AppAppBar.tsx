@@ -119,6 +119,7 @@ function AppAppBar() {
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
                 {sections.map((section) => (
                   <MenuItem
+                    key={section.dst}
                     onClick={() => scrollToSection(section.dst)}
                     sx={{ py: "6px", px: "12px", borderRadius: "999px" }}
                   >
@@ -228,7 +229,10 @@ function AppAppBar() {
                     </Button>
                   </Box>
                   {sections.map((section) => (
-                    <MenuItem onClick={() => scrollToSection(section.dst)}>
+                    <MenuItem
+                      key={`drawer-${section.dst}`}
+                      onClick={() => scrollToSection(section.dst)}
+                    >
                       {section.title}
                     </MenuItem>
                   ))}

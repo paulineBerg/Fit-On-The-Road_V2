@@ -116,7 +116,11 @@ function Testimonials() {
                   {testimonial.avatar}
                   <div className="flex flex-col gap-2">
                     {testimonial.testimonial.map((sentence) => (
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography
+                        key={`${testimonial.name}-${sentence.slice(0, 16)}`}
+                        variant="body2"
+                        color="text.secondary"
+                      >
                         {sentence}
                       </Typography>
                     ))}

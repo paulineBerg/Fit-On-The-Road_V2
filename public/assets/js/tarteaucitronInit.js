@@ -10,6 +10,7 @@ tarteaucitron.init({
   showAlertSmall: false,
   cookieslist: false,
   showIcon: true,
+  iconSrc: "/favicon/favicon-kettle-red.png",
   iconPosition: "BottomLeft",
   adblocker: false,
   DenyAllCta: true,

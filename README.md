@@ -26,7 +26,7 @@
 3) **Optimiser les médias** : compresser les JPEG, fournir des variantes WebP/AVIF, déclarer `loading="lazy"` pour les images non critiques et fixer des tailles pour éviter les CLS.  
 4) **Renforcer le formulaire** : afficher un état “message envoyé/erreur”, valider email/texte côté client, ou basculer vers une API serveur légère pour fiabiliser l’envoi.  
 5) **Outillage** : activer `npm run lint` en pré-commit/CI, ajouter quelques tests Vitest (smoke sur routes et rendu des sections), documenter patch-package si nécessaire.
-6) **Readme** : modifier le readme.md avec les corrections verrouillées.
+6) **Tarteaucitron** : "passer" si possible l'image data de tarteaucitron en rouge en partant de la couleur de favicon-kettle-red et garder les nuances du fichier d'origine pour respecter l'image, si non possible directement me donner la marche a suivre.
 
 ## Structure à connaître
 - Layout global : `src/pages/_app.tsx` (AppBar + Footer + ThemeProvider).  

@@ -28,20 +28,18 @@ function Terms() {
         }}
       >
         <Box sx={{ height: "100%", width: "80%" }} />
-        <h1>
-          <Typography
-            component="h1"
-            variant="h1"
-            fontWeight="bold"
-            sx={{
-              fontSize: "clamp(3rem, 10vw, 3.4rem)",
-              textAlign: "center",
-              color: "primary.light",
-            }}
-          >
-            FIT ON THE ROAD OFFICIEL
-          </Typography>
-        </h1>
+        <Typography
+          component="h1"
+          variant="h1"
+          fontWeight="bold"
+          sx={{
+            fontSize: "clamp(3rem, 10vw, 3.4rem)",
+            textAlign: "center",
+            color: "primary.light",
+          }}
+        >
+          FIT ON THE ROAD OFFICIEL
+        </Typography>
         <Typography
           textAlign="center"
           color="text.secondary"

@@ -108,11 +108,9 @@ function Pricing() {
           textAlign: { sm: "left", md: "center" },
         }}
       >
-        <h2>
-          <Typography component="h2" variant="h4" color="text.primary">
-            Tarifs
-          </Typography>
-        </h2>
+        <Typography component="h2" variant="h4" color="text.primary">
+          Tarifs
+        </Typography>
         <Typography variant="body1" color="text.secondary">
           {`Ces services sont conçus pour répondre aux besoins variés des clients,
           qu'ils soient entreprises ou particuliers, et visent à offrir une
@@ -162,21 +160,19 @@ function Pricing() {
                     color: tier.title === "Entreprise" ? "grey.50" : undefined,
                   }}
                 >
-                  <h2>
-                    <Typography
-                      component="h3"
-                      variant="h2"
-                      height={tier.title === "Entreprise" ? "110.75px" : "72px"}
-                    >
-                      {typeof tier.price === "string" && tier.price}
-                      {typeof tier.price !== "string" &&
-                        tier.title === "Cours collectifs" &&
-                        tier.price[collectiveCoachingPrice]}
-                      {typeof tier.price !== "string" &&
-                        tier.title === "Coaching privé" &&
-                        tier.price[privateCoachingPrice]}
-                    </Typography>
-                  </h2>
+                  <Typography
+                    component="p"
+                    variant="h2"
+                    height={tier.title === "Entreprise" ? "110.75px" : "72px"}
+                  >
+                    {typeof tier.price === "string" && tier.price}
+                    {typeof tier.price !== "string" &&
+                      tier.title === "Cours collectifs" &&
+                      tier.price[collectiveCoachingPrice]}
+                    {typeof tier.price !== "string" &&
+                      tier.title === "Coaching privé" &&
+                      tier.price[privateCoachingPrice]}
+                  </Typography>
                   <Typography component="h3" variant="h6">
                     {tier.title === "Coaching privé" && "la séance"}
                   </Typography>
@@ -254,7 +250,7 @@ function Pricing() {
                       }}
                     />
                     <Typography
-                      component="text"
+                      component="span"
                       variant="subtitle2"
                       height="40px"
                       sx={{

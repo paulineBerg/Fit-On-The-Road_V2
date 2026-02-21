@@ -221,7 +221,7 @@ function IndividualCollectiveCoaching() {
                       }}
                     />
                     <Typography
-                      component="text"
+                      component="span"
                       variant="subtitle2"
                       height="40px"
                       sx={{
