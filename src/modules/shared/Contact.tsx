@@ -4,7 +4,10 @@ import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import {
+  Alert,
   Button,
+  CircularProgress,
+  Snackbar,
   TextField,
   ToggleButton,
   ToggleButtonGroup,
@@ -16,18 +19,56 @@ interface ContactProps {
 }
 
 function Contact(props: ContactProps) {
+  type SubmitStatus = "idle" | "sending" | "success" | "error";
+
   const { defaultUserType = UserType.ENTERPRISE } = props;
   const [userType, setUserType] = React.useState<UserType>(defaultUserType);
+  const [status, setStatus] = React.useState<SubmitStatus>("idle");
+  const [emailError, setEmailError] = React.useState<string>("");
+  const [messageError, setMessageError] = React.useState<string>("");
+  const [snackbarOpen, setSnackbarOpen] = React.useState<boolean>(false);
+  const [snackbarSeverity, setSnackbarSeverity] =
+    React.useState<"success" | "error">("success");
+  const [snackbarMessage, setSnackbarMessage] = React.useState<string>("");
+
   const handleChange = (
     event: React.MouseEvent<HTMLElement, MouseEvent>,
     value: UserType,
   ) => {
     setUserType(value);
   };
+
+  const validateEmail = (value: string) =>
+    /^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,}$/.test(value);
+
+  const validateMessage = (value: string) =>
+    !value || value.trim().length >= 5;
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setEmailError("");
+    setMessageError("");
+    setStatus("sending");
+
     const form = event.currentTarget;
     const formData = new FormData(form);
+    const email = (formData.get("entry.15707327") as string) || "";
+    const message = (formData.get("entry.1273954301") as string) || "";
+
+    let hasError = false;
+    if (!validateEmail(email)) {
+      setEmailError("Adresse email invalide");
+      hasError = true;
+    }
+    if (!validateMessage(message)) {
+      setMessageError("Merci de préciser votre demande (≥ 5 caractères)");
+      hasError = true;
+    }
+    if (hasError) {
+      setStatus("idle");
+      return;
+    }
+
     const url = new URL(
       "https://docs.google.com/forms/u/0/d/e/1FAIpQLSec3zJkjD1nf690-QfZZ8r4C0T8mYkcmrmaTcICdpPphbQKUw/formResponse",
     );
@@ -47,9 +88,25 @@ function Contact(props: ContactProps) {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
-    }).then(() => {
-      form.reset();
-    });
+    })
+      .then(() => {
+        form.reset();
+        setStatus("success");
+        setSnackbarSeverity("success");
+        setSnackbarMessage("Message envoyé ! Je vous recontacte rapidement.");
+        setSnackbarOpen(true);
+      })
+      .catch(() => {
+        setStatus("error");
+        setSnackbarSeverity("error");
+        setSnackbarMessage(
+          "Une erreur est survenue. Merci de réessayer ou d'envoyer un mail direct.",
+        );
+        setSnackbarOpen(true);
+      })
+      .finally(() => {
+        setStatus((prev) => (prev === "sending" ? "idle" : prev));
+      });
   };
 
   return (
@@ -150,6 +207,8 @@ function Contact(props: ContactProps) {
                   "aria-label": "Adresse mail",
                 }}
                 required
+                error={Boolean(emailError)}
+                helperText={emailError}
               />
               <TextField
                 id="message"
@@ -166,9 +225,21 @@ function Contact(props: ContactProps) {
                   autoComplete: "off",
                   "aria-label": "Message",
                 }}
+                error={Boolean(messageError)}
+                helperText={messageError}
               />
-              <Button variant="contained" color="primary" type="submit">
-                CONTACTEZ-MOI
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                disabled={status === "sending"}
+                startIcon={
+                  status === "sending" ? (
+                    <CircularProgress size={16} color="inherit" />
+                  ) : undefined
+                }
+              >
+                {status === "sending" ? "Envoi..." : "CONTACTEZ-MOI"}
               </Button>
               <Button
                 href="mailto:contact@fit-ontheroad.fr?subject=Demande d'information&body=Bonjour,<br/>Je souhaite obtenir des informations sur vos services.<br/>Cordialement,"
@@ -178,6 +249,20 @@ function Contact(props: ContactProps) {
               </Button>
             </Stack>
           </form>
+          <Snackbar
+            open={snackbarOpen}
+            autoHideDuration={4000}
+            onClose={() => setSnackbarOpen(false)}
+            anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+          >
+            <Alert
+              severity={snackbarSeverity}
+              onClose={() => setSnackbarOpen(false)}
+              sx={{ width: "100%" }}
+            >
+              {snackbarMessage}
+            </Alert>
+          </Snackbar>
         </Box>
       </Container>
     </Box>
