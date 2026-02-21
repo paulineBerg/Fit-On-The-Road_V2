@@ -1,4 +1,8 @@
 User-agent: *
 Disallow:
 
+# Décommenter si besoin de bloquer des sections non publiques
+# Disallow: /sandbox/
+# Disallow: /draft/
+
 Sitemap: https://fit-ontheroad.fr/sitemap.xml
