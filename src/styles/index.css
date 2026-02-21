@@ -1,0 +1,141 @@
+@import url("./theme-material/light.css");
+@import url("./theme-material/light-mc.css");
+@import url("./theme-material/light-hc.css");
+@import url("./theme-material/dark.css");
+@import url("./theme-material/dark-mc.css");
+@import url("./theme-material/dark-hc.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "ProximaNova-Light";
+  src: url("../assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Black.otf");
+}
+
+@font-face {
+  font-family: "ProximaNova-Light";
+  font-style: italic;
+  src: url("../assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Black.otf");
+}
+
+@font-face {
+  font-family: "ProximaNova-Regular";
+  font-style: normal;
+  src: url("../assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Black.otf");
+}
+
+@font-face {
+  font-family: "ProximaNova-Regular";
+  font-style: italic;
+  src: url("../assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Black.otf");
+}
+
+@font-face {
+  font-family: "ProximaNova-Medium";
+  src: url("../assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Black.otf");
+}
+
+@font-face {
+  font-family: "ProximaNova-Medium";
+  font-style: italic;
+  src: url("../assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Black.otf");
+}
+
+@font-face {
+  font-family: "ProximaNova-Bold";
+  src: url("../assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Black.otf");
+}
+
+@font-face {
+  font-family: "ProximaNova-Bold";
+  font-style: italic;
+  src: url("../assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Black.otf");
+}
+
+@layer base {
+  html {
+    font-family: "ProximaNova-Regular", sans-serif;
+    @apply text-primaryBlack h-full;
+  }
+
+  body {
+    @apply h-full;
+  }
+
+  #root {
+    @apply h-full;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+/* @layer components {
+  .heading-1 {
+    @apply text-4xl font-proximaNova-Bold tracking-[-3%];
+  }
+
+  .heading-1-mobile {
+    @apply text-3.5xl leading-8 font-proximaNova-Bold tracking-normal;
+  }
+
+  .heading-2 {
+    @apply text-3xl font-proximaNova-Bold;
+  }
+
+  .heading-2-mobile {
+    @apply text-2.5xl leading-8 font-proximaNova-Bold;
+  }
+
+  .heading-3 {
+    @apply text-lg font-proximaNova-Bold;
+  }
+
+  .heading-3-mobile {
+    @apply text-base leading-6 font-proximaNova-Bold;
+  }
+} */
+
+:root {
+  font-size: 12px;
+  line-height: 24px;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (min-width: 756px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    font-size: 16px;
+  }
+}
+
+.capitalize {
+  text-transform: lowercase;
+}
+
+.capitalize:first-letter {
+  text-transform: capitalize;
+}

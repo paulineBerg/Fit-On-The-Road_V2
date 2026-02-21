@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<url>
+		<loc>https://fit-ontheroad.fr/</loc>
+		<lastmod>2024-08-15</lastmod>
+	</url>
+		<url>
+		<loc>https://fit-ontheroad.fr/particuliers</loc>
+		<lastmod>2024-08-15</lastmod>
+	</url>
+		</url>
+		<url>
+		<loc>https://fit-ontheroad.fr/entreprises</loc>
+		<lastmod>2024-08-15</lastmod>
+	</url>
+		</url>
+		<url>
+		<loc>https://fit-ontheroad.fr/about-us</loc>
+		<lastmod>2024-08-15</lastmod>	
+	<!-- <url>
+		<loc>https://fit-ontheroad.fr/about</loc>
+		<lastmod>2024-08-15</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.8</priority>
+	</url> -->
+	<!-- Add more URLs as needed -->
+</urlset>

@@ -1,0 +1,21 @@
+diff --git a/node_modules/minimatch/dist/commonjs/index.js b/node_modules/minimatch/dist/commonjs/index.js
+index 5a0ba2a..4abaa10 100644
+--- a/node_modules/minimatch/dist/commonjs/index.js
++++ b/node_modules/minimatch/dist/commonjs/index.js
+@@ -2,6 +2,7 @@
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.unescape = exports.escape = exports.AST = exports.Minimatch = exports.match = exports.makeRe = exports.braceExpand = exports.defaults = exports.filter = exports.GLOBSTAR = exports.sep = exports.minimatch = void 0;
+ const brace_expansion_1 = require("brace-expansion");
++const braceExpandFn = brace_expansion_1.expand || brace_expansion_1;
+ const assert_valid_pattern_js_1 = require("./assert-valid-pattern.js");
+ const ast_js_1 = require("./ast.js");
+ const escape_js_1 = require("./escape.js");
+@@ -154,7 +155,7 @@ const braceExpand = (pattern, options = {}) => {
+         // shortcut. no need to expand.
+         return [pattern];
+     }
+-    return (0, brace_expansion_1.expand)(pattern, { max: options.braceExpandMax });
++    return braceExpandFn(pattern, { max: options.braceExpandMax });
+ };
+ exports.braceExpand = braceExpand;
+ exports.minimatch.braceExpand = exports.braceExpand;
