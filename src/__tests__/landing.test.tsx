@@ -4,7 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 import { style } from "@styles/theme-material/style";
-import LandingPage from "./index";
+import LandingPage from "@pages/index";
 
 const renderWithProviders = (ui: React.ReactElement) => {
   const theme = createTheme(style);
