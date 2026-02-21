@@ -38,6 +38,7 @@
 - Mettre en place une PWA légère (manifest + icônes + offline shell limité).  
 - Ajouter une section “planning des cours” alimentée par une source dynamique (React Query déjà listé en dépendance).  
 - Factoriser les répétitions de composants cartes/sections (Enterprise/Individual cards très similaires).
+- Optimiser le site internet fit-ontheroad.fr (perf, SEO, accessibilité et tracking conforme).
 
 *Rapport généré automatiquement; n’hésitez pas à demander un focus détaillé sur une section ou un plan d’actions priorisé.* 
 
