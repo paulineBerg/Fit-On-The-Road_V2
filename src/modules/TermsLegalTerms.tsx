@@ -31,14 +31,73 @@ function TermsLegalTerms() {
             textAlign: { sm: "left", md: "center" },
           }}
         >
-          <h2>
-            <Typography component="h2" variant="h2" color="text.primary">
-              Les mentions légales
-            </Typography>
-          </h2>
-          <Typography variant="body1" color="text.secondary">
-            Section en cours
+          <Typography component="p" variant="h2" color="text.primary">
+            Mentions légales
           </Typography>
+          <Box sx={{ textAlign: "left", mt: 2, display: "grid", gap: 1.5 }}>
+            <Typography variant="h6" color="text.primary">
+              Éditeur du site
+            </Typography>
+            <Typography variant="body1" color="text.secondary">
+              Le présent site&nbsp;
+              <Typography component="span" color="text.primary">
+                https://fit-ontheroad.fr
+              </Typography>{" "}
+              est édité par :
+            </Typography>
+            <Typography variant="body1" color="text.secondary">
+              <strong>FIT ON THE ROAD</strong>
+              <br />
+              Société par Actions Simplifiée (SAS)
+              <br />
+              SIREN : 893 637 322
+              <br />
+              SIRET : 893 637 322 00031
+              <br />
+              Numéro de TVA intracommunautaire : FR79893637322
+              <br />
+              Code APE : 9311Z – Gestion d&apos;installations sportives
+              <br />
+              Date de création : 03 février 2021
+            </Typography>
+            <Typography variant="body1" color="text.secondary">
+              <strong>Siège social :</strong>
+              <br />
+              32 Route Blanche
+              <br />
+              78910 Orvillers
+              <br />
+              France
+            </Typography>
+            <Typography variant="body1" color="text.secondary">
+              <strong>Président :</strong> Julien LE CHEVALIER
+            </Typography>
+            <Typography variant="body1" color="text.secondary">
+              <strong>Email :</strong> [À RENSEIGNER]
+              <br />
+              <strong>Téléphone :</strong> [OPTIONNEL]
+            </Typography>
+            <Typography variant="h6" color="text.primary" sx={{ mt: 2 }}>
+              Hébergement
+            </Typography>
+            <Typography variant="body1" color="text.secondary">
+              IONOS SARL
+              <br />
+              7 Place de la Gare
+              <br />
+              57200 Sarreguemines
+              <br />
+              France
+              <br />
+              <Typography
+                component="a"
+                href="https://www.ionos.fr"
+                color="primary"
+              >
+                https://www.ionos.fr
+              </Typography>
+            </Typography>
+          </Box>
         </Box>
       </Container>
     </Box>
