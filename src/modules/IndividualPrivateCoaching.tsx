@@ -69,10 +69,10 @@ function IndividualPrivateCoaching() {
                   height: "100%",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
-                backgroundImage: items[selectedItemIndex].image,
-                backgroundRepeat: "no-repeat",
-              }}
-            />
+                  backgroundImage: items[selectedItemIndex].image,
+                  backgroundRepeat: "no-repeat",
+                }}
+              />
             </Card>
           </Grid>
           <Grid item xs={12} md={6}>
@@ -130,14 +130,14 @@ function IndividualPrivateCoaching() {
                 mt: 4,
               }}
             >
-                <Box
-                  sx={{
-                    backgroundImage: items[selectedItemIndex].image,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    minHeight: 280,
-                  }}
-                />
+              <Box
+                sx={{
+                  backgroundImage: items[selectedItemIndex].image,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  minHeight: 280,
+                }}
+              />
               <Box sx={{ px: 2, pb: 2, pt: 2 }}>
                 <Typography
                   component="h3"
