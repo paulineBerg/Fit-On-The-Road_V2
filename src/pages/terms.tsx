@@ -6,6 +6,7 @@ import { UserType } from "@app/types/types";
 import Contact from "@shared/Contact";
 import TermsLegalTerms from "@app/modules/TermsLegalTerms";
 import TermsPrivacyTerms from "@app/modules/TermsPrivacyTerms";
+import TermsTermsAndConditions from "@app/modules/TermsTermsAndConditions";
 import LogoClic from "@app/modules/LogoClic";
 
 function Terms() {
@@ -48,6 +49,7 @@ function Terms() {
           Page en construction ! 😉
         </Typography>
         <TermsPrivacyTerms />
+        <TermsTermsAndConditions />
         <TermsLegalTerms />
         <Contact defaultUserType={UserType.ENTERPRISE} />
         <LogoClic />
