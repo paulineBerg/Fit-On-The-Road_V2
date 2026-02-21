@@ -31,11 +31,6 @@ const pickups = [
   },
 ];
 
-const pickupStyle = {
-  margin: "0 32px",
-  opacity: 0.7,
-};
-
 function PickupCollection() {
   return (
     <Box
@@ -59,38 +54,61 @@ function PickupCollection() {
           Du travail et du bonheur
         </Typography>
       </h2>
-      <div className="flex justify-evenly gap-4">
+      <Box
+        sx={{
+          width: "100%",
+          maxWidth: 1280,
+          mx: "auto",
+          px: { xs: 2, md: 4 },
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
+          gap: { xs: 2, md: 3 },
+          alignItems: "stretch",
+        }}
+      >
         {pickups.map(({ pickup }) => (
-          <div className="flex flex-col gap-2 items-center justify-center w-[5%]">
-            <div className="h-[300px] w-[250px] flex align-middle justify-center">
-              {pickup && (
-                <picture>
-                  <source srcSet={pickup.webp} type="image/webp" />
-                  <img
-                    src={pickup.fallback}
-                    alt="Pick-up Fit On The Road"
-                    className="object-contain"
-                    style={pickupStyle}
-                    loading="lazy"
-                    decoding="async"
-                    width={pickup.width}
-                    height={pickup.height}
-                  />
-                </picture>
-              )}
-              {!pickup && (
-                <BusinessTwoToneIcon
-                  sx={{
-                    fontSize: "60px",
-                    filter:
-                      "invert(68%) hue-rotate(3deg) brightness(130%) contrast(106%)",
+          <Box
+            key={pickup.fallback}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "100%",
+            }}
+          >
+            {pickup ? (
+              <picture style={{ width: "100%" }}>
+                <source srcSet={pickup.webp} type="image/webp" />
+                <img
+                  src={pickup.fallback}
+                  alt="Pick-up Fit On The Road"
+                  loading="lazy"
+                  decoding="async"
+                  width={pickup.width}
+                  height={pickup.height}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    maxHeight: 320,
+                    objectFit: "cover",
+                    borderRadius: 6,
+                    opacity: 0.9,
                   }}
                 />
-              )}
-            </div>
-          </div>
+              </picture>
+            ) : (
+              <BusinessTwoToneIcon
+                sx={{
+                  fontSize: "60px",
+                  filter:
+                    "invert(68%) hue-rotate(3deg) brightness(130%) contrast(106%)",
+                }}
+              />
+            )}
+          </Box>
         ))}
-      </div>
+      </Box>
       <Typography
         variant="h3"
         sx={{
