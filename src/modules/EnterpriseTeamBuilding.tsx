@@ -65,7 +65,7 @@ function EnterpriseTeamBuilding() {
           <Grid item xs={12} md={6}>
             <div>
               <Typography
-                component="h2"
+                component="p"
                 variant="h2"
                 className="uppercase"
                 color="text.primary"
@@ -73,7 +73,7 @@ function EnterpriseTeamBuilding() {
                 Team Building
               </Typography>
               <Typography
-                component="h3"
+                component="p"
                 variant="h3"
                 className="uppercase"
                 color="text.primary"

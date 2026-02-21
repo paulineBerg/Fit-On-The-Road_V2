@@ -83,16 +83,14 @@ function IndividualFeatures() {
           </Grid>
           <Grid item xs={12} md={6}>
             <div>
-              <h2>
-                <Typography
-                  component="h2"
-                  variant="h2"
-                  className="uppercase"
-                  color="text.primary"
-                >
-                  ... pour les particuliers
-                </Typography>
-              </h2>
+              <Typography
+                component="p"
+                variant="h2"
+                className="uppercase"
+                color="text.primary"
+              >
+                ... pour les particuliers
+              </Typography>
               <Typography
                 variant="body1"
                 color="text.secondary"

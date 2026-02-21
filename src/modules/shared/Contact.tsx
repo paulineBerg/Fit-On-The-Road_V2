@@ -133,11 +133,9 @@ function Contact(props: ContactProps) {
             textAlign: { sm: "left", md: "center" },
           }}
         >
-          <h2>
-            <Typography component="h2" variant="h4">
-              Nous contacter
-            </Typography>
-          </h2>
+          <Typography component="p" variant="h4">
+            Nous contacter
+          </Typography>
           <Typography variant="body1" sx={{ color: "grey.400" }}>
             Sportif accompli ou bien simple curieux ? Un coach prendra contact
             avec vous pour vous accompagner dans la définition de vos besoins.

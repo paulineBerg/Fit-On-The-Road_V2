@@ -83,12 +83,10 @@ function Testimonials() {
           textAlign: { sm: "left", md: "center" },
         }}
       >
-        <h2>
-          <Typography component="h2" variant="h4" color="text.primary">
-            Avis clients
-          </Typography>
-        </h2>
-        <Typography component="h2" variant="body1" color="text.secondary">
+        <Typography component="p" variant="h4" color="text.primary">
+          Avis clients
+        </Typography>
+        <Typography component="p" variant="body1" color="text.secondary">
           {`Parce qu'ils en parlent mieux que nous !`}
         </Typography>
       </Box>

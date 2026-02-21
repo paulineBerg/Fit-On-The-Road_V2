@@ -60,16 +60,14 @@ function EnterpriseFeatures() {
         <Grid container spacing={6}>
           <Grid item xs={12} md={6}>
             <div>
-              <h2>
-                <Typography
-                  component="h2"
-                  variant="h2"
-                  className="uppercase"
-                  color="text.primary"
-                >
-                  ... pour les entreprises
-                </Typography>
-              </h2>
+              <Typography
+                component="p"
+                variant="h2"
+                className="uppercase"
+                color="text.primary"
+              >
+                ... pour les entreprises
+              </Typography>
               <Typography
                 variant="body1"
                 color="text.secondary"

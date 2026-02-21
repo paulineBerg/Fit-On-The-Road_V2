@@ -108,7 +108,7 @@ function Pricing() {
           textAlign: { sm: "left", md: "center" },
         }}
       >
-        <Typography component="h2" variant="h4" color="text.primary">
+        <Typography component="p" variant="h4" color="text.primary">
           Tarifs
         </Typography>
         <Typography variant="body1" color="text.secondary">
@@ -173,7 +173,7 @@ function Pricing() {
                       tier.title === "Coaching privé" &&
                       tier.price[privateCoachingPrice]}
                   </Typography>
-                  <Typography component="h3" variant="h6">
+                  <Typography component="span" variant="h6">
                     {tier.title === "Coaching privé" && "la séance"}
                   </Typography>
                 </Box>

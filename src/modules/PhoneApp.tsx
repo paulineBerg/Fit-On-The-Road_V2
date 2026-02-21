@@ -90,11 +90,11 @@ function PhoneApp() {
         }}
       >
         <h2>
-          <Typography component="h3" variant="h3" color="primary.light">
+          <Typography component="p" variant="h3" color="primary.light">
             Votre web application mobile
           </Typography>
         </h2>
-        <Typography component="h4" variant="h4" color="text.primary">
+        <Typography component="p" variant="h4" color="text.primary">
           {`Comment s'inscrire aux cours ?`}
         </Typography>
       </Box>

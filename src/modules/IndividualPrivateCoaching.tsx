@@ -36,16 +36,14 @@ function IndividualPrivateCoaching() {
 
   return (
     <Container id="individual-private-coaching" sx={{ py: 4 }}>
-      <h2>
-        <Typography
-          component="h2"
-          variant="h4"
-          className="uppercase"
-          color="text.primary"
-        >
-          Coaching privé
-        </Typography>
-      </h2>
+      <Typography
+        component="p"
+        variant="h4"
+        className="uppercase"
+        color="text.primary"
+      >
+        Coaching privé
+      </Typography>
       <div className="flex flex-col gap-32">
         <Grid container spacing={6}>
           <Grid
@@ -77,16 +75,14 @@ function IndividualPrivateCoaching() {
           </Grid>
           <Grid item xs={12} md={6}>
             <div>
-              <h2>
-                <Typography
-                  component="h2"
-                  variant="h4"
-                  className="uppercase"
-                  color="text.primary"
-                >
-                  un accompagnement sur mesure pour vous
-                </Typography>
-              </h2>
+              <Typography
+                component="p"
+                variant="h4"
+                className="uppercase"
+                color="text.primary"
+              >
+                un accompagnement sur mesure pour vous
+              </Typography>
               <Typography
                 variant="body1"
                 color="text.secondary"
