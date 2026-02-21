@@ -86,7 +86,7 @@ function Contact(props: ContactProps) {
             Sportif accompli ou bien simple curieux ? Un coach prendra contact
             avec vous pour vous accompagner dans la définition de vos besoins.
           </Typography>
-          <form id="contact" onSubmit={handleSubmit}>
+          <form id="contact-form" onSubmit={handleSubmit}>
             <Stack
               direction={{ xs: "column" }}
               alignSelf="center"

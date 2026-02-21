@@ -13,7 +13,7 @@ const userTestimonials = [
   {
     avatar: (
       <img
-        alt="web application"
+        alt="Aperçu de l'application web Fit On The Road"
         src={application}
         className="rounded object-cover md:w-[50%] w-[50%] object-top"
       />
@@ -35,7 +35,7 @@ const userTestimonials = [
         rel="noopener noreferrer"
       >
         <img
-          alt="qrcode"
+          alt="QR code vers le planning des cours Fit On The Road"
           src={qrcode}
           className="rounded object-cover md:w-[80%] w-[80%] object-top"
         />
