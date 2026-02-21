@@ -13,20 +13,20 @@
 - Contenu éditorial riche, déjà décliné entreprises vs particuliers.  
 - Palette cohérente (rouge primaire, accents bruns) et typographie personnalisée Proxima Nova.
 
-## Problèmes et risques détectés
-- **Bannière cookies inopérante** : `index.html` charge `/assets/js/tarteaucitronjs/advertising.js` qui n’existe pas dans le repo, et `src/assets/js/tarteaucitronInit.js` contient du HTML (`<div>`) au milieu du JS → le fichier ne peut pas être interprété et n’est pas servi par Vite (placé dans `src/` au lieu de `public/`). Résultat : pas de consentement affiché, GTM non chargé, conformité RGPD douteuse.  
-- **Accessibilité/SEO** : multiples `h1` par page (ex. `src/modules/landing/Hero.tsx`, `src/pages/*`), absence d’OpenGraph/Twitter cards, images décoratives sans `alt` explicite, duplication d’`id="contact"` sur le conteneur et le formulaire (`src/modules/shared/Contact.tsx`) générant un HTML invalide.  
-- **Formulaire de contact fragile** : envoie en `no-cors` vers Google Forms, sans retour utilisateur ni gestion d’erreur; aucune validation côté client (sauf `required`).  
-- **Performance** : images lourdes (JPEG non optimisés, aucune stratégie de lazy‑loading), polices OTF non subsettées; tout est chargé dès l’atterrissage (Hero plein écran + vidéo YouTube iframe).  
-- **Qualité/maintenance** : pas de tests ni de lint exécutés automatiquement; dépendances assez anciennes (React 18, MUI v5) et patch-package appliqué mais non documenté; aucune vérification CI.
+## Problèmes et risques détectés (état courant)
+- **Consentement** : tarteaucitron chargé depuis `public/assets/js`, icône remplacée par le favicon rouge; vérifier en prod que la bannière s’affiche bien et que GTM est conditionné au consentement.  
+- **Sémantique/SEO** : h1/h2/h3 corrigés, OG/Twitter ajoutés, id `contact` dédoublé résolu; reste à ajouter des clés uniques partout (fait), et compléter les balises `alt` si besoin.  
+- **Formulaire de contact** : validation email/message et retour utilisateur (succès/erreur) ajoutés, mais l’envoi reste un POST Google Forms sans confirmation serveur; prévoir un petit endpoint si besoin de fiabiliser.  
+- **Performance médias** : variantes WebP générées et `loading="lazy"` + dimensions ajoutées; les JPEG lourds restent en fallback (à compresser ou remplacer par AVIF si nécessaire).  
+- **Qualité/maintenance** : husky pré-commit `npm run lint`, workflow CI (lint + tests Vitest) prêt mais push GitHub bloqué sans scope `workflow`; premiers tests smoke Vitest en place.
 
 ## Actions rapides recommandées
-1) **Corriger le consentement** : déplacer `tarteaucitronInit.js` et les assets requis dans `public/assets/js/`, enlever le bloc `<div>` illégal, ajouter le vrai `advertising.js` ou supprimer son import, puis vérifier l’initialisation GTM (GTM‑NHKKQ7NT).  
-2) **Nettoyer la sémantique** : conserver un seul `h1` par page, supprimer la double utilisation de `id="contact"`, ajouter des `alt` descriptifs aux images clés et des métadonnées OG/Twitter.  
-3) **Optimiser les médias** : compresser les JPEG, fournir des variantes WebP/AVIF, déclarer `loading="lazy"` pour les images non critiques et fixer des tailles pour éviter les CLS.  
-4) **Renforcer le formulaire** : afficher un état “message envoyé/erreur”, valider email/texte côté client, ou basculer vers une API serveur légère pour fiabiliser l’envoi.  
-5) **Outillage** : activer `npm run lint` en pré-commit/CI, ajouter quelques tests Vitest (smoke sur routes et rendu des sections), documenter patch-package si nécessaire.
-6) **Tarteaucitron** : "passer" si possible l'image data de tarteaucitron en rouge en partant de la couleur de favicon-kettle-red et garder les nuances du fichier d'origine pour respecter l'image, si non possible directement me donner la marche a suivre.
+1) **Consentement** : vérifier en prod l’affichage tarteaucitron (icône rouge ok), s’assurer du déclenchement GTM post-consentement uniquement.  
+2) **Sémantique/SEO** : revérifier l’unicité des h1 par page, compléter les `alt` descriptifs restants, ajouter si besoin OG image dédiée.  
+3) **Médias** : compresser ou convertir en AVIF les JPEG fallback lourds (>600 kB) pour réduire le first load.  
+4) **Formulaire** : migrer vers un endpoint (serverless/SMTP) pour obtenir un vrai statut retour et éviter les limites Google Forms.  
+5) **Outillage** : activer la CI GitHub (push nécessitant un PAT avec scope `workflow`), étendre les tests Vitest (routing + sections clés).  
+6) **Tarteaucitron** : icône rouge appliquée via `iconSrc` = `/favicon/favicon-kettle-red.png`; si besoin de recolorer plus finement le sprite, éditer `public/assets/js/tarteaucitronjs/css/tarteaucitron.css` ou remplacer l’image base64 dans `tarteaucitron.js`.
 
 ## Structure à connaître
 - Layout global : `src/pages/_app.tsx` (AppBar + Footer + ThemeProvider).  
