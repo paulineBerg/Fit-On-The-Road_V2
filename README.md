@@ -14,11 +14,11 @@
 - Palette cohérente (rouge primaire, accents bruns) et typographie personnalisée Proxima Nova.
 
 ## Problèmes et risques détectés (état courant)
-- **Consentement** : tarteaucitron chargé depuis `public/assets/js`, icône remplacée par le favicon rouge; vérifier en prod que la bannière s’affiche bien et que GTM est conditionné au consentement.  
-- **Sémantique/SEO** : h1/h2/h3 corrigés, OG/Twitter ajoutés, id `contact` dédoublé résolu; reste à ajouter des clés uniques partout (fait), et compléter les balises `alt` si besoin.  
-- **Formulaire de contact** : validation email/message et retour utilisateur (succès/erreur) ajoutés, mais l’envoi reste un POST Google Forms sans confirmation serveur; prévoir un petit endpoint si besoin de fiabiliser.  
-- **Performance médias** : variantes WebP générées et `loading="lazy"` + dimensions ajoutées; les JPEG lourds restent en fallback (à compresser ou remplacer par AVIF si nécessaire).  
-- **Qualité/maintenance** : husky pré-commit `npm run lint`, workflow CI (lint + tests Vitest) prêt mais push GitHub bloqué sans scope `workflow`; premiers tests smoke Vitest en place.
+- **Consentement** : tarteaucitron opérationnel depuis `public/assets/js`, icône rouge (favicon). Vérifier en prod que GTM reste conditionné au consentement.  
+- **Sémantique/SEO** : h1/h2/h3 corrigés, OG/Twitter ajoutés, id `contact` unique, clés React ajoutées, `alt` principaux présents.  
+- **Formulaire** : validation email/message + feedback succès/erreur ajoutés; envoi toujours via Google Forms `no-cors` (pas de retour fiable).  
+- **Performance médias** : WebP + lazy-load + dimensions; JPEG fallback lourds encore présents (à compresser/AVIF).  
+- **Qualité/maintenance** : husky pré-commit (lint) actif, workflow CI supprimé pour faciliter le push, tests Vitest smoke en place.
 
 ## Actions rapides recommandées
 1) **Consentement** : vérifier en prod l’affichage tarteaucitron (icône rouge ok), s’assurer du déclenchement GTM post-consentement uniquement.  
@@ -38,8 +38,15 @@
 ## Pistes d’évolution ultérieure
 - Mettre en place une PWA légère (manifest + icônes + offline shell limité).  
 - Ajouter une section “planning des cours” alimentée par une source dynamique (React Query déjà listé en dépendance).  
-- Factoriser les répétitions de composants cartes/sections (Enterprise/Individual cards très similaires).
+- Factoriser les répétitions de composants cartes/sections (Enterprise/Individual cards très similaires).  
 - Optimiser le site internet fit-ontheroad.fr (perf, SEO, accessibilité et tracking conforme).
+
+## TODO (propositions d’amélioration)
+- Remplacer Google Forms par un endpoint (API/serverless) avec accusé de réception et gestion d’erreurs.  
+- Compresser/convertir les JPEG fallback lourds en AVIF/WebP et envisager `preload` pour les assets critiques.  
+- Réactiver une CI GitHub (lint + tests) avec PAT `workflow`, étendre la couverture Vitest (routing/sections clés).  
+- Sécurisation HTTP : forcer HTTPS + en-têtes (CSP, HSTS) après audit des scripts externes (YouTube, tarteaucitron).  
+- Finaliser les pages légales avec emails/téléphone réels et lier depuis le footer.
 
 *Rapport généré automatiquement; n’hésitez pas à demander un focus détaillé sur une section ou un plan d’actions priorisé.* 
 
