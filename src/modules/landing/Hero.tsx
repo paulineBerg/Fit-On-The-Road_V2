@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
@@ -12,6 +12,14 @@ import coverMobileWebp from "../../assets/images/individual-private-coaching.web
 import coverMobileJpeg from "../../assets/images/individual-private-coaching.jpg";
 
 function Hero() {
+  const heroImgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    // React 18 ne passe pas fetchpriority en attribut natif : on le force après le mount
+    if (heroImgRef.current) {
+      heroImgRef.current.setAttribute("fetchpriority", "high");
+    }
+  }, []);
   // #region SCROLLING FUNCTION
   const scrollToSection = (sectionId: string) => {
     const sectionElement = document.getElementById(sectionId);
@@ -64,7 +72,7 @@ function Hero() {
             alt=""
             loading="eager"
             decoding="async"
-            fetchpriority="high"
+            ref={heroImgRef}
             width="1920"
             height="1080"
             style={{

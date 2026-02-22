@@ -1,34 +1,43 @@
-tarteaucitron.init({
-  privacyUrl: "https://fit-ontheroad.fr/terms",
-  bodyPosition: "bottom",
-  hashtag: "#FitOnTheRoad",
-  cookieName: "fitontheroad",
-  orientation: "middle",
-  groupServices: false,
-  showDetailsOnClick: false,
-  serviceDefaultState: "wait",
-  showAlertSmall: false,
-  cookieslist: false,
-  showIcon: true,
-  iconSrc: "/favicon/favicon-kettle-red.png",
-  iconPosition: "BottomLeft",
-  adblocker: false,
-  DenyAllCta: true,
-  AcceptAllCta: true,
-  highPrivacy: true,
-  alwaysNeedConsent: false,
-  handleBrowserDNTRequest: false,
-  removeCredit: false,
-  moreInfoLink: false,
-  useExternalCss: false,
-  useExternalJs: false,
-  readmoreLink: "",
-  mandatory: true,
-  mandatoryCta: true,
-  googleConsentMode: true,
-  partnersList: false,
-});
+(function initTacWithRetry(maxRetries) {
+  if (typeof window === "undefined") return;
+  if (window.tarteaucitron) {
+    tarteaucitron.init({
+      privacyUrl: "https://fit-ontheroad.fr/terms",
+      bodyPosition: "bottom",
+      hashtag: "#FitOnTheRoad",
+      cookieName: "fitontheroad",
+      orientation: "middle",
+      groupServices: false,
+      showDetailsOnClick: false,
+      serviceDefaultState: "wait",
+      showAlertSmall: false,
+      cookieslist: false,
+      showIcon: true,
+      iconSrc: "/favicon/favicon-kettle-red.png",
+      iconPosition: "BottomLeft",
+      adblocker: false,
+      DenyAllCta: true,
+      AcceptAllCta: true,
+      highPrivacy: true,
+      alwaysNeedConsent: false,
+      handleBrowserDNTRequest: false,
+      removeCredit: false,
+      moreInfoLink: false,
+      useExternalCss: false,
+      useExternalJs: false,
+      readmoreLink: "",
+      mandatory: true,
+      mandatoryCta: true,
+      googleConsentMode: true,
+      partnersList: false,
+    });
 
-// Google Tag Manager (consent-managed)
-tarteaucitron.user.googletagmanagerId = "GTM-NHKKQ7NT";
-(tarteaucitron.job = tarteaucitron.job || []).push("googletagmanager");
+    // Google Tag Manager (consent-managed)
+    tarteaucitron.user.googletagmanagerId = "GTM-NHKKQ7NT";
+    (tarteaucitron.job = tarteaucitron.job || []).push("googletagmanager");
+    return;
+  }
+
+  if (maxRetries <= 0) return;
+  setTimeout(() => initTacWithRetry(maxRetries - 1), 50);
+})(200);
