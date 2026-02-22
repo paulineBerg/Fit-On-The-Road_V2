@@ -4,13 +4,12 @@
     "paths": {
       "@pages/*": ["./src/pages/*"],
       "@components/*": ["./src/components/*"],
+      "@features/*": ["./src/features/*"],
+      "@layouts/*": ["./src/layouts/*"],
       "@services/*": ["./src/services/*"],
       "@models/*": ["./src/models/*"],
       "@helpers/*": ["./src/helpers/*"],
-
-      "@document/*": ["./src/modules/document/*"],
-      "@search/*": ["./src/modules/search/*"],
-      "@shared/*": ["./src/modules/shared/*"],
+      "@shared/*": ["./src/shared/*"],
 
       "@app/*": ["./src/*"]
     },

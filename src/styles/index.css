@@ -30,32 +30,6 @@
   }
 }
 
-/* @layer components {
-  .heading-1 {
-    @apply text-4xl font-proximaNova-Bold tracking-[-3%];
-  }
-
-  .heading-1-mobile {
-    @apply text-3.5xl leading-8 font-proximaNova-Bold tracking-normal;
-  }
-
-  .heading-2 {
-    @apply text-3xl font-proximaNova-Bold;
-  }
-
-  .heading-2-mobile {
-    @apply text-2.5xl leading-8 font-proximaNova-Bold;
-  }
-
-  .heading-3 {
-    @apply text-lg font-proximaNova-Bold;
-  }
-
-  .heading-3-mobile {
-    @apply text-base leading-6 font-proximaNova-Bold;
-  }
-} */
-
 :root {
   font-size: 12px;
   line-height: 24px;

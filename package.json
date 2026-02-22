@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "postbuild": "node scripts/generate-sitemap.js",
     "postinstall": "patch-package",
     "prepare": "husky install",
     "lint": "eslint --ext=ts,tsx,js,jsx src --fix --report-unused-disable-directives --max-warnings 0",
@@ -28,6 +29,7 @@
     "i18next": "^22.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-helmet-async": "2.0.5",
     "react-i18next": "^12.3.1",
     "react-icons": "4.7.1",
     "react-router-dom": "^6.30.3",

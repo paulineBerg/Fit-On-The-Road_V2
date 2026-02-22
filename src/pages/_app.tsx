@@ -6,8 +6,8 @@ import { Divider } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 import { style } from "@app/styles/theme-material/style";
-import AppAppBar from "@app/modules/layout/AppAppBar";
-import Footer from "@app/modules/layout/Footer";
+import AppAppBar from "@layouts/AppAppBar";
+import Footer from "@layouts/Footer";
 
 const defaultTheme = createTheme(style);
 

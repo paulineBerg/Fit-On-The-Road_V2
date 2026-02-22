@@ -8,6 +8,8 @@ const AboutUs = lazy(() => import("@pages/about-us"));
 const Particuliers = lazy(() => import("@pages/particuliers"));
 const Terms = lazy(() => import("@pages/terms"));
 
+// Route metadata now lives in src/shared/routes.config.json for sitemap generation.
+
 function Fallback() {
   return <div aria-hidden="true" />;
 }

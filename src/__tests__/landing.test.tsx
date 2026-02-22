@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { HelmetProvider } from "react-helmet-async";
 
 import { style } from "@styles/theme-material/style";
 import LandingPage from "@pages/index";
@@ -15,7 +16,9 @@ const renderWithProviders = (ui: React.ReactElement) => {
         v7_relativeSplatPath: true,
       }}
     >
-      <ThemeProvider theme={theme}>{ui}</ThemeProvider>
+      <HelmetProvider>
+        <ThemeProvider theme={theme}>{ui}</ThemeProvider>
+      </HelmetProvider>
     </MemoryRouter>,
   );
 };

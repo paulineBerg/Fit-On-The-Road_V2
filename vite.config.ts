@@ -13,15 +13,14 @@ export default defineConfig({
       // directories
       "@pages": path.resolve(__dirname, "./src/pages"),
       "@components": path.resolve(__dirname, "./src/components"),
+      "@features": path.resolve(__dirname, "./src/features"),
+      "@layouts": path.resolve(__dirname, "./src/layouts"),
       "@services": path.resolve(__dirname, "./src/services"),
       "@models": path.resolve(__dirname, "./src/models"),
       "@helpers": path.resolve(__dirname, "./src/helpers"),
       "@assets": path.resolve(__dirname, "./src/assets"),
       "@styles": path.resolve(__dirname, "./src/styles"),
-      // modules
-      "@document": path.resolve(__dirname, "./src/modules/document"),
-      "@search": path.resolve(__dirname, "./src/modules/search"),
-      "@shared": path.resolve(__dirname, "./src/modules/shared"),
+      "@shared": path.resolve(__dirname, "./src/shared"),
     },
   },
   plugins: [eslint(), react()],

@@ -14,7 +14,7 @@
 - Structure claire et homogène des sections (Hero/Features/Pricing/Testimonials/FAQ/Contact).  
 - Navigation sticky avec ancrages sectionnels et fallback drawer mobile.  
 - Contenu éditorial riche, déjà décliné entreprises vs particuliers.  
-- Palette cohérente (rouge primaire, accents bruns) et typographie personnalisée Proxima Nova.
+- Palette cohérente (rouge primaire, accents bruns) et typographie MUI par défaut (Roboto/système).
 
 ## Problèmes et risques détectés (état courant)
 - **Consentement** : tarteaucitron opérationnel depuis `public/assets/js`, icône rouge (favicon). Vérifier en prod que GTM reste conditionné au consentement.  
@@ -36,7 +36,8 @@
 - Landing : `src/pages/index.tsx` avec sections `Hero`, `EnterpriseFeatures`, `IndividualFeatures`, `Video`, `Highlights`, `Pricing`, `Testimonials`, `FAQ`, `Contact`, `PhoneApp`.  
 - Pages dédiées : `src/pages/entreprises.tsx`, `src/pages/particuliers.tsx`, `src/pages/about-us.tsx`, `src/pages/terms.tsx`.  
 - Styles : `src/styles/index.css` (imports Tailwind + font-face), thème MUI dans `src/styles/theme-material/style.ts`.  
-- Assets : nombreuses images sous `src/assets/images`, polices Proxima Nova sous `src/assets/fonts`.
+- Assets : nombreuses images sous `src/assets/images`, aucune police propriétaire embarquée (Roboto/système uniquement).
+- Sitemap dynamique : routes + métadonnées dans `src/shared/routes.config.json`, générées en XML par `scripts/generate-sitemap.js` (hook `postbuild` après `npm run build`) qui met aussi à jour `public/robots.txt`. Pensez à définir `SITE_URL` dans l’environnement CI/CD si le domaine change.
 
 ## Pistes d’évolution ultérieure
 - Mettre en place une PWA légère (manifest + icônes + offline shell limité).  
