@@ -238,13 +238,13 @@ function AppAppBar() {
                   {sections.map((section) => (
                     <MenuItem
                       key={`drawer-${section.dst}`}
-                    onClick={() => {
-                      blurActive();
-                      scrollToSection(section.dst);
-                    }}
-                  >
-                    {section.title}
-                  </MenuItem>
+                      onClick={() => {
+                        blurActive();
+                        scrollToSection(section.dst);
+                      }}
+                    >
+                      {section.title}
+                    </MenuItem>
                   ))}
                   <Divider />
                   <Box

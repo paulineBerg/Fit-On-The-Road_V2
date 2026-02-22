@@ -81,12 +81,18 @@
             "/assets/js/tarteaucitronjs/tarteaucitron.services.min.js",
             "/assets/js/tarteaucitronInit.js",
           ];
-          scripts.forEach((src) => {
+
+          const loadSequential = (i = 0) => {
+            if (i >= scripts.length) return;
             const script = document.createElement("script");
-            script.src = src;
+            script.src = scripts[i];
             script.defer = true;
+            script.onload = () => loadSequential(i + 1);
+            script.onerror = () => loadSequential(i + 1);
             head.appendChild(script);
-          });
+          };
+
+          loadSequential();
         };
 
         const events = ["pointerdown", "keydown", "scroll", "touchstart"];
