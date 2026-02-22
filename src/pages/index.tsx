@@ -4,6 +4,7 @@ import Divider from "@mui/material/Divider";
 
 import Hero from "@features/landing/Hero";
 import { UserType } from "@app/types/types";
+import LazyOnVisible from "@shared/LazyOnVisible";
 import Seo from "@shared/Seo";
 
 const EnterpriseFeatures = lazy(() => import("@features/EnterpriseFeatures"));
@@ -49,12 +50,24 @@ function LandingPage() {
           <Testimonials />
         </Suspense>
         <Divider />
-        <Suspense fallback={<Box sx={{ height: 120 }} />}>
-          <Contact defaultUserType={UserType.ENTERPRISE} />
-        </Suspense>
-        <Suspense fallback={<Box sx={{ height: 120 }} />}>
-          <PhoneApp />
-        </Suspense>
+        <LazyOnVisible
+          minHeight={200}
+          fallback={<Box sx={{ height: 200 }} />}
+          rootMargin="300px"
+        >
+          <Suspense fallback={<Box sx={{ height: 200 }} />}>
+            <Contact defaultUserType={UserType.ENTERPRISE} />
+          </Suspense>
+        </LazyOnVisible>
+        <LazyOnVisible
+          minHeight={160}
+          fallback={<Box sx={{ height: 160 }} />}
+          rootMargin="300px"
+        >
+          <Suspense fallback={<Box sx={{ height: 160 }} />}>
+            <PhoneApp />
+          </Suspense>
+        </LazyOnVisible>
         <Box id="more" />
         <Suspense fallback={<Box sx={{ height: 120 }} />}>
           <FAQ />
