@@ -63,13 +63,6 @@
     <script type="module">
       // Charge tarteaucitron uniquement après interaction utilisateur ou délai long (évite le chemin critique)
       (() => {
-        const skipTac =
-          typeof localStorage !== "undefined" &&
-          localStorage.getItem("tac_disable") === "1";
-
-        if (skipTac) {
-          return; // permet de couper manuellement si besoin
-        }
         const loadTarteaucitron = () => {
           if (window.__tac_loaded) return;
           window.__tac_loaded = true;

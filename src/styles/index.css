@@ -2,62 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "ProximaNova-Light";
-  font-display: swap;
-  src: url("../assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Black.otf");
-}
-
-@font-face {
-  font-family: "ProximaNova-Light";
-  font-style: italic;
-  font-display: swap;
-  src: url("../assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Black.otf");
-}
-
-@font-face {
-  font-family: "ProximaNova-Regular";
-  font-style: normal;
-  font-display: swap;
-  src: url("../assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Black.otf");
-}
-
-@font-face {
-  font-family: "ProximaNova-Regular";
-  font-style: italic;
-  font-display: swap;
-  src: url("../assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Black.otf");
-}
-
-@font-face {
-  font-family: "ProximaNova-Medium";
-  font-display: swap;
-  src: url("../assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Black.otf");
-}
-
-@font-face {
-  font-family: "ProximaNova-Medium";
-  font-style: italic;
-  font-display: swap;
-  src: url("../assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Black.otf");
-}
-
-@font-face {
-  font-family: "ProximaNova-Bold";
-  font-display: swap;
-  src: url("../assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Black.otf");
-}
-
-@font-face {
-  font-family: "ProximaNova-Bold";
-  font-style: italic;
-  font-display: swap;
-  src: url("../assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Black.otf");
-}
-
 @layer base {
   html {
-    font-family: "ProximaNova-Regular", sans-serif;
+    font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     @apply text-primaryBlack h-full;
   }
 
