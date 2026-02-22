@@ -35,6 +35,14 @@ tarteaucitron.init({
 // Google Tag Manager (consent-managed)
 tarteaucitron.user.googletagmanagerId = "GTM-NHKKQ7NT";
 (tarteaucitron.job = tarteaucitron.job || []).push("googletagmanager");
+
+// If tarteaucitron is loaded after window "load", trigger its loader manually
+const ensureTacLoad = () => tarteaucitron.initEvents.loadEvent(false);
+if (document.readyState === "complete") {
+  ensureTacLoad();
+} else {
+  window.addEventListener("load", ensureTacLoad, { once: true });
+}
     return;
   }
 
