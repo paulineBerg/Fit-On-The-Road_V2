@@ -92,18 +92,24 @@
         };
 
         const events = ["pointerdown", "keydown", "scroll", "touchstart"];
-        const onFirstInput = () => {
+        let fallbackTimeout;
+        const removeListeners = () =>
           events.forEach((evt) =>
             window.removeEventListener(evt, onFirstInput, { passive: true }),
           );
+        const onFirstInput = () => {
+          removeListeners();
+          clearTimeout(fallbackTimeout);
           loadTarteaucitron();
         };
         events.forEach((evt) =>
           window.addEventListener(evt, onFirstInput, { passive: true }),
         );
-        // Activation immédiate (plus fallback interaction et timeout)
-        loadTarteaucitron();
-        setTimeout(loadTarteaucitron, 6000);
+        // Fallback si aucune interaction utilisateur au bout de 6s
+        fallbackTimeout = setTimeout(() => {
+          removeListeners();
+          loadTarteaucitron();
+        }, 6000);
       })();
     </script>
   </body>
