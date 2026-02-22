@@ -119,10 +119,15 @@ function Highlights() {
               >
                 <Box sx={{ opacity: "50%" }}>{item.icon}</Box>
                 <div>
-                  <Typography component="h4" fontWeight="medium" gutterBottom>
+                  <Typography
+                    component="h3"
+                    variant="h6"
+                    fontWeight="medium"
+                    gutterBottom
+                  >
                     {item.title}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: "grey.400" }}>
+                  <Typography variant="body2" sx={{ color: "grey.200" }}>
                     {item.description}
                   </Typography>
                 </div>

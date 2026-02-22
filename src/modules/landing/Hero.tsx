@@ -63,6 +63,8 @@ function Hero() {
             src={coverJpeg}
             alt=""
             loading="eager"
+            decoding="async"
+            fetchPriority="high"
             width="1920"
             height="1080"
             style={{
