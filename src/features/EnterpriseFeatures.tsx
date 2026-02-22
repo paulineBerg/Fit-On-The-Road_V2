@@ -216,12 +216,12 @@ function EnterpriseFeatures() {
                         : "grey.800";
                     },
                   }}
-                  >
-                    <Box
-                      sx={{
-                        width: "100%",
-                        display: "flex",
-                        textAlign: "left",
+                >
+                  <Box
+                    sx={{
+                      width: "100%",
+                      display: "flex",
+                      textAlign: "left",
                       flexDirection: { xs: "column", md: "row" },
                       alignItems: { md: "center" },
                       gap: 2.5,

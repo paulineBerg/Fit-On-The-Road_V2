@@ -120,7 +120,7 @@ function Highlights() {
                 <Box sx={{ opacity: "50%" }}>{item.icon}</Box>
                 <div>
                   <Typography
-                    component="h3"
+                    component="h2"
                     variant="h6"
                     fontWeight="medium"
                     gutterBottom
