@@ -148,6 +148,8 @@ function IndividualFeatures() {
               sx={{
                 display: { xs: "auto", sm: "none" },
                 mt: 4,
+                bgcolor: "background.paper",
+                color: "text.primary",
               }}
             >
               <WebpPicture
@@ -175,7 +177,7 @@ function IndividualFeatures() {
                 <Typography
                   color="text.primary"
                   variant="body1"
-                  sx={{ my: 0.5 }}
+                  sx={{ my: 0.5, opacity: 1 }}
                 >
                   {selectedFeature.description}
                 </Typography>
@@ -219,6 +221,7 @@ function IndividualFeatures() {
                     height: "fit-content",
                     width: "100%",
                     background: "none",
+                    bgcolor: "background.paper",
                     backgroundColor:
                       selectedItemIndex === index
                         ? "action.selected"
@@ -273,7 +276,7 @@ function IndividualFeatures() {
                       <Typography
                         color="text.primary"
                         variant="body1"
-                        sx={{ my: 0.5 }}
+                        sx={{ my: 0.5, opacity: 1 }}
                       >
                         {description}
                       </Typography>
