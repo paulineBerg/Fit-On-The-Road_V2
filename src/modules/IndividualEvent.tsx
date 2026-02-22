@@ -120,11 +120,9 @@ function IndividualEvent() {
             textAlign: { sm: "left", md: "center" },
           }}
         >
-          <h2>
-            <Typography component="h2" variant="h2" sx={{ py: 4 }}>
-              Vous souhaitez organiser un événement mémorable original
-            </Typography>
-          </h2>
+          <Typography component="h2" variant="h2" sx={{ py: 4 }}>
+            Vous souhaitez organiser un événement mémorable original
+          </Typography>
           <Typography variant="body2" sx={{ color: "grey.400" }}>
             FIT ON THE ROAD vous propose une expérience unique et sur-mesure. En
             organisant une séance de sport ludique et personnalisée autour de
@@ -184,12 +182,10 @@ function IndividualEvent() {
             textAlign: { sm: "left", md: "center" },
           }}
         >
-          <h3>
-            <Typography component="h4" variant="h4" sx={{ py: 4 }}>
-              Les possibilités sont infinies, nous adaptons nos séances à vos
-              envies et à votre thème.
-            </Typography>
-          </h3>
+          <Typography component="h4" variant="h4" sx={{ py: 4 }}>
+            Les possibilités sont infinies, nous adaptons nos séances à vos
+            envies et à votre thème.
+          </Typography>
           <Typography variant="body2" sx={{ color: "grey.400" }}>
             Imaginez-vous en train de réaliser un parcours d&apos;obstacles, de
             vous affronter lors d&apos;un concours de pompes ou de vous détendre
@@ -246,11 +242,9 @@ function IndividualEvent() {
             textAlign: { sm: "left", md: "center" },
           }}
         >
-          <h3>
-            <Typography component="h4" variant="h4" sx={{ py: 4 }}>
-              Organiser un événement sportif n&apos;a jamais été aussi simple
-            </Typography>
-          </h3>
+          <Typography component="h3" variant="h4" sx={{ py: 4 }}>
+            Organiser un événement sportif n&apos;a jamais été aussi simple
+          </Typography>
           <Typography variant="body2" sx={{ color: "grey.400" }}>
             FIT ON THE ROAD s&apos;occupe de tout pour vous
           </Typography>

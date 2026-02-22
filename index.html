@@ -2,11 +2,15 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <link 
-      rel="icon" type="image/svg" href="/favicon/favicon-kettle-red.png"
-      rel="apple-touch-icon" href="/favicon/favicon200-kettle-red.png"
-      rel="canonical" href="https://fit-ontheroad.fr/"
-    />  
+    <link
+      rel="icon"
+      type="image/svg"
+      href="/favicon/favicon-kettle-red.png"
+      rel="apple-touch-icon"
+      href="/favicon/favicon200-kettle-red.png"
+      rel="canonical"
+      href="https://fit-ontheroad.fr/"
+    />
     <meta
       name="description"
       content="Découvrez notre service de coaching sportif privé et de cours de CrossFit
@@ -19,7 +23,10 @@
       content="Crossfit, coaching d'entreprise, coaching à distance, team building sportif, CrossFit en extérieur, Paris, Crossfit plein air, Bois d'arcy, versailles, orvilliers, Création d'espace forme, Cours collectif en société, Fit on the road"
     />
     <!-- Open Graph -->
-    <meta property="og:title" content="Fit On The Road | Coaching sportif mobile" />
+    <meta
+      property="og:title"
+      content="Fit On The Road | Coaching sportif mobile"
+    />
     <meta
       property="og:description"
       content="Coaching sportif privé et cours collectifs en plein air à Bois d'Arcy, pour particuliers et entreprises."
@@ -32,7 +39,10 @@
     />
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Fit On The Road | Coaching sportif mobile" />
+    <meta
+      name="twitter:title"
+      content="Fit On The Road | Coaching sportif mobile"
+    />
     <meta
       name="twitter:description"
       content="Coaching sportif privé et cours collectifs en plein air à Bois d'Arcy, pour particuliers et entreprises."
@@ -43,14 +53,6 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fit On The Road</title>
-    <!-- Tarteaucitron (GDPR) -->
-    <link
-      rel="stylesheet"
-      href="/assets/js/tarteaucitronjs/css/tarteaucitron.css"
-    />
-    <script src="/assets/js/tarteaucitronjs/tarteaucitron.js"></script>
-    <script src="/assets/js/tarteaucitronjs/tarteaucitron.services.js"></script>
-    <script src="/assets/js/tarteaucitronInit.js"></script>
   </head>
   <body>
     <div id="root"></div>
@@ -58,5 +60,57 @@
       Fit On The Road, La salle de sport qui vient à vous
     </h1>
     <script type="module" src="/src/main.tsx"></script>
+    <script type="module">
+      // Charge tarteaucitron uniquement après interaction utilisateur ou délai long (évite le chemin critique)
+      (() => {
+        const isDev =
+          (typeof import.meta !== "undefined" && import.meta.env?.DEV) ||
+          ["localhost", "127.0.0.1", "::1"].includes(window.location.hostname);
+        const skipTac =
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("tac_disable") === "1";
+
+        if (skipTac) {
+          return; // permet de couper manuellement si besoin
+        }
+        const loadTarteaucitron = () => {
+          if (window.__tac_loaded) return;
+          window.__tac_loaded = true;
+          const head = document.head;
+          const tacStyles = document.createElement("link");
+          tacStyles.rel = "stylesheet";
+          tacStyles.href = "/assets/js/tarteaucitronjs/css/tarteaucitron.css";
+          tacStyles.media = "print";
+          tacStyles.onload = () => {
+            tacStyles.media = "all";
+          };
+          head.appendChild(tacStyles);
+
+          const scripts = [
+            "/assets/js/tarteaucitronjs/tarteaucitron.js",
+            "/assets/js/tarteaucitronjs/tarteaucitron.services.js",
+            "/assets/js/tarteaucitronInit.js",
+          ];
+          scripts.forEach((src) => {
+            const script = document.createElement("script");
+            script.src = src;
+            script.defer = true;
+            head.appendChild(script);
+          });
+        };
+
+        const events = ["pointerdown", "keydown", "scroll", "touchstart"];
+        const onFirstInput = () => {
+          events.forEach((evt) =>
+            window.removeEventListener(evt, onFirstInput, { passive: true }),
+          );
+          loadTarteaucitron();
+        };
+        events.forEach((evt) =>
+          window.addEventListener(evt, onFirstInput, { passive: true }),
+        );
+        setTimeout(loadTarteaucitron, 6000);
+      })();
+    </script>
   </body>
 </html>
