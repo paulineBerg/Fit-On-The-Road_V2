@@ -92,7 +92,7 @@ function Hero() {
             width={1600}
             height={1600}
             decoding="async"
-            fetchpriority="high"
+            fetchPriority="high"
             loading="eager"
             style={{
               width: "100%",

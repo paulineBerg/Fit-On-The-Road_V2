@@ -3,7 +3,8 @@ import Box from "@mui/material/Box";
 import { alpha } from "@mui/material";
 
 const VIDEO_ID = "DonYTJJK9KM";
-const THUMBNAIL = `https://i.ytimg.com/vi/${VIDEO_ID}/mqdefault.jpg`;
+const THUMBNAIL_WEBP = `https://i.ytimg.com/vi_webp/${VIDEO_ID}/mqdefault.webp`;
+const THUMBNAIL_JPG = `https://i.ytimg.com/vi/${VIDEO_ID}/mqdefault.jpg`;
 const YT_EMBED = `https://www.youtube-nocookie.com/embed/${VIDEO_ID}`;
 
 function Video() {
@@ -56,13 +57,15 @@ function Video() {
           }}
         >
           <picture>
-            <source srcSet={THUMBNAIL} type="image/jpeg" />
+            <source srcSet={THUMBNAIL_WEBP} type="image/webp" />
+            <source srcSet={THUMBNAIL_JPG} type="image/jpeg" />
             <img
-              src={THUMBNAIL}
+              src={THUMBNAIL_JPG}
               alt="Aperçu de la vidéo Fit On The Road"
               loading="lazy"
-              width="1280"
-              height="720"
+              decoding="async"
+              width="480"
+              height="270"
               style={{
                 width: "100%",
                 height: "100%",
