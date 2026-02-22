@@ -5,12 +5,11 @@ import {
   IconButton,
   Box,
   Button,
+  Stack,
   Container,
   AppBar,
   Toolbar,
   Divider,
-  Typography,
-  MenuItem,
   Drawer,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -123,17 +122,18 @@ function AppAppBar() {
               }}
             >
               <LogoClic />
-              <Box sx={{ display: { xs: "none", md: "flex" } }}>
+              <Box sx={{ display: { xs: "none", md: "flex" }, gap: 0.5 }}>
                 {sections.map((section) => (
-                  <MenuItem
+                  <Button
                     key={section.dst}
+                    color="inherit"
+                    variant="text"
+                    size="small"
                     onClick={() => scrollToSection(section.dst)}
-                    sx={{ py: "6px", px: "12px", borderRadius: "999px" }}
+                    sx={{ borderRadius: "999px", textTransform: "none" }}
                   >
-                    <Typography variant="body2" color="text.primary">
-                      {section.title}
-                    </Typography>
-                  </MenuItem>
+                    {section.title}
+                  </Button>
                 ))}
               </Box>
             </Box>
@@ -235,17 +235,23 @@ function AppAppBar() {
                       <CloseRounded fontSize="small" />
                     </Button>
                   </Box>
-                  {sections.map((section) => (
-                    <MenuItem
-                      key={`drawer-${section.dst}`}
-                      onClick={() => {
-                        blurActive();
-                        scrollToSection(section.dst);
-                      }}
-                    >
-                      {section.title}
-                    </MenuItem>
-                  ))}
+                  <Stack component="nav" spacing={1} aria-label="Navigation">
+                    {sections.map((section) => (
+                      <Button
+                        key={`drawer-${section.dst}`}
+                        color="inherit"
+                        variant="text"
+                        fullWidth
+                        onClick={() => {
+                          blurActive();
+                          scrollToSection(section.dst);
+                        }}
+                        sx={{ justifyContent: "flex-start" }}
+                      >
+                        {section.title}
+                      </Button>
+                    ))}
+                  </Stack>
                   <Divider />
                   <Box
                     sx={{

@@ -14,7 +14,10 @@ function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" mt={1}>
       {"Copyright © "}
-      <Link href="about-us">Fit On The Road</Link>&nbsp;
+      <Link href="about-us" color="text.primary" fontWeight={600}>
+        Fit On The Road
+      </Link>
+      &nbsp;
       {new Date().getFullYear()}
     </Typography>
   );

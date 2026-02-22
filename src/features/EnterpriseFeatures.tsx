@@ -242,9 +242,9 @@ function EnterpriseFeatures() {
                     </Box>
                     <Box sx={{ textTransform: "none" }}>
                       <Typography
-                        component="h5"
+                        component="p"
                         color="text.primary"
-                        variant="h5"
+                        variant="subtitle1"
                         fontWeight="bold"
                       >
                         {title}
