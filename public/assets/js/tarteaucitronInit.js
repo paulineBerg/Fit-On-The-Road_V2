@@ -1,48 +1,54 @@
 (function initTacWithRetry(maxRetries) {
   if (typeof window === "undefined") return;
   if (window.tarteaucitron) {
-tarteaucitron.init({
-  privacyUrl: "https://fit-ontheroad.fr/terms",
-  bodyPosition: "bottom",
-  hashtag: "#FitOnTheRoad",
-  cookieName: "fitontheroad",
-  orientation: "middle",
-  groupServices: false,
-  showDetailsOnClick: false,
-  serviceDefaultState: "wait",
-  showAlertSmall: false,
-  cookieslist: false,
-  showIcon: true,
-  iconSrc: "/favicon/favicon-kettle-red.png",
-  iconPosition: "BottomLeft",
-  adblocker: false,
-  DenyAllCta: true,
-  AcceptAllCta: true,
-  highPrivacy: true,
-  alwaysNeedConsent: false,
-  handleBrowserDNTRequest: false,
-  removeCredit: false,
-  moreInfoLink: false,
-  useExternalCss: false,
-  useExternalJs: false,
-  readmoreLink: "",
-  mandatory: true,
-  mandatoryCta: true,
-  googleConsentMode: true,
-  partnersList: false,
-});
+    // Limit loaded locales to fr/en to avoid 404 and reduce payload
+    const navigatorLang = (navigator.language || navigator.userLanguage || "fr")
+      .slice(0, 2)
+      .toLowerCase();
+    window.tarteaucitronForceLanguage =
+      navigatorLang === "en" ? "en" : "fr";
+    tarteaucitron.init({
+      privacyUrl: "https://fit-ontheroad.fr/terms",
+      bodyPosition: "bottom",
+      hashtag: "#FitOnTheRoad",
+      cookieName: "fitontheroad",
+      orientation: "middle",
+      groupServices: false,
+      showDetailsOnClick: false,
+      serviceDefaultState: "wait",
+      showAlertSmall: false,
+      cookieslist: false,
+      showIcon: true,
+      iconSrc: "/favicon/favicon-kettle-red.png",
+      iconPosition: "BottomLeft",
+      adblocker: false,
+      DenyAllCta: true,
+      AcceptAllCta: true,
+      highPrivacy: true,
+      alwaysNeedConsent: false,
+      handleBrowserDNTRequest: false,
+      removeCredit: false,
+      moreInfoLink: false,
+      useExternalCss: false,
+      useExternalJs: false,
+      readmoreLink: "",
+      mandatory: true,
+      mandatoryCta: true,
+      googleConsentMode: true,
+      partnersList: false,
+    });
 
-// Google Tag Manager (consent-managed)
-tarteaucitron.user.googletagmanagerId = "GTM-NHKKQ7NT";
-(tarteaucitron.job = tarteaucitron.job || []).push("googletagmanager");
+    // Google Tag Manager (consent-managed)
+    tarteaucitron.user.googletagmanagerId = "GTM-NHKKQ7NT";
+    (tarteaucitron.job = tarteaucitron.job || []).push("googletagmanager");
 
-// If tarteaucitron is loaded after window "load", trigger its loader manually
-const ensureTacLoad = () => tarteaucitron.initEvents.loadEvent(false);
-if (document.readyState === "complete") {
-  ensureTacLoad();
-} else {
-  window.addEventListener("load", ensureTacLoad, { once: true });
-}
+    // If tarteaucitron is loaded after window "load", trigger its loader manually
+    const ensureTacLoad = () => tarteaucitron.initEvents.loadEvent(false);
+    if (document.readyState === "complete") {
+      ensureTacLoad();
+    } else {
+      window.addEventListener("load", ensureTacLoad, { once: true });
+    }
     return;
   }
 
