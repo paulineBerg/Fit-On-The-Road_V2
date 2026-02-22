@@ -1,7 +1,5 @@
 import React, { Suspense, lazy } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Box from "@mui/material/Box";
-import CircularProgress from "@mui/material/CircularProgress";
 
 const Layout = lazy(() => import("@pages/_app"));
 const Home = lazy(() => import("@pages/index"));
@@ -12,20 +10,21 @@ const Terms = lazy(() => import("@pages/terms"));
 
 // Route metadata now lives in src/shared/routes.config.json for sitemap generation.
 
-function PageFallback() {
-  return (
-    <Box
-      sx={{
-        display: "grid",
-        placeItems: "center",
-        minHeight: "40vh",
-        color: "primary.main",
-      }}
-    >
-      <CircularProgress size={40} thickness={4} />
-    </Box>
-  );
-}
+const PageFallback = () => (
+  <div
+    style={{
+      minHeight: "40vh",
+      display: "grid",
+      placeItems: "center",
+      color: "#c62828",
+      fontWeight: 600,
+      fontFamily: "Inter, system-ui, -apple-system, sans-serif",
+      letterSpacing: "0.02em",
+    }}
+  >
+    Chargement…
+  </div>
+);
 
 const router = createBrowserRouter([
   {
