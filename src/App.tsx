@@ -8,7 +8,9 @@ const AboutUs = lazy(() => import("@pages/about-us"));
 const Particuliers = lazy(() => import("@pages/particuliers"));
 const Terms = lazy(() => import("@pages/terms"));
 
-const Fallback = () => <div aria-hidden="true" />;
+function Fallback() {
+  return <div aria-hidden="true" />;
+}
 
 const router = createBrowserRouter([
   {

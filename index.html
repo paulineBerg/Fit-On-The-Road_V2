@@ -63,9 +63,6 @@
     <script type="module">
       // Charge tarteaucitron uniquement après interaction utilisateur ou délai long (évite le chemin critique)
       (() => {
-        const isDev =
-          (typeof import.meta !== "undefined" && import.meta.env?.DEV) ||
-          ["localhost", "127.0.0.1", "::1"].includes(window.location.hostname);
         const skipTac =
           typeof localStorage !== "undefined" &&
           localStorage.getItem("tac_disable") === "1";
@@ -109,6 +106,8 @@
         events.forEach((evt) =>
           window.addEventListener(evt, onFirstInput, { passive: true }),
         );
+        // Activation immédiate (plus fallback interaction et timeout)
+        loadTarteaucitron();
         setTimeout(loadTarteaucitron, 6000);
       })();
     </script>
