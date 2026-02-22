@@ -5,7 +5,7 @@ import path from "path";
 import { defineConfig } from "vite";
 import eslint from "vite-plugin-eslint";
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   resolve: {
     alias: {
       // root
@@ -56,6 +56,6 @@ export default defineConfig({
   },
   build: {
     chunkSizeWarningLimit: 1024, // Adjust the limit in kilobytes
-    sourcemap: true,
-  }
-});
+    sourcemap: mode !== "production", // Keep maps in dev/staging only
+  },
+}));
