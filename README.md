@@ -49,6 +49,9 @@
 - Compresser/convertir les JPEG fallback lourds en AVIF/WebP et envisager `preload` pour les assets critiques.  
 - Réactiver une CI GitHub (lint + tests) avec PAT `workflow`, étendre la couverture Vitest (routing/sections clés).  
 - Sécurisation HTTP : forcer HTTPS + en-têtes (CSP, HSTS) après audit des scripts externes (YouTube, tarteaucitron).  
+
+## Sécurité / secrets
+- Pensez à stocker toute clé/API dans des fichiers `.env` (désormais ignorés par git) et à créer un `.env.example` si besoin pour la doc.
 - Finaliser les pages légales avec emails/téléphone réels et lier depuis le footer.
 
 *Rapport généré automatiquement; n’hésitez pas à demander un focus détaillé sur une section ou un plan d’actions priorisé.* 
