@@ -46,6 +46,10 @@ function AppAppBar() {
   const navigate = useNavigate();
 
   const toggleDrawer = (newOpen: boolean) => () => {
+    // Blur any focused element before hiding the drawer to avoid aria-hidden focus warnings
+    if (!newOpen && document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
     setOpen(newOpen);
   };
 

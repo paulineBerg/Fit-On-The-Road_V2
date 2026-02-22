@@ -10,54 +10,63 @@ const Terms = lazy(() => import("@pages/terms"));
 
 // Route metadata now lives in src/shared/routes.config.json for sitemap generation.
 
-const PageFallback = () => (
-  <div
-    style={{
-      minHeight: "40vh",
-      display: "grid",
-      placeItems: "center",
-      color: "#c62828",
-      fontWeight: 600,
-      fontFamily: "Inter, system-ui, -apple-system, sans-serif",
-      letterSpacing: "0.02em",
-    }}
-  >
-    Chargement…
-  </div>
-);
+function PageFallback() {
+  return (
+    <div
+      style={{
+        minHeight: "40vh",
+        display: "grid",
+        placeItems: "center",
+        color: "#c62828",
+        fontWeight: 600,
+        fontFamily: "Inter, system-ui, -apple-system, sans-serif",
+        letterSpacing: "0.02em",
+      }}
+    >
+      Chargement…
+    </div>
+  );
+}
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          index: true,
+          element: <Home />,
+        },
+        {
+          path: "entreprises",
+          element: <Entreprises />,
+        },
+        {
+          path: "about-us",
+          element: <AboutUs />,
+        },
+        {
+          path: "particuliers",
+          element: <Particuliers />,
+        },
+        {
+          path: "terms",
+          element: <Terms />,
+        },
+        {
+          path: "*",
+          element: <Home />,
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <Layout />,
-    children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: "entreprises",
-        element: <Entreprises />,
-      },
-      {
-        path: "about-us",
-        element: <AboutUs />,
-      },
-      {
-        path: "particuliers",
-        element: <Particuliers />,
-      },
-      {
-        path: "terms",
-        element: <Terms />,
-      },
-      {
-        path: "*",
-        element: <Home />,
-      },
-    ],
+    future: {
+      v7_startTransition: true,
+    },
   },
-]);
+);
 
 function App() {
   return (
