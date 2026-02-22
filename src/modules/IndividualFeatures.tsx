@@ -17,6 +17,7 @@ import collectiveCoachingPic from "@assets/images/individual-collective-coaching
 import collectiveCoachingPicWebp from "@assets/images/individual-collective-coaching.webp";
 import privateCoachingPic from "@assets/images/individual-private-coaching.jpg";
 import privateCoachingPicWebp from "@assets/images/individual-private-coaching.webp";
+import overviewWebp from "@assets/images/Overview.webp";
 
 const items = [
   {
@@ -24,7 +25,7 @@ const items = [
     title: "Cours collectifs",
     description:
       "Retrouvez les cours collectifs en plein air à Bois d'Arcy. Grâce à l’émulation du groupe, l’entraînement devient plus simple, plus sûr, plus efficace et vous permet de sortir de votre zone de confort.",
-    image: `image-set(url("${collectiveCoachingPicWebp}") type("image/webp"), url("${collectiveCoachingPic}") type("image/jpeg"))`,
+    image: `image-set(url("${overviewWebp}") type("image/webp"), url("${privateCoachingPic}") type("image/jpeg"))`,
   },
   {
     icon: <EdgesensorHighRoundedIcon />,
@@ -145,7 +146,7 @@ function IndividualFeatures() {
               />
               <Box sx={{ px: 2, pb: 2, pt: 2 }}>
                 <Typography
-                  component="h3"
+                  component="p"
                   color="text.primary"
                   variant="body2"
                   fontWeight="bold"
@@ -153,8 +154,8 @@ function IndividualFeatures() {
                   {selectedFeature.title}
                 </Typography>
                 <Typography
-                  color="text.secondary"
-                  variant="body2"
+                  color="text.primary"
+                  variant="body1"
                   sx={{ my: 0.5 }}
                 >
                   {selectedFeature.description}
@@ -164,6 +165,7 @@ function IndividualFeatures() {
                   color="primary"
                   variant="body2"
                   fontWeight="bold"
+                  aria-label="En savoir plus sur le coaching particuliers"
                   sx={{
                     display: "inline-flex",
                     alignItems: "center",
@@ -250,8 +252,8 @@ function IndividualFeatures() {
                         {title}
                       </Typography>
                       <Typography
-                        color="text.secondary"
-                        variant="body2"
+                        color="text.primary"
+                        variant="body1"
                         sx={{ my: 0.5 }}
                       >
                         {description}
@@ -261,6 +263,7 @@ function IndividualFeatures() {
                         color="primary"
                         variant="body2"
                         fontWeight="bold"
+                        aria-label="Découvrir les services pour particuliers"
                         sx={{
                           display: "inline-flex",
                           alignItems: "center",

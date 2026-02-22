@@ -1,18 +1,23 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 
 import Hero from "@app/modules/landing/Hero";
-import Highlights from "@app/modules/Highlights";
-import Pricing from "@app/modules/Pricing";
-import Testimonials from "@app/modules/Testimonials";
-import FAQ from "@app/modules/FAQ";
-import Contact from "@shared/Contact";
-import PhoneApp from "@app/modules/PhoneApp";
-import EnterpriseFeatures from "@app/modules/EnterpriseFeatures";
-import IndividualFeatures from "@app/modules/IndividualFeatures";
 import { UserType } from "@app/types/types";
-import Video from "@app/modules/landing/Video";
+
+const EnterpriseFeatures = lazy(
+  () => import("@app/modules/EnterpriseFeatures"),
+);
+const IndividualFeatures = lazy(
+  () => import("@app/modules/IndividualFeatures"),
+);
+const Video = lazy(() => import("@app/modules/landing/Video"));
+const Highlights = lazy(() => import("@app/modules/Highlights"));
+const Pricing = lazy(() => import("@app/modules/Pricing"));
+const Testimonials = lazy(() => import("@app/modules/Testimonials"));
+const FAQ = lazy(() => import("@app/modules/FAQ"));
+const Contact = lazy(() => import("@shared/Contact"));
+const PhoneApp = lazy(() => import("@app/modules/PhoneApp"));
 
 function LandingPage() {
   return (
@@ -21,18 +26,36 @@ function LandingPage() {
       <Hero />
       <Box sx={{ bgcolor: "background.default" }}>
         <Box id="services" />
-        <EnterpriseFeatures />
-        <IndividualFeatures />
+        <Suspense fallback={<Box sx={{ height: 80 }} />}>
+          <EnterpriseFeatures />
+        </Suspense>
+        <Suspense fallback={<Box sx={{ height: 80 }} />}>
+          <IndividualFeatures />
+        </Suspense>
         <Divider />
-        <Video />
-        <Highlights />
-        <Pricing />
-        <Testimonials />
+        <Suspense fallback={<Box sx={{ height: 240 }} />}>
+          <Video />
+        </Suspense>
+        <Suspense fallback={<Box sx={{ height: 120 }} />}>
+          <Highlights />
+        </Suspense>
+        <Suspense fallback={<Box sx={{ height: 120 }} />}>
+          <Pricing />
+        </Suspense>
+        <Suspense fallback={<Box sx={{ height: 120 }} />}>
+          <Testimonials />
+        </Suspense>
         <Divider />
-        <Contact defaultUserType={UserType.ENTERPRISE} />
-        <PhoneApp />
+        <Suspense fallback={<Box sx={{ height: 120 }} />}>
+          <Contact defaultUserType={UserType.ENTERPRISE} />
+        </Suspense>
+        <Suspense fallback={<Box sx={{ height: 120 }} />}>
+          <PhoneApp />
+        </Suspense>
         <Box id="more" />
-        <FAQ />
+        <Suspense fallback={<Box sx={{ height: 120 }} />}>
+          <FAQ />
+        </Suspense>
       </Box>
     </>
   );

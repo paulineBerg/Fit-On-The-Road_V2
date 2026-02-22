@@ -30,8 +30,8 @@ function FAQ() {
       }}
     >
       <Typography
-        component="h4"
-        variant="h4"
+        component="h2"
+        variant="h2"
         color="text.primary"
         sx={{
           width: { sm: "100%", md: "60%" },
@@ -50,7 +50,7 @@ function FAQ() {
             aria-controls="panel1d-content"
             id="panel1d-header"
           >
-            <Typography component="h3" variant="subtitle2">
+            <Typography component="h3" variant="subtitle1">
               {`Où se déroulent les cours collectifs à Bois d'Arcy ?`}
             </Typography>
           </AccordionSummary>
@@ -83,7 +83,7 @@ function FAQ() {
             aria-controls="panel2d-content"
             id="panel2d-header"
           >
-            <Typography component="h3" variant="subtitle2">
+            <Typography component="h3" variant="subtitle1">
               Comment se passe la réservation des séances ?
             </Typography>
           </AccordionSummary>
@@ -107,7 +107,7 @@ function FAQ() {
             aria-controls="panel3d-content"
             id="panel3d-header"
           >
-            <Typography component="h3" variant="subtitle2">
+            <Typography component="h3" variant="subtitle1">
               {`Y a t'il des séances différentes en fonction du niveau ?`}
             </Typography>
           </AccordionSummary>

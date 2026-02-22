@@ -58,11 +58,9 @@ function EnterpriseCollectiveCoaching() {
             textAlign: { sm: "left", md: "center" },
           }}
         >
-          <h2>
-            <Typography component="h2" variant="h2">
-              Le sport, clé de votre performance collective
-            </Typography>
-          </h2>
+          <Typography component="h2" variant="h2">
+            Le sport, clé de votre performance collective
+          </Typography>
           <Typography variant="body1" sx={{ color: "grey.400" }}>
             En choisissant FIT ON THE ROAD, vous investissez dans le capital
             humain de votre entreprise. Nos cours collectifs sur site sont

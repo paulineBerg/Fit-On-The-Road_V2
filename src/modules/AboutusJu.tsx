@@ -87,16 +87,14 @@ function AboutusJu() {
             </Grid>
             <Grid item xs={12} md={6}>
               <div>
-                <h2>
-                  <Typography
-                    component="h2"
-                    variant="h4"
-                    className="uppercase"
-                    color="text.primary"
-                  >
-                    Une passion avant tout
-                  </Typography>
-                </h2>
+                <Typography
+                  component="h2"
+                  variant="h4"
+                  className="uppercase"
+                  color="text.primary"
+                >
+                  Une passion avant tout
+                </Typography>
                 <Box id="more" />
                 <Typography
                   variant="body1"

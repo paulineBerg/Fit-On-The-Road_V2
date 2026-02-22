@@ -9,7 +9,12 @@ import LandingPage from "@pages/index";
 const renderWithProviders = (ui: React.ReactElement) => {
   const theme = createTheme(style);
   return render(
-    <MemoryRouter>
+    <MemoryRouter
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
+      }}
+    >
       <ThemeProvider theme={theme}>{ui}</ThemeProvider>
     </MemoryRouter>,
   );

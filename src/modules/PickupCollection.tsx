@@ -43,17 +43,15 @@ function PickupCollection() {
         backgroundRepeat: "fit",
       }}
     >
-      <h2>
-        <Typography
-          component="h2"
-          variant="h4"
-          align="center"
-          color="text.secondary"
-          sx={{ py: 4 }}
-        >
-          Du travail et du bonheur
-        </Typography>
-      </h2>
+      <Typography
+        component="h2"
+        variant="h4"
+        align="center"
+        color="text.secondary"
+        sx={{ py: 4 }}
+      >
+        Du travail et du bonheur
+      </Typography>
       <Box
         sx={{
           width: "100%",

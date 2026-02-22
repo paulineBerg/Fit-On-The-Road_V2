@@ -45,9 +45,7 @@ function Terms() {
           textAlign="center"
           color="text.secondary"
           sx={{ alignSelf: "center", width: { sm: "100%", md: "80%" } }}
-        >
-          Page en construction ! 😉
-        </Typography>
+        />
         <TermsPrivacyTerms />
         <TermsTermsAndConditions />
         <TermsLegalTerms />

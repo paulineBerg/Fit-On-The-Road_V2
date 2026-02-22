@@ -73,9 +73,7 @@ function TermsLegalTerms() {
               <strong>Président :</strong> Julien LE CHEVALIER
             </Typography>
             <Typography variant="body1" color="text.secondary">
-              <strong>Email :</strong> [À RENSEIGNER]
-              <br />
-              <strong>Téléphone :</strong> [OPTIONNEL]
+              <strong>Email :</strong> julien@fit-ontheroad.fr
             </Typography>
             <Typography variant="h6" color="text.primary" sx={{ mt: 2 }}>
               Hébergement

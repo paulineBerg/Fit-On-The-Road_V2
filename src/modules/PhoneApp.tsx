@@ -89,11 +89,9 @@ function PhoneApp() {
           textAlign: { sm: "left", md: "center" },
         }}
       >
-        <h2>
-          <Typography component="p" variant="h3" color="primary.light">
-            Votre web application mobile
-          </Typography>
-        </h2>
+        <Typography component="p" variant="h3" color="primary.light">
+          Votre web application mobile
+        </Typography>
         <Typography component="p" variant="h4" color="text.primary">
           {`Comment s'inscrire aux cours ?`}
         </Typography>

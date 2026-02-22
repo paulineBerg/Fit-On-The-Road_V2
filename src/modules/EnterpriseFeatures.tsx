@@ -133,6 +133,7 @@ function EnterpriseFeatures() {
               />
               <Box sx={{ px: 2, pb: 2, pt: 2 }}>
                 <Typography
+                  component="p"
                   color="text.primary"
                   variant="body2"
                   fontWeight="bold"
@@ -140,8 +141,8 @@ function EnterpriseFeatures() {
                   {selectedFeature.title}
                 </Typography>
                 <Typography
-                  color="text.secondary"
-                  variant="h3"
+                  color="text.primary"
+                  variant="body1"
                   sx={{ my: 0.5 }}
                 >
                   {selectedFeature.description}
@@ -151,6 +152,7 @@ function EnterpriseFeatures() {
                   color="primary"
                   variant="body2"
                   fontWeight="bold"
+                  aria-label="En savoir plus sur nos offres entreprises"
                   sx={{
                     display: "inline-flex",
                     alignItems: "center",
@@ -237,8 +239,8 @@ function EnterpriseFeatures() {
                         {title}
                       </Typography>
                       <Typography
-                        color="text.secondary"
-                        variant="body2"
+                        color="text.primary"
+                        variant="body1"
                         sx={{ my: 0.5 }}
                       >
                         {description}
@@ -248,6 +250,7 @@ function EnterpriseFeatures() {
                         color="primary"
                         variant="body2"
                         fontWeight="bold"
+                        aria-label="En savoir plus sur les services entreprises"
                         sx={{
                           display: "inline-flex",
                           alignItems: "center",

@@ -4,9 +4,12 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { alpha } from "@mui/material";
 
-import coverJpeg from "../../assets/images/individual-collective-coaching.jpeg";
-import coverWebp from "../../assets/images/individual-collective-coaching.webp";
+import coverJpeg from "../../assets/images/Overview.jpg";
+import coverWebp from "../../assets/images/Overview.webp";
+import coverMobileWebp from "../../assets/images/individual-private-coaching.webp";
+import coverMobileJpeg from "../../assets/images/individual-private-coaching.jpg";
 
 function Hero() {
   // #region SCROLLING FUNCTION
@@ -29,17 +32,59 @@ function Hero() {
       id="hero"
       sx={{
         width: "100%",
-        height: "100vh",
+        minHeight: "100vh",
         display: "flex",
-        backgroundImage: `image-set(url("${coverWebp}") type("image/webp"), url("${coverJpeg}") type("image/jpeg"))`,
-        // backgroundImage: `linear-gradient(#000, ${alpha("#690000", 0.0)})`,
-        // backgroundImage: `diamond-gradient(#000, ${alpha("#000000", 0.7)})`,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPositionX: "38%",
-        backgroundPositionY: "50%",
+        position: "relative",
+        overflow: "hidden",
+        backgroundColor: "#0c0b0a",
       }}
     >
+      <Box
+        sx={{
+          position: "absolute",
+          inset: 0,
+          zIndex: 0,
+        }}
+        aria-hidden
+      >
+        <picture>
+          <source
+            media="(max-width: 768px)"
+            srcSet={coverMobileWebp}
+            type="image/webp"
+          />
+          <source
+            media="(max-width: 768px)"
+            srcSet={coverMobileJpeg}
+            type="image/jpeg"
+          />
+          <source srcSet={coverWebp} type="image/webp" />
+          <img
+            src={coverJpeg}
+            alt=""
+            loading="eager"
+            width="1920"
+            height="1080"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "38% 50%",
+              display: "block",
+            }}
+          />
+        </picture>
+        <Box
+          sx={{
+            position: "absolute",
+            inset: 0,
+            background: `linear-gradient(120deg, ${alpha(
+              "#000000",
+              0.6,
+            )} 0%, ${alpha("#000000", 0.35)} 60%, transparent 100%)`,
+          }}
+        />
+      </Box>
       <Container
         sx={{
           display: "flex",
@@ -48,6 +93,8 @@ function Hero() {
           height: "100%",
           pt: { xs: 14, sm: 20 },
           pb: { xs: 8, sm: 12 },
+          position: "relative",
+          zIndex: 1,
         }}
       >
         <Box sx={{ height: "100%" }} />

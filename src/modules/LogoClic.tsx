@@ -15,6 +15,8 @@ function LogoClic() {
         <img
           src="/logos/Full - Long - Kettle - Fond noir.svg"
           style={logoStyle}
+          width={140}
+          height={44}
           alt="logo fit on the road"
         />
       </Link>

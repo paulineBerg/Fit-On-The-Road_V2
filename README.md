@@ -1,3 +1,6 @@
+# app en Version 1, initiée par Clémence Bergon via https://github.com/cbergon/Fit-On-The-Road
+# app en Version 2 : https://github.com/paulineBerg/Fit-On-The-Road_V2
+
 # Fit On The Road – Rapport d’audit (21 février 2026)
 
 ## Aperçu rapide

@@ -1,56 +1,57 @@
-@import url("./theme-material/light.css");
-@import url("./theme-material/light-mc.css");
-@import url("./theme-material/light-hc.css");
-@import url("./theme-material/dark.css");
-@import url("./theme-material/dark-mc.css");
-@import url("./theme-material/dark-hc.css");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @font-face {
   font-family: "ProximaNova-Light";
+  font-display: swap;
   src: url("../assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Black.otf");
 }
 
 @font-face {
   font-family: "ProximaNova-Light";
   font-style: italic;
+  font-display: swap;
   src: url("../assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Black.otf");
 }
 
 @font-face {
   font-family: "ProximaNova-Regular";
   font-style: normal;
+  font-display: swap;
   src: url("../assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Black.otf");
 }
 
 @font-face {
   font-family: "ProximaNova-Regular";
   font-style: italic;
+  font-display: swap;
   src: url("../assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Black.otf");
 }
 
 @font-face {
   font-family: "ProximaNova-Medium";
+  font-display: swap;
   src: url("../assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Black.otf");
 }
 
 @font-face {
   font-family: "ProximaNova-Medium";
   font-style: italic;
+  font-display: swap;
   src: url("../assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Black.otf");
 }
 
 @font-face {
   font-family: "ProximaNova-Bold";
+  font-display: swap;
   src: url("../assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Black.otf");
 }
 
 @font-face {
   font-family: "ProximaNova-Bold";
   font-style: italic;
+  font-display: swap;
   src: url("../assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Black.otf");
 }
 

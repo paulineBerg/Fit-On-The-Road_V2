@@ -33,20 +33,21 @@ const logoStyle = {
 function LogoCollection() {
   return (
     <Box id="logoCollection" sx={{ width: "100%", py: 4 }}>
-      <h2>
-        <Typography
-          component="h2"
-          variant="subtitle2"
-          align="center"
-          color="text.secondary"
-          sx={{ py: 4 }}
-        >
-          Ils nous font confiance
-        </Typography>
-      </h2>
+      <Typography
+        component="h2"
+        variant="subtitle2"
+        align="center"
+        color="text.secondary"
+        sx={{ py: 4 }}
+      >
+        Ils nous font confiance
+      </Typography>
       <div className="flex justify-evenly gap-4">
         {logos.map(({ logo, name }) => (
-          <div className="flex flex-col gap-2 items-center justify-center w-[150px]">
+          <div
+            key={name}
+            className="flex flex-col gap-2 items-center justify-center w-[150px]"
+          >
             <div className="h-[80px] w-[100px] flex align-middle justify-center">
               {logo && (
                 <img

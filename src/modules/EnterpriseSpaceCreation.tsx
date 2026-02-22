@@ -52,14 +52,12 @@ function EntrepriseSpaceCreation() {
           textAlign: { sm: "left", md: "center" },
         }}
       >
-        <h2>
-          <Typography component="h2" variant="h2" color="text.primary">
-            Un espace forme prêt à l&apos;emploi
-          </Typography>
-        </h2>
+        <Typography component="h2" variant="h2" color="text.primary">
+          Un espace forme prêt à l&apos;emploi
+        </Typography>
         <Typography variant="body1" color="text.secondary">
           {`pour plus dynamisme, nous sommes convaincus que
-          l'investissement dans le bien-être de vos collaborateurs contribue à la réussite de votre entreprise.`}
+        l'investissement dans le bien-être de vos collaborateurs contribue à la réussite de votre entreprise.`}
         </Typography>
         <Typography variant="body1" color="text.secondary">
           {`En aménageant une salle de sport en entreprise, vous offrez à vos employés un lieu dédié à leur
@@ -109,16 +107,14 @@ function EntrepriseSpaceCreation() {
                     color: tier.title === "Entreprise" ? "grey.50" : undefined,
                   }}
                 >
-                  <h2>
-                    <Typography
-                      component="h3"
-                      variant="h2"
-                      height={tier.title === "Entreprise" ? "110.75px" : "72px"}
-                    >
-                      {tier.title === "Cours collectifs"}
-                      {tier.title === "Coaching privé"}
-                    </Typography>
-                  </h2>
+                  <Typography
+                    component="h3"
+                    variant="h2"
+                    height={tier.title === "Entreprise" ? "110.75px" : "72px"}
+                  >
+                    {tier.title === "Cours collectifs"}
+                    {tier.title === "Coaching privé"}
+                  </Typography>
                   <Typography component="h3" variant="h6">
                     {tier.title === "Coaching privé" && "la séance"}
                   </Typography>

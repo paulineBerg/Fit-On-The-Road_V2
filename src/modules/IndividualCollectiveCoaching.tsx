@@ -80,11 +80,9 @@ function IndividualCollectiveCoaching() {
           textAlign: { sm: "left", md: "center" },
         }}
       >
-        <h2>
-          <Typography component="h2" variant="h2" color="text.primary">
-            Rejoignez nos cours collectifs
-          </Typography>
-        </h2>
+        <Typography component="h2" variant="h2" color="text.primary">
+          Rejoignez nos cours collectifs
+        </Typography>
         <Typography variant="body2" sx={{ color: "grey.400", py: 4 }}>
           Des cours en plein air : bougez et faites le plein d&apos;énergie
           Envie de vous dépenser à l&apos;extérieur et de rencontrer de
@@ -134,16 +132,14 @@ function IndividualCollectiveCoaching() {
                     color: tier.title === "Entreprise" ? "grey.50" : undefined,
                   }}
                 >
-                  <h2>
-                    <Typography
-                      component="h3"
-                      variant="h2"
-                      height={tier.title === "Entreprise" ? "110.75px" : "72px"}
-                    >
-                      {tier.title === "Cours collectifs"}
-                      {tier.title === "Coaching privé"}
-                    </Typography>
-                  </h2>
+                  <Typography
+                    component="h3"
+                    variant="h2"
+                    height={tier.title === "Entreprise" ? "110.75px" : "72px"}
+                  >
+                    {tier.title === "Cours collectifs"}
+                    {tier.title === "Coaching privé"}
+                  </Typography>
                   <Typography component="h3" variant="h6">
                     {tier.title === "Coaching privé" && "la séance"}
                   </Typography>

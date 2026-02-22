@@ -50,7 +50,7 @@ function TermsPrivacyTerms() {
                 <br />
                 France
                 <br />
-                Email : [contact@fit-ontheroad.fr]
+                Email : contact@fit-ontheroad.fr
               </Typography>
             </div>
 

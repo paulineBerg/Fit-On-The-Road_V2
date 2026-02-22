@@ -30,21 +30,33 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: "src/setupTests.ts",
     include: ["**/?(*.){test,spec}.?(c|m)[jt]s?(x)"],
+    exclude: [
+      "sauvegarde/**",
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/.{idea,git,cache,output,temp}/**",
+      "**/cypress/**",
+      "**/.{cypress,cache}/**",
+    ],
     coverage: {
       provider: "v8",
       reporter: ["text", "json", "html", "cobertura", "lcov"],
       all: true,
-      include: ["**/*.{d.ts,ts,tsx}"],
+      include: ["src/**/*.{ts,tsx}"],
       exclude: [
         "**/__mocks__",
         "**/models",
         "**/i18next.d.ts",
         "**/vite-env.d.ts",
         "**/vite.config.ts",
+        "**/node_modules/**",
+        "sauvegarde/**",
+        "dist/**",
       ],
     },
   },
   build: {
-    chunkSizeWarningLimit: 1024 // Adjust the limit in kilobytes
+    chunkSizeWarningLimit: 1024, // Adjust the limit in kilobytes
+    sourcemap: true,
   }
 });
