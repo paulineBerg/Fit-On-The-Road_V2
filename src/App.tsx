@@ -1,5 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const Layout = lazy(() => import("@pages/_app"));
 const Home = lazy(() => import("@pages/index"));
@@ -10,73 +12,60 @@ const Terms = lazy(() => import("@pages/terms"));
 
 // Route metadata now lives in src/shared/routes.config.json for sitemap generation.
 
-function Fallback() {
-  return <div aria-hidden="true" />;
+function PageFallback() {
+  return (
+    <Box
+      sx={{
+        display: "grid",
+        placeItems: "center",
+        minHeight: "40vh",
+        color: "primary.main",
+      }}
+    >
+      <CircularProgress size={40} thickness={4} />
+    </Box>
+  );
 }
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <Suspense fallback={<Fallback />}>
-        <Layout />
-      </Suspense>
-    ),
+    element: <Layout />,
     children: [
       {
         index: true,
-        element: (
-          <Suspense fallback={<Fallback />}>
-            <Home />
-          </Suspense>
-        ),
+        element: <Home />,
       },
       {
         path: "entreprises",
-        element: (
-          <Suspense fallback={<Fallback />}>
-            <Entreprises />
-          </Suspense>
-        ),
+        element: <Entreprises />,
       },
       {
         path: "about-us",
-        element: (
-          <Suspense fallback={<Fallback />}>
-            <AboutUs />
-          </Suspense>
-        ),
+        element: <AboutUs />,
       },
       {
         path: "particuliers",
-        element: (
-          <Suspense fallback={<Fallback />}>
-            <Particuliers />
-          </Suspense>
-        ),
+        element: <Particuliers />,
       },
       {
         path: "terms",
-        element: (
-          <Suspense fallback={<Fallback />}>
-            <Terms />
-          </Suspense>
-        ),
+        element: <Terms />,
       },
       {
         path: "*",
-        element: (
-          <Suspense fallback={<Fallback />}>
-            <Home />
-          </Suspense>
-        ),
+        element: <Home />,
       },
     ],
   },
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <Suspense fallback={<PageFallback />}>
+      <RouterProvider router={router} />
+    </Suspense>
+  );
 }
 
 export default App;
