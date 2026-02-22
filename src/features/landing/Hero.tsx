@@ -6,9 +6,17 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { alpha } from "@mui/material";
 
-import WebpPicture from "@shared/WebpPicture";
-import coverJpeg from "../../assets/images/Overview.jpg";
-import coverWebp from "../../assets/images/Overview.webp";
+import heroAvif480 from "@assets/images/optimized/overview-480.avif";
+import heroAvif768 from "@assets/images/optimized/overview-768.avif";
+import heroAvif1024 from "@assets/images/optimized/overview-1024.avif";
+import heroAvif1280 from "@assets/images/optimized/overview-1280.avif";
+import heroAvif1600 from "@assets/images/optimized/overview-1600.avif";
+import heroWebp480 from "@assets/images/optimized/overview-480.webp";
+import heroWebp768 from "@assets/images/optimized/overview-768.webp";
+import heroWebp1024 from "@assets/images/optimized/overview-1024.webp";
+import heroWebp1280 from "@assets/images/optimized/overview-1280.webp";
+import heroWebp1600 from "@assets/images/optimized/overview-1600.webp";
+import heroJpg1280 from "@assets/images/optimized/overview-1280.jpg";
 
 function Hero() {
   const heroImgRef = useRef<HTMLImageElement>(null);
@@ -54,22 +62,47 @@ function Hero() {
         }}
         aria-hidden
       >
-        <WebpPicture
-          webp={coverWebp}
-          fallback={coverJpeg}
-          alt=""
-          ref={heroImgRef}
-          width={1920}
-          height={1080}
-          pictureStyle={{ height: "100%", width: "100%" }}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "38% 50%",
-            display: "block",
-          }}
-        />
+        <picture style={{ height: "100%", width: "100%", display: "block" }}>
+          <source
+            type="image/avif"
+            srcSet={`
+              ${heroAvif480} 480w,
+              ${heroAvif768} 768w,
+              ${heroAvif1024} 1024w,
+              ${heroAvif1280} 1280w,
+              ${heroAvif1600} 1600w
+            `}
+            sizes="(max-width: 600px) 100vw, (max-width: 1200px) 90vw, 100vw"
+          />
+          <source
+            type="image/webp"
+            srcSet={`
+              ${heroWebp480} 480w,
+              ${heroWebp768} 768w,
+              ${heroWebp1024} 1024w,
+              ${heroWebp1280} 1280w,
+              ${heroWebp1600} 1600w
+            `}
+            sizes="(max-width: 600px) 100vw, (max-width: 1200px) 90vw, 100vw"
+          />
+          <img
+            ref={heroImgRef}
+            src={heroJpg1280}
+            alt="Séance de coaching Fit On The Road"
+            width={1600}
+            height={1600}
+            decoding="async"
+            fetchpriority="high"
+            loading="eager"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "38% 50%",
+              display: "block",
+            }}
+          />
+        </picture>
         <Box
           sx={{
             position: "absolute",
