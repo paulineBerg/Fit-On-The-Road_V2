@@ -40,7 +40,7 @@ const sections = [
   },
 ];
 
-function AppAppBar() {
+export default function AppAppBar() {
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
 
@@ -321,5 +321,3 @@ function AppAppBar() {
     </div>
   );
 }
-
-export default AppAppBar;
