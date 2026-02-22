@@ -52,6 +52,8 @@
       content="https://fit-ontheroad.fr/logos/Full%20-%20Long%20-%20Kettle%20-%20Fond%20noir.svg"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
     <title>Fit On The Road</title>
   </head>
   <body>
@@ -77,8 +79,7 @@
           head.appendChild(tacStyles);
 
           const scripts = [
-            "/assets/js/tarteaucitronjs/tarteaucitron.js",
-            "/assets/js/tarteaucitronjs/tarteaucitron.services.js",
+            "/assets/js/tarteaucitronjs/tarteaucitron.min.js",
             "/assets/js/tarteaucitronInit.js",
           ];
           scripts.forEach((src) => {
