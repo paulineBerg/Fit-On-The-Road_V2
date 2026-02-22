@@ -2,7 +2,7 @@
 /// <reference types="vite/client" />
 import react from "@vitejs/plugin-react";
 import path from "path";
-import { defineConfig } from "vite";
+import { defineConfig, type IndexHtmlTransformResult } from "vite";
 import eslint from "vite-plugin-eslint";
 
 export default defineConfig(({ mode }) => ({
@@ -23,9 +23,26 @@ export default defineConfig(({ mode }) => ({
       "@shared": path.resolve(__dirname, "./src/shared"),
     },
   },
-  plugins: [mode === "development" ? eslint() : null, react()].filter(
-    Boolean,
-  ) as any,
+  plugins: [
+    mode === "development" ? eslint() : null,
+    react(),
+    // Preload hashed CSS to reduce render-blocking time without changing critical path
+    {
+      name: "preload-css",
+      transformIndexHtml(_, ctx): IndexHtmlTransformResult {
+        if (!ctx.bundle) return _;
+        const cssLinks = Object.keys(ctx.bundle)
+          .filter((file) => file.endsWith(".css"))
+          .map((file) => ({
+            tag: "link",
+            attrs: { rel: "preload", as: "style", href: `/${file}` },
+            injectTo: "head",
+          }));
+        return { html: _, tags: cssLinks };
+      },
+      apply: "build",
+    },
+  ].filter(Boolean) as any,
   test: {
     globals: true,
     environment: "jsdom",
