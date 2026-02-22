@@ -29,11 +29,73 @@ async function generate() {
   const xml = `<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n${urlset}\n</urlset>\n`;
 
   await fs.writeFile(path.join(publicDir, "sitemap.xml"), xml, "utf-8");
-  await fs.writeFile(
-    path.join(publicDir, "robots.txt"),
-    `User-agent: *\nDisallow:\n\nSitemap: ${SITE_URL}/sitemap.xml\n`,
-    "utf-8"
-  );
+
+  const robots = [
+    "User-agent: *",
+    "Allow: /",
+    "Disallow: /admin/",
+    "Disallow: /private/",
+    "Disallow: /api/",
+    "",
+    `Sitemap: ${SITE_URL}/sitemap.xml`,
+    "",
+  ].join("\n");
+  await fs.writeFile(path.join(publicDir, "robots.txt"), robots, "utf-8");
+
+  const llms = [
+    "User-Agent: *",
+    "Allow: /",
+    "Disallow: /admin/",
+    "Disallow: /private/",
+    "Disallow: /api/",
+    "AI-Training: allowed",
+    "AI-Commercial-Training: disallowed",
+    "AI-Attribution: required",
+    "AI-Content-Modification: disallowed",
+    "Crawl-delay: 5",
+    "",
+    "User-Agent: GPTBot",
+    "Allow: /",
+    "Disallow: /admin/",
+    "Disallow: /private/",
+    "Disallow: /api/",
+    "AI-Training: allowed",
+    "AI-Commercial-Training: disallowed",
+    "AI-Attribution: required",
+    "AI-Content-Modification: disallowed",
+    "",
+    "User-Agent: ClaudeBot",
+    "Allow: /",
+    "Disallow: /admin/",
+    "Disallow: /private/",
+    "Disallow: /api/",
+    "AI-Training: allowed",
+    "AI-Commercial-Training: disallowed",
+    "AI-Attribution: required",
+    "AI-Content-Modification: disallowed",
+    "",
+    "User-Agent: Google-Extended",
+    "Allow: /",
+    "Disallow: /admin/",
+    "Disallow: /private/",
+    "Disallow: /api/",
+    "AI-Training: allowed",
+    "AI-Commercial-Training: disallowed",
+    "AI-Attribution: required",
+    "AI-Content-Modification: disallowed",
+    "",
+    "User-Agent: PerplexityBot",
+    "Allow: /",
+    "Disallow: /admin/",
+    "Disallow: /private/",
+    "Disallow: /api/",
+    "AI-Training: allowed",
+    "AI-Commercial-Training: disallowed",
+    "AI-Attribution: required",
+    "AI-Content-Modification: disallowed",
+    "",
+  ].join("\n");
+  await fs.writeFile(path.join(publicDir, "llms.txt"), llms, "utf-8");
 
   console.log(`Sitemap generated with ${routes.length} routes at ${lastmod}`);
 }

@@ -1,0 +1,50 @@
+User-Agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+AI-Training: allowed
+AI-Commercial-Training: disallowed
+AI-Attribution: required
+AI-Content-Modification: disallowed
+Crawl-delay: 5
+
+User-Agent: GPTBot
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+AI-Training: allowed
+AI-Commercial-Training: disallowed
+AI-Attribution: required
+AI-Content-Modification: disallowed
+
+User-Agent: ClaudeBot
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+AI-Training: allowed
+AI-Commercial-Training: disallowed
+AI-Attribution: required
+AI-Content-Modification: disallowed
+
+User-Agent: Google-Extended
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+AI-Training: allowed
+AI-Commercial-Training: disallowed
+AI-Attribution: required
+AI-Content-Modification: disallowed
+
+User-Agent: PerplexityBot
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+AI-Training: allowed
+AI-Commercial-Training: disallowed
+AI-Attribution: required
+AI-Content-Modification: disallowed

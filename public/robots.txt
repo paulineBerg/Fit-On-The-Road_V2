@@ -1,4 +1,7 @@
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
 
 Sitemap: https://fit-ontheroad.fr/sitemap.xml
