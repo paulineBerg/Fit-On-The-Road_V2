@@ -23,7 +23,9 @@ export default defineConfig(({ mode }) => ({
       "@shared": path.resolve(__dirname, "./src/shared"),
     },
   },
-  plugins: [eslint(), react()],
+  plugins: [mode === "development" ? eslint() : null, react()].filter(
+    Boolean,
+  ) as any,
   test: {
     globals: true,
     environment: "jsdom",
