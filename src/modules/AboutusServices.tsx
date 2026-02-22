@@ -10,13 +10,15 @@ import OverviewWebp from "@assets/images/Overview.webp";
 
 const items = [
   {
-    title: "*",
+    id: "presentiel",
+    title: "Séances sur-mesure",
     description:
       "Nous vous proposons des séances personnalisées en présentiel, au poids du corps ou équipées pour coller au mieux à vos besoins et votre progression.",
     image: `image-set(url("${OverviewWebp}") type("image/webp"), url("${Overview}") type("image/jpeg"))`,
   },
   {
-    title: "*",
+    id: "progression",
+    title: "Progression garantie",
     description:
       "En groupe ou individuel, le suivi proposé a toujours pour objectif de vous permettre de terminer votre session et de progresser quel que soit votre niveau.",
     image: `image-set(url("${OverviewWebp}") type("image/webp"), url("${Overview}") type("image/jpeg"))`,
@@ -79,9 +81,9 @@ function AboutUsServices() {
                   justifyContent: "center",
                 }}
               >
-                {items.map(({ title }, index) => (
+                {items.map(({ id, title }, index) => (
                   <Chip
-                    key={`card-${title}`}
+                    key={id}
                     label={title}
                     onClick={() => handleItemClick(index)}
                     sx={{
@@ -151,9 +153,9 @@ function AboutUsServices() {
                 useFlexGap
                 sx={{ width: "100%", display: { xs: "none", sm: "flex" } }}
               >
-                {items.map(({ title, description }, index) => (
+                {items.map(({ id, title, description }, index) => (
                   <Card
-                    key={title}
+                    key={id}
                     variant="outlined"
                     component={Button}
                     onClick={() => handleItemClick(index)}
