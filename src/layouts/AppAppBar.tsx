@@ -45,11 +45,14 @@ function AppAppBar() {
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
 
-  const toggleDrawer = (newOpen: boolean) => () => {
-    // Blur any focused element before hiding the drawer to avoid aria-hidden focus warnings
-    if (!newOpen && document.activeElement instanceof HTMLElement) {
+  const blurActive = () => {
+    if (document.activeElement instanceof HTMLElement) {
       document.activeElement.blur();
     }
+  };
+
+  const toggleDrawer = (newOpen: boolean) => () => {
+    if (!newOpen) blurActive();
     setOpen(newOpen);
   };
 
@@ -235,10 +238,13 @@ function AppAppBar() {
                   {sections.map((section) => (
                     <MenuItem
                       key={`drawer-${section.dst}`}
-                      onClick={() => scrollToSection(section.dst)}
-                    >
-                      {section.title}
-                    </MenuItem>
+                    onClick={() => {
+                      blurActive();
+                      scrollToSection(section.dst);
+                    }}
+                  >
+                    {section.title}
+                  </MenuItem>
                   ))}
                   <Divider />
                   <Box
@@ -254,6 +260,7 @@ function AppAppBar() {
                       variant="contained"
                       sx={{ width: "100%" }}
                       onClick={() => {
+                        blurActive();
                         navigate("entreprises#top");
                         scrollToTop();
                         setOpen(false);
@@ -266,6 +273,7 @@ function AppAppBar() {
                       variant="contained"
                       sx={{ width: "100%" }}
                       onClick={() => {
+                        blurActive();
                         navigate("particuliers#top");
                         scrollToTop();
                         setOpen(false);
@@ -278,6 +286,7 @@ function AppAppBar() {
                       variant="contained"
                       sx={{ width: "100%" }}
                       onClick={() => {
+                        blurActive();
                         navigate("about-us#top");
                         scrollToTop();
                         setOpen(false);
@@ -289,7 +298,10 @@ function AppAppBar() {
                       color="primary"
                       variant="contained"
                       sx={{ width: "100%" }}
-                      onClick={() => scrollToSection("contact")}
+                      onClick={() => {
+                        blurActive();
+                        scrollToSection("contact");
+                      }}
                     >
                       CONTACTEZ-MOI !
                     </Button>
