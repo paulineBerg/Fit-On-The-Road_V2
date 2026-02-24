@@ -1,14 +1,18 @@
 (function initTacWithRetry(maxRetries) {
   if (typeof window === "undefined") return;
   if (window.tarteaucitron) {
-    // Limit loaded locales to fr/en to avoid 404 and reduce payload
+    const config = window.__FIT_CONFIG__ || {};
+    const siteUrl = (config.siteUrl || window.location.origin).replace(/\/$/, "");
+    const gtmId = config.gtmId;
+
     const navigatorLang = (navigator.language || navigator.userLanguage || "fr")
       .slice(0, 2)
       .toLowerCase();
     window.tarteaucitronForceLanguage =
       navigatorLang === "en" ? "en" : "fr";
+
     tarteaucitron.init({
-      privacyUrl: "https://fit-ontheroad.fr/terms",
+      privacyUrl: `${siteUrl}/terms`,
       bodyPosition: "bottom",
       hashtag: "#FitOnTheRoad",
       cookieName: "fitontheroad",
@@ -38,11 +42,36 @@
       partnersList: false,
     });
 
-    // Google Tag Manager (consent-managed)
-    tarteaucitron.user.googletagmanagerId = "GTM-NHKKQ7NT";
-    (tarteaucitron.job = tarteaucitron.job || []).push("googletagmanager");
+    const addGooglePreconnects = () => {
+      const head = document.head;
+      const urls = [
+        "https://www.googletagmanager.com",
+        "https://www.google-analytics.com",
+      ];
+      urls.forEach((url) => {
+        if (head.querySelector(`link[rel=\"preconnect\"][href=\"${url}\"]`)) return;
+        const link = document.createElement("link");
+        link.rel = "preconnect";
+        link.href = url;
+        link.crossOrigin = "anonymous";
+        head.appendChild(link);
+      });
+    };
 
-    // If tarteaucitron is loaded after window "load", trigger its loader manually
+    if (gtmId) {
+      tarteaucitron.user.googletagmanagerId = gtmId;
+      (tarteaucitron.job = tarteaucitron.job || []).push("googletagmanager");
+      document.addEventListener("googletagmanager_allowed", addGooglePreconnects, {
+        once: true,
+      });
+      document.addEventListener("googletagmanager_loaded", addGooglePreconnects, {
+        once: true,
+      });
+    } else {
+      window.dataLayer = window.dataLayer || [];
+      console.info("[tac] GTM disabled: VITE_GTM_ID not provided");
+    }
+
     const ensureTacLoad = () => tarteaucitron.initEvents.loadEvent(false);
     if (document.readyState === "complete") {
       ensureTacLoad();

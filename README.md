@@ -12,7 +12,7 @@
 
 ## Intégrations et langage
 - **SEO** : balises meta/OG/Twitter complètes dans `index.html`; JSON-LD Organization + SportsActivityLocation + FAQ ; composant `Seo` pour les pages avec URL canonique figée sur `https://fit-ontheroad.fr`.
-- **Consentement / tracking** : tarteaucitron chargé après interaction (fallback 6 s) via script inline + init dédiée `public/assets/js/tarteaucitronInit.js` (GTM `GTM-NHKKQ7NT`, langue fr/en).
+- **Consentement / tracking** : tarteaucitron chargé après interaction (fallback 6 s) via script inline + init dédiée `public/assets/js/tarteaucitronInit.js`. GTM n’est activé qu’après opt-in et uniquement si un ID est fourni (priorité à `public/config.js` puis `VITE_GTM_ID`). Preconnect Google ajouté au moment du consentement.
 - **Formulaire** : `src/shared/Contact.tsx` envoie vers Google Forms en `no-cors` (pas de retour serveur fiable, succès optimiste).
 - **Médias** : Hero en AVIF/WEBP multi-tailles + jpg fallback, vidéo YouTube nocookie en “click-to-play”, autres visuels souvent en JPEG + source WebP via `WebpPicture`.
 - **Performance** : plugin Vite qui précharge le CSS bundlé, lazy routes/composants, sourcemaps coupées en prod, chunk warning porté à 1 Mo.
@@ -24,7 +24,7 @@
 - Accessibilité travaillée (contrastes MUI, navigation clavier sur Drawer, images optimisées avec `alt`, focus state sur CTA principaux).
 
 ## Points de vigilance / risques
-- **Consentement** : GTM hardcodé. Risque d’incohérence entre environnements (dev/preprod) et absence de contrôle automatisé du blocage initial.
+- **Consentement** : dépend d’une config correcte (`public/config.js` ou variables Vite). Ajouter un test d’intégration pour vérifier l’absence d’appels *.google* avant opt-in.
 - **Formulaire contact** : en `no-cors` → impossible de confirmer la livraison; absence d’anti-spam, ni de log serveur.
 - **SEO multi-env** : `Seo.tsx` impose le domaine production; prévisualisations/staging publieront des canonicals/og:url faux si non patchés.
 - **Tests/qualité** : une seule spec Vitest (hero) et pas de CI active; aucune vérification d’accessibilité ou de routes.
@@ -33,7 +33,7 @@
 ## TODO améliorations (priorisées)
 1) **SEO réel / pré-rendu SPA** : ✅ en place – prerender post-build des routes marquées `prerender:true` dans `src/shared/routes.config.json`; canonical statique retiré d’`index.html`. Garder `routes.config.json` comme source de vérité et ajuster si de nouvelles pages arrivent.
 2) **Domaine & canonicals configurables** : ✅ `SITE_URL` (Seo.tsx) prend `VITE_SITE_URL` ou `window.location.origin`; variable ajoutée dans `.env.example`. Mettre `VITE_SITE_URL` par env (prod/staging/dev) pour des canonicals/og:url corrects.
-3) **Consentement renforcé** : déplacer les `preconnect` Google après opt-in, injecter `VITE_GTM_ID` et `VITE_SITE_URL` dans `public/assets/js/tarteaucitronInit.js`, supprimer l’ancien `src/assets/js/tarteaucitronInit.js`, prévoir un fallback “GTM off” si non défini.
+3) **Consentement renforcé** : ✅ `preconnect` Google déplacés post-opt-in, GTM activé uniquement si `gtmId` est fourni (`public/config.js` prioritaire puis `VITE_GTM_ID`), privacyUrl dérivée de `siteUrl`, fallback “GTM off” si ID manquant. Ancien doublon supprimé (source publique unique).
 4) **Formulaire fiable & anti-spam** : remplacer Google Forms `no-cors` par un endpoint (serverless/API) qui renvoie 2xx/4xx, ajouter honeypot + rate-limit (+ éventuellement reCAPTCHA/Turnstile), corriger la validation message (champ requis, ≥5 caractères), encoder correctement le `mailto` et gérer `ToggleButtonGroup` (value peut être `null`).
 5) **Médias & performance** : convertir les JPEG marketing en AVIF/WEBP, fixer `width/height` + `loading="lazy"` hors above-the-fold, limiter le plugin “preload-css” au CSS critique ou revenir au comportement natif.
 6) **Qualité / CI** : retirer `.env.production` du dépôt et ne versionner qu’un `.env.example`, ajouter GitHub Actions `npm ci -> lint -> test:ci -> build`, étendre Vitest (routing, Helmet/SEO, validation contact, sections clés).

@@ -213,15 +213,16 @@ function Contact(props: ContactProps) {
                 hiddenLabel
                 size="small"
                 multiline
-                minRows={3}
-                maxRows={8}
-                variant="outlined"
-                aria-label="Message"
-                placeholder="Mes attentes, mes envies"
-                inputProps={{
-                  autoComplete: "off",
-                  "aria-label": "Message",
+                rows={4}
+                InputProps={{
+                  inputComponent: "textarea",
+                  inputProps: {
+                    autoComplete: "off",
+                    "aria-label": "Message",
+                  },
                 }}
+                variant="outlined"
+                placeholder="Mes attentes, mes envies"
                 error={Boolean(messageError)}
                 helperText={messageError}
               />
