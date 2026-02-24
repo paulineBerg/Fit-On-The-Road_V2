@@ -1,7 +1,17 @@
 [
-  { "path": "/", "changefreq": "weekly", "priority": 1.0 },
-  { "path": "/particuliers", "changefreq": "weekly", "priority": 0.8 },
-  { "path": "/entreprises", "changefreq": "weekly", "priority": 0.8 },
-  { "path": "/about-us", "changefreq": "monthly", "priority": 0.6 },
-  { "path": "/terms", "changefreq": "yearly", "priority": 0.3 }
+  { "path": "/", "changefreq": "weekly", "priority": 1.0, "prerender": true },
+  {
+    "path": "/entreprises",
+    "changefreq": "weekly",
+    "priority": 0.8,
+    "prerender": true
+  },
+  {
+    "path": "/particuliers",
+    "changefreq": "weekly",
+    "priority": 0.8,
+    "prerender": true
+  },
+  { "path": "/about-us", "changefreq": "monthly", "priority": 0.6, "prerender": true },
+  { "path": "/terms", "changefreq": "yearly", "priority": 0.3, "prerender": true }
 ]

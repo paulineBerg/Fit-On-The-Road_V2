@@ -1,69 +1,52 @@
 # app en Version 1, initiée par Clémence Bergon via https://github.com/cbergon/Fit-On-The-Road
 # app en Version 2 : https://github.com/paulineBerg/Fit-On-The-Road_V2
 
-# Fit On The Road – Rapport d’audit (22 février 2026)
+# Fit On The Road – Rapport d’audit (24 février 2026)
 
-## Aperçu rapide
-- Vitrine React 18 + TypeScript (Vite) avec Material UI + un peu de Tailwind.  
-- Routage explicite via `createBrowserRouter` (React Router 6.30) dans `src/App.tsx` avec `Suspense` global et routes lazy.  
-- Pages principales : `/`, `/entreprises`, `/particuliers`, `/about-us`, `/terms`, toutes enveloppées par le layout `_app.tsx` (AppBar + Footer + providers).  
-- Thème MUI sombre centralisé dans `src/styles/theme-material/style.ts`.  
-- Husky + ESLint + Vitest configurés; sourcemaps désactivées en production.
+## Stack & structure
+- Vitrine **React 18 + TypeScript** (Vite) avec **Material UI** (thème sombre) et un socle Tailwind léger (`src/styles/index.css`).
+- Routage : `createBrowserRouter` (React Router 6.30) + `Suspense` global dans `src/App.tsx`; pages lazy (`/`, `/entreprises`, `/particuliers`, `/about-us`, `/terms`).
+- Layout global `src/pages/_app.tsx` (ThemeProvider MUI, AppBar/Drawer, Footer). Sections de la landing orchestrées dans `src/pages/index.tsx` avec chargement différé (Contact, PhoneApp, Video, FAQ, etc.).
+- Aliases Vite (`@pages`, `@features`, `@shared`, …) documentés dans `vite.config.ts`; tests Vitest basés sur jsdom (`src/__tests__/landing.test.tsx`).
+- Post-build : `scripts/generate-sitemap.js` génère `public/sitemap.xml`, `public/robots.txt` et `public/llms.txt` à partir de `src/shared/routes.config.json` (`SITE_URL` surcharge le domaine).
 
-## Changements récents (févr. 2026)
-- SEO/Meta : index.html enrichi (title/description/robots/OG/Twitter), canonical corrigé, JSON-LD Organization + LocalBusiness (SportsActivityLocation) + FAQ avec contactPoint `contact@fit-ontheroad.fr`.  
-- Crawl IA + SEO technique : génération post-build de `public/robots.txt`, `public/sitemap.xml`, `public/llms.txt` depuis `scripts/generate-sitemap.js` + `src/shared/routes.config.json` (utiliser `SITE_URL` pour surcharger le domaine).  
-- Performance LCP : hero converti en AVIF/WEBP multi-tailles (480→1600), `<picture>` + `loading="eager"` + `fetchpriority` forcé côté DOM; CSS principal préchargé via plugin Vite; sourcemaps off en prod.  
-- JS inutilisé : Contact + PhoneApp différés via `LazyOnVisible`; YouTube transformé en “click-to-play” léger; routes déjà lazy.  
-- Consentement : tarteaucitron chargé après interaction (fallback 6s), scripts séquencés, langues réduites à fr/en.  
-- Accessibilité : contrastes corrigés sur cartes Entreprises/Particuliers, niveaux de titres remis en séquence (Highlights + “Excellence…”), fermeture Drawer sécurisée (focus blur).  
-- Correctifs : `AppAppBar` export par défaut réparé, fetchPriority warning supprimé, Vite ESLint limité au mode dev, sourcemaps seulement dev/staging.
+## Intégrations et langage
+- **SEO** : balises meta/OG/Twitter complètes dans `index.html`; JSON-LD Organization + SportsActivityLocation + FAQ ; composant `Seo` pour les pages avec URL canonique figée sur `https://fit-ontheroad.fr`.
+- **Consentement / tracking** : tarteaucitron chargé après interaction (fallback 6 s) via script inline + init dédiée `public/assets/js/tarteaucitronInit.js` (GTM `GTM-NHKKQ7NT`, langue fr/en).
+- **Formulaire** : `src/shared/Contact.tsx` envoie vers Google Forms en `no-cors` (pas de retour serveur fiable, succès optimiste).
+- **Médias** : Hero en AVIF/WEBP multi-tailles + jpg fallback, vidéo YouTube nocookie en “click-to-play”, autres visuels souvent en JPEG + source WebP via `WebpPicture`.
+- **Performance** : plugin Vite qui précharge le CSS bundlé, lazy routes/composants, sourcemaps coupées en prod, chunk warning porté à 1 Mo.
 
-## Points forts actuels
-- Structure claire des sections (Hero/Features/Pricing/Testimonials/FAQ/Contact) et navigation sticky avec drawer mobile.  
-- Contenu éditorial complet et différencié entreprises vs particuliers.  
-- Assets critiques optimisés (hero responsive, YouTube lite) et CSS préchargé sans FOUC.  
-- SEO prêt production : meta complètes, JSON-LD multi-types, fichiers robots/sitemap/llms servis à la racine.
+## Points forts
+- Architecture claire par domaines (`features/`, `pages/`, `layouts/`, `shared/`) avec alias explicites et thème MUI centralisé.
+- Landing structurée (Hero → offres Entreprises/Particuliers → Video → Highlights → Pricing → Testimonials → FAQ/Contact) avec chargement progressif et CTA cohérents.
+- SEO prêt production (meta, JSON-LD, sitemap/robots/llms) + vidéos/YouTube encapsulées pour limiter le JS initial.
+- Accessibilité travaillée (contrastes MUI, navigation clavier sur Drawer, images optimisées avec `alt`, focus state sur CTA principaux).
 
-## Problèmes et risques détectés (état courant)
-- **Consentement** : dépend encore d’une init manuelle dans `public/assets/js/tarteaucitronInit.js`; vérifier en prod que les tags marketing restent bloqués par défaut.  
-- **Formulaire** : toujours sur Google Forms `no-cors` → absence de vraie confirmation serveur.  
-- **Médias** : plusieurs JPEG lourds hors hero restent à optimiser/comprimer.  
-- **CI** : workflow GitHub désactivé; tests limités à Vitest basique.
+## Points de vigilance / risques
+- **Consentement** : GTM hardcodé. Risque d’incohérence entre environnements (dev/preprod) et absence de contrôle automatisé du blocage initial.
+- **Formulaire contact** : en `no-cors` → impossible de confirmer la livraison; absence d’anti-spam, ni de log serveur.
+- **SEO multi-env** : `Seo.tsx` impose le domaine production; prévisualisations/staging publieront des canonicals/og:url faux si non patchés.
+- **Tests/qualité** : une seule spec Vitest (hero) et pas de CI active; aucune vérification d’accessibilité ou de routes.
+- **Médias** : plusieurs JPEG non optimisés (entreprises/particuliers) et pas de preload sur images critiques secondaires.
 
-## Actions rapides recommandées
-1) **Consentement** : contrôler en prod le blocage initial des tags (GTM) et l’affichage de l’UI tarteaucitron post-interaction.  
-2) **Médias** : compresser/convertir les autres JPEG >400 kB en AVIF/WEBP (hors hero déjà optimisé).  
-3) **Formulaire** : migrer vers un endpoint fiable (serverless/SMTP) pour un retour utilisateur réel.  
-4) **Perf JS** : poursuivre le découpage éventuel des icônes MUI ou composants rarement vus; mesurer avec `npm run build -- --report`.  
-5) **CI** : réactiver un workflow lint+test et ajouter quelques tests d’accessibilité/routing.
+## TODO améliorations (priorisées)
+1) **SEO réel / pré-rendu SPA** : ✅ en place – prerender post-build des routes marquées `prerender:true` dans `src/shared/routes.config.json`; canonical statique retiré d’`index.html`. Garder `routes.config.json` comme source de vérité et ajuster si de nouvelles pages arrivent.
+2) **Domaine & canonicals configurables** : ✅ `SITE_URL` (Seo.tsx) prend `VITE_SITE_URL` ou `window.location.origin`; variable ajoutée dans `.env.example`. Mettre `VITE_SITE_URL` par env (prod/staging/dev) pour des canonicals/og:url corrects.
+3) **Consentement renforcé** : déplacer les `preconnect` Google après opt-in, injecter `VITE_GTM_ID` et `VITE_SITE_URL` dans `public/assets/js/tarteaucitronInit.js`, supprimer l’ancien `src/assets/js/tarteaucitronInit.js`, prévoir un fallback “GTM off” si non défini.
+4) **Formulaire fiable & anti-spam** : remplacer Google Forms `no-cors` par un endpoint (serverless/API) qui renvoie 2xx/4xx, ajouter honeypot + rate-limit (+ éventuellement reCAPTCHA/Turnstile), corriger la validation message (champ requis, ≥5 caractères), encoder correctement le `mailto` et gérer `ToggleButtonGroup` (value peut être `null`).
+5) **Médias & performance** : convertir les JPEG marketing en AVIF/WEBP, fixer `width/height` + `loading="lazy"` hors above-the-fold, limiter le plugin “preload-css” au CSS critique ou revenir au comportement natif.
+6) **Qualité / CI** : retirer `.env.production` du dépôt et ne versionner qu’un `.env.example`, ajouter GitHub Actions `npm ci -> lint -> test:ci -> build`, étendre Vitest (routing, Helmet/SEO, validation contact, sections clés).
+7) **Sécurité HTTP** : déployer des headers côté hébergeur (CSP adaptée à YouTube nocookie + GTM post-consentement, Referrer-Policy, Permissions-Policy, X-Content-Type-Options, HSTS).
+8) **Dette & hygiène repo** : planifier la mise à jour des dépendances pour supprimer les `patch-package`, ignorer `dist/` si versionné, vérifier qu’aucun artefact build ne reste dans le dépôt.
+9) **Accessibilité** : remplacer le `<h1 style="display:none">` d’`index.html` par une classe visually-hidden ou le retirer si un H1 est déjà rendu côté React.
 
-## Structure à connaître
-- Layout global : `src/pages/_app.tsx` (AppBar + Footer + ThemeProvider).  
-- Routing : `src/App.tsx` avec `createBrowserRouter` + `Suspense` global; routes décrites dans `src/shared/routes.config.json` pour la génération sitemap/robots/llms.  
-- Landing : `src/pages/index.tsx` (Hero optimisé, Video lite, sections Features/Pricing/Testimonials/FAQ, Contact & PhoneApp chargés à l’affichage).  
-- Assets : hero optimisé sous `src/assets/images/optimized/overview-*`; tarteaucitron limité à fr/en dans `public/assets/js/tarteaucitronjs/lang`.  
-- Styles : `src/styles/index.css` (tailwind reset + fonts), thème MUI `src/styles/theme-material/style.ts`; CSS build préchargé via plugin Vite.  
-- SEO : meta + JSON-LD + contactPoint dans `index.html`; fichiers robots/sitemap/llms générés en postbuild et copiés en prod.
-
-## Pistes d’évolution ultérieure
-- Mettre en place une PWA légère (manifest + icônes + offline shell limité).  
-- Étendre l’analytics post-consentement (events GTM) sans alourdir le bundle initial.  
-- Factoriser les cartes Enterprise/Individual et continuer la réduction d’assets lourds.  
-- Ajouter monitoring perf (Web Vitals en prod) pour suivre LCP/FID.
-
-## TODO (propositions d’amélioration)
-- Remplacer Google Forms par un endpoint (API/serverless) avec accusé de réception et gestion d’erreurs.  
-- Traiter les images restantes (Pick-up*, Overview jpg fallback) en AVIF/WebP + compression.  
-- Réactiver une CI GitHub (lint + tests) avec PAT `workflow`, étendre la couverture Vitest (routing/sections clés).  
-- Sécurisation HTTP : forcer HTTPS + en-têtes (CSP, HSTS) après audit des scripts externes (YouTube, tarteaucitron).  
-- Vérifier via Lighthouse mobile que l’audit “JS inutilisé” et “Ressources de blocage de rendu” sont en vert après déploiement.
-
-## Sécurité / secrets
-- Pensez à stocker toute clé/API dans des fichiers `.env` (désormais ignorés par git) et à créer un `.env.example` si besoin pour la doc.
-- Finaliser les pages légales avec emails/téléphone réels et lier depuis le footer.
-
-*Rapport généré automatiquement; n’hésitez pas à demander un focus détaillé sur une section ou un plan d’actions priorisé.* 
+## Notes utiles
+- Thème MUI : `src/styles/theme-material/style.ts` (palette sombre #ed130d/#8b725d). Tailwind sert surtout de reset utilitaire.
+- Navigation : AppBar sticky (`src/layouts/AppAppBar.tsx`) avec scroll lissé et Drawer mobile; Footer simple.
+- Tests présents : `src/__tests__/landing.test.tsx` uniquement (vérifie titre Hero + CTA). Aucun test e2e.
+- Routes source de vérité : `src/shared/routes.config.json` alimente à la fois sitemap/robots/llms et le prerender; mettre à jour cette liste en ajoutant/supprimant des pages.
+- Génération d’assets robots/sitemap/llms + prerender : `npm run build` (postbuild enchaîne sitemap + prerender).
 
 ## Note de maintenance
-- Lors de toute modification du projet Fit-On-The-Road_V2, mettre à jour ce `README.md` si nécessaire.
+- Mettre à jour ce `README.md` à chaque évolution structurelle (routing, SEO, consentement, formulaire, CI). Pensez à ajouter un `.env.example` si de nouvelles variables sont introduites.

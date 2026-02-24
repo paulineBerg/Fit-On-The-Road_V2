@@ -10,7 +10,9 @@ type SeoProps = {
   image?: string;
 };
 
-const SITE_URL = "https://fit-ontheroad.fr";
+const SITE_URL = (
+  import.meta.env.VITE_SITE_URL ?? window.location.origin
+).replace(/\/$/, "");
 const DEFAULT_IMAGE =
   "https://fit-ontheroad.fr/logos/Full%20-%20Long%20-%20Kettle%20-%20Fond%20noir.svg";
 
