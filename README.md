@@ -23,6 +23,8 @@ Voir :
 - Config runtime non bloquante : bootstrap inline `__FIT_CONFIG__` + `config.js` chargé en idle (plus de JS bloquant le premier paint).
 - Images entreprises responsives (AVIF/WEBP 480/768/1024) avec ratios fixes pour supprimer le CLS et réduire le poids chargé.
 - Accessibilité : skip link « Aller au contenu », `<main id="main-content">` et liens/boutons avec cibles tactiles ≥44px.
+- Perf Lighthouse (prod https://fit-ontheroad.fr, 26/02/2026) : **Desktop 100/92/100/100**, **Mobile 84/96/96/100** (Perf/Access/Best/SEO). Gains principaux : images responsives, lazy in-view, config non bloquante.
+- Version 2 finalisée (socle perf + SEO + A11y) prête pour itérations contenu.
 
 ## Stack & structure
 - Vitrine **React 18 + TypeScript** (Vite) avec **Material UI** (thème sombre) et un socle Tailwind léger (`src/styles/index.css`). Stack police passée en **système** (aucune font externe à charger).
