@@ -4,7 +4,8 @@
 
 @layer base {
   html {
-    font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    /* Stack 100% locale pour éviter tout chargement de police externe */
+    font-family: system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     @apply text-primaryBlack h-full;
   }
 

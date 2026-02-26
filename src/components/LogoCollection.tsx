@@ -11,10 +11,6 @@ const logos = [
     logo: s2sAuto,
   },
   {
-    name: "E-module",
-    logo: atlantic,
-  },
-  {
     name: "Groupe Atlantic",
     logo: atlantic,
   },
@@ -40,7 +36,7 @@ function LogoCollection() {
         color="text.secondary"
         sx={{ py: 4 }}
       >
-        Ils nous font confiance
+        Ils nous ont fait confiance
       </Typography>
       <div className="flex justify-evenly gap-4">
         {logos.map(({ logo, name }) => (

@@ -14,7 +14,6 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseRounded from "@mui/icons-material/CloseRounded";
-import InstagramIcon from "@mui/icons-material/Instagram";
 import { useNavigate } from "react-router-dom";
 import LogoClic from "@components/LogoClic";
 
@@ -181,7 +180,12 @@ export default function AppAppBar() {
                 sx={{ alignSelf: "center" }}
                 target="_blank"
               >
-                <InstagramIcon />
+                <Box
+                  component="img"
+                  src="/icons/instagram.svg"
+                  alt="Instagram"
+                  sx={{ width: 24, height: 24, display: "block" }}
+                />
               </IconButton>
               <Button
                 color="primary"

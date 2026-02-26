@@ -7,6 +7,7 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import teamBuildingPicAvif from "@assets/images/entreprises-collective-coaching.avif";
 import teamBuildingPic from "@assets/images/entreprises-collective-coaching.jpeg";
 import teamBuildingPicWebp from "@assets/images/entreprises-collective-coaching.webp";
 
@@ -15,37 +16,37 @@ const items = [
     title: "Des expériences inoubliables",
     description:
       "Au-delà de l'effort physique, nous créons des moments forts qui marqueront les esprits de vos collaborateurs.",
-    image: `image-set(url("${teamBuildingPicWebp}") type("image/webp"), url("${teamBuildingPic}") type("image/jpeg"))`,
+    image: `image-set(url("${teamBuildingPicAvif}") type("image/avif"), url("${teamBuildingPicWebp}") type("image/webp"), url("${teamBuildingPic}") type("image/jpeg"))`,
   },
   {
     title: "Des bénéfices concrets pour votre entreprise",
     description:
       "Cohésion d'équipe, motivation, créativité et réduction du stress.",
-    image: `image-set(url("${teamBuildingPicWebp}") type("image/webp"), url("${teamBuildingPic}") type("image/jpeg"))`,
+    image: `image-set(url("${teamBuildingPicAvif}") type("image/avif"), url("${teamBuildingPicWebp}") type("image/webp"), url("${teamBuildingPic}") type("image/jpeg"))`,
   },
   {
     title: "Une approche personnalisée",
     description:
       "Nous prenons le temps de comprendre vos besoins et vos attentes afin de vous proposer un programme sur mesure",
-    image: `image-set(url("${teamBuildingPicWebp}") type("image/webp"), url("${teamBuildingPic}") type("image/jpeg"))`,
+    image: `image-set(url("${teamBuildingPicAvif}") type("image/avif"), url("${teamBuildingPicWebp}") type("image/webp"), url("${teamBuildingPic}") type("image/jpeg"))`,
   },
   {
     title: "Des activités variées",
     description:
       "Large gamme d'activités, aussi bien en intérieur qu'en extérieur : des sports collectifs aux challenges physiques et autres activités ludiques ou de bien-être",
-    image: `image-set(url("${teamBuildingPicWebp}") type("image/webp"), url("${teamBuildingPic}") type("image/jpeg"))`,
+    image: `image-set(url("${teamBuildingPicAvif}") type("image/avif"), url("${teamBuildingPicWebp}") type("image/webp"), url("${teamBuildingPic}") type("image/jpeg"))`,
   },
   {
     title: "Un accompagnement sur mesure",
     description:
       "Nos coachs sportifs diplômés vous accompagnent, garantissant ainsi la sécurité et le bon déroulement de toutes les activités.",
-    image: `image-set(url("${teamBuildingPicWebp}") type("image/webp"), url("${teamBuildingPic}") type("image/jpeg"))`,
+    image: `image-set(url("${teamBuildingPicAvif}") type("image/avif"), url("${teamBuildingPicWebp}") type("image/webp"), url("${teamBuildingPic}") type("image/jpeg"))`,
   },
   {
     title: "Événements spéciaux ",
     description:
       "Anniversaires d'entreprise, fêtes de fin d'année, nous créons des événements sportifs sur mesure pour marquer les esprits.",
-    image: `image-set(url("${teamBuildingPicWebp}") type("image/webp"), url("${teamBuildingPic}") type("image/jpeg"))`,
+    image: `image-set(url("${teamBuildingPicAvif}") type("image/avif"), url("${teamBuildingPicWebp}") type("image/webp"), url("${teamBuildingPic}") type("image/jpeg"))`,
   },
 ];
 

@@ -1,0 +1,10 @@
+{
+  "//": "FICHIER DE CONFIGURATION PRIVEE (à copier en config/config.json et à NE PAS exposer)",
+  "smtpHost": "smtp.ionos.fr",
+  "smtpPort": 465,
+  "smtpUser": "contact@fit-ontheroad.fr",
+  "smtpPass": "CHANGE_ME",
+  "smtpFrom": "contact@fit-ontheroad.fr",
+  "smtpTo": "contact@fit-ontheroad.fr",
+  "recaptchaSecret": "CHANGE_ME_RECAPTCHA_V3_SECRET"
+}

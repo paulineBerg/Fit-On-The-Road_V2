@@ -19,7 +19,7 @@ function PageFallback() {
         placeItems: "center",
         color: "#c62828",
         fontWeight: 600,
-        fontFamily: "Inter, system-ui, -apple-system, sans-serif",
+        fontFamily: "system-ui, -apple-system, 'Segoe UI', sans-serif",
         letterSpacing: "0.02em",
       }}
     >
@@ -28,50 +28,54 @@ function PageFallback() {
   );
 }
 
-const router = createBrowserRouter(
-  [
-    {
-      path: "/",
-      element: <Layout />,
-      children: [
-        {
-          index: true,
-          element: <Home />,
-        },
-        {
-          path: "entreprises",
-          element: <Entreprises />,
-        },
-        {
-          path: "about-us",
-          element: <AboutUs />,
-        },
-        {
-          path: "particuliers",
-          element: <Particuliers />,
-        },
-        {
-          path: "terms",
-          element: <Terms />,
-        },
-        {
-          path: "*",
-          element: <Home />,
-        },
-      ],
-    },
-  ],
+export const routes = [
   {
-    future: {
-      v7_startTransition: true,
-    },
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "entreprises",
+        element: <Entreprises />,
+      },
+      {
+        path: "about-us",
+        element: <AboutUs />,
+      },
+      {
+        path: "particuliers",
+        element: <Particuliers />,
+      },
+      {
+        path: "terms",
+        element: <Terms />,
+      },
+      {
+        path: "*",
+        element: <Home />,
+      },
+    ],
   },
-);
+];
+
+const router = createBrowserRouter(routes, {
+  future: {
+    v7_startTransition: true,
+  },
+});
 
 function App() {
   return (
     <Suspense fallback={<PageFallback />}>
-      <RouterProvider router={router} />
+      <RouterProvider
+        router={router}
+        future={{
+          v7_startTransition: true,
+        }}
+      />
     </Suspense>
   );
 }

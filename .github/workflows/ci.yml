@@ -2,21 +2,16 @@ name: CI
 
 on:
   push:
-    branches: [main, master]
   pull_request:
-    branches: [main, master]
-
-permissions:
-  contents: read
 
 jobs:
-  build-test:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Use Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -28,14 +23,8 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Test
+      - name: Tests
         run: npm run test:ci
 
-      - name: Build (with prerender)
+      - name: Build
         run: npm run build
-
-      - name: Upload prerendered dist
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist-prerendered
-          path: dist

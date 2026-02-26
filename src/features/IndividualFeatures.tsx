@@ -13,11 +13,15 @@ import DevicesRoundedIcon from "@mui/icons-material/DevicesRounded";
 import EdgesensorHighRoundedIcon from "@mui/icons-material/EdgesensorHighRounded";
 import ViewQuiltRoundedIcon from "@mui/icons-material/ViewQuiltRounded";
 
+import collectiveCoachingPicAvif from "@assets/images/individual-collective-coaching.avif";
 import collectiveCoachingPic from "@assets/images/individual-collective-coaching.jpeg";
 import collectiveCoachingPicWebp from "@assets/images/individual-collective-coaching.webp";
+import privateCoachingPicAvif from "@assets/images/individual-private-coaching.avif";
 import privateCoachingPic from "@assets/images/individual-private-coaching.jpg";
 import privateCoachingPicWebp from "@assets/images/individual-private-coaching.webp";
-import overviewWebp from "@assets/images/Overview.webp";
+import overviewAvif from "@assets/images/optimized/overview-1024.avif";
+import overviewJpg from "@assets/images/optimized/overview-1024.jpg";
+import overviewWebp from "@assets/images/optimized/overview-1024.webp";
 import WebpPicture from "@shared/WebpPicture";
 
 const items = [
@@ -26,34 +30,44 @@ const items = [
     title: "Cours collectifs",
     description:
       "Retrouvez les cours collectifs en plein air à Bois d'Arcy. Grâce à l’émulation du groupe, l’entraînement devient plus simple, plus sûr, plus efficace et vous permet de sortir de votre zone de confort.",
-    image: `image-set(url("${overviewWebp}") type("image/webp"), url("${privateCoachingPic}") type("image/jpeg"))`,
+    image: `image-set(url("${overviewAvif}") type("image/avif"), url("${overviewWebp}") type("image/webp"), url("${overviewJpg}") type("image/jpeg"))`,
   },
   {
     icon: <EdgesensorHighRoundedIcon />,
     title: "Coaching privé et/ou à distance",
     description:
       "Nos coachs vous accompagnes et vous proposent une prestation sur-mesure s’adaptant à votre niveau, vos souhaits et à vos agendas.",
-    image: `image-set(url("${privateCoachingPicWebp}") type("image/webp"), url("${privateCoachingPic}") type("image/jpeg"))`,
+    image: `image-set(url("${privateCoachingPicAvif}") type("image/avif"), url("${privateCoachingPicWebp}") type("image/webp"), url("${privateCoachingPic}") type("image/jpeg"))`,
   },
   {
     icon: <DevicesRoundedIcon />,
     title: "Évènements",
     description: "Organisez un moment sportif pour une occasion particulière.",
-    image: `image-set(url("${collectiveCoachingPicWebp}") type("image/webp"), url("${collectiveCoachingPic}") type("image/jpeg"))`,
+    image: `image-set(url("${collectiveCoachingPicAvif}") type("image/avif"), url("${collectiveCoachingPicWebp}") type("image/webp"), url("${collectiveCoachingPic}") type("image/jpeg"))`,
   },
 ];
 
 function IndividualFeatures() {
   const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
+  const featureAvifs = [
+    overviewAvif,
+    privateCoachingPicAvif,
+    collectiveCoachingPicAvif,
+  ];
   const featureWebps = [
     overviewWebp,
     privateCoachingPicWebp,
     collectiveCoachingPicWebp,
   ];
   const featureFallbacks = [
-    privateCoachingPic,
+    overviewJpg,
     privateCoachingPic,
     collectiveCoachingPic,
+  ];
+  const featureSizes = [
+    { width: 1024, height: 576 },
+    { width: 1944, height: 1944 },
+    { width: 2000, height: 1125 },
   ];
 
   const handleItemClick = (index: number) => {
@@ -82,6 +96,7 @@ function IndividualFeatures() {
               }}
             >
               <WebpPicture
+                avif={featureAvifs[selectedItemIndex]}
                 webp={featureWebps[selectedItemIndex]}
                 fallback={featureFallbacks[selectedItemIndex]}
                 alt={items[selectedItemIndex].title}
@@ -93,6 +108,9 @@ function IndividualFeatures() {
                   objectPosition: "center",
                   display: "block",
                 }}
+                width={featureSizes[selectedItemIndex].width}
+                height={featureSizes[selectedItemIndex].height}
+                sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </Card>
           </Grid>
@@ -153,6 +171,7 @@ function IndividualFeatures() {
               }}
             >
               <WebpPicture
+                avif={featureAvifs[selectedItemIndex]}
                 webp={featureWebps[selectedItemIndex]}
                 fallback={featureFallbacks[selectedItemIndex]}
                 alt={items[selectedItemIndex].title}
@@ -164,6 +183,9 @@ function IndividualFeatures() {
                   objectPosition: "center",
                   display: "block",
                 }}
+                width={featureSizes[selectedItemIndex].width}
+                height={featureSizes[selectedItemIndex].height}
+                sizes="(max-width: 600px) 100vw, 50vw"
               />
               <Box sx={{ px: 2, pb: 2, pt: 2 }}>
                 <Typography

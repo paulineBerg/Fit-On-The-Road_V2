@@ -5,8 +5,9 @@ import Chip from "@mui/material/Chip";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import { alpha, Typography, Box, Container, Button } from "@mui/material";
-import Overview from "@assets/images/Overview.jpg";
-import OverviewWebp from "@assets/images/Overview.webp";
+import OverviewAvif from "@assets/images/optimized/overview-1024.avif";
+import Overview from "@assets/images/optimized/overview-1024.jpg";
+import OverviewWebp from "@assets/images/optimized/overview-1024.webp";
 import WebpPicture from "@shared/WebpPicture";
 
 const items = [
@@ -26,6 +27,7 @@ const items = [
 
 function AboutUsServices() {
   const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
+  const servicesAvifs = [OverviewAvif, OverviewAvif];
   const servicesWebps = [OverviewWebp, OverviewWebp];
   const servicesFallbacks = [Overview, Overview];
 
@@ -122,6 +124,7 @@ function AboutUsServices() {
                 }}
               >
                 <WebpPicture
+                  avif={servicesAvifs[selectedItemIndex]}
                   webp={servicesWebps[selectedItemIndex]}
                   fallback={servicesFallbacks[selectedItemIndex]}
                   alt={items[selectedItemIndex].title}
@@ -133,6 +136,9 @@ function AboutUsServices() {
                     objectPosition: "center",
                     display: "block",
                   }}
+                  width={1024}
+                  height={576}
+                  sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <Box sx={{ px: 2, pb: 2, pt: 2 }}>
                   <Typography
@@ -234,6 +240,7 @@ function AboutUsServices() {
                 }}
               >
                 <WebpPicture
+                  avif={servicesAvifs[selectedItemIndex]}
                   webp={servicesWebps[selectedItemIndex]}
                   fallback={servicesFallbacks[selectedItemIndex]}
                   alt={items[selectedItemIndex].title}
@@ -245,6 +252,8 @@ function AboutUsServices() {
                     objectPosition: "center",
                     display: "block",
                   }}
+                  width={2000}
+                  height={2000}
                 />
               </Card>
             </Grid>

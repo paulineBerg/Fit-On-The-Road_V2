@@ -50,6 +50,9 @@ function EntrepriseSpaceCreation() {
         sx={{
           width: { sm: "90%", md: "60%" },
           textAlign: { sm: "left", md: "center" },
+          "& p": {
+            marginTop: { xs: 2, sm: 3 },
+          },
         }}
       >
         <Typography component="h2" variant="h2" color="text.primary">

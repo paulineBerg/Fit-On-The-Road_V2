@@ -4,10 +4,10 @@ import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { IconButton } from "@mui/material";
-import InstagramIcon from "@mui/icons-material/Instagram";
+import { Button, IconButton } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import LogoClic from "@components/LogoClic";
+import PrivacyDialog from "@shared/PrivacyDialog";
 
 // #region COPYRIGHT GENERATION
 function Copyright() {
@@ -25,6 +25,10 @@ function Copyright() {
 // #endregion
 
 function Footer() {
+  const [privacyOpen, setPrivacyOpen] = React.useState(false);
+
+  const openPrivacy = () => setPrivacyOpen(true);
+
   return (
     <Container
       sx={{
@@ -70,15 +74,57 @@ function Footer() {
               <Link display="list-item" color="text.secondary" href="terms#top">
                 Fit on the road officiel
               </Link>
-              <Typography display="list-item" sx={{ mx: 0.5, opacity: 0.5 }}>
-                Politique de confidentialié
-              </Typography>
-              <Typography display="list-item" sx={{ mx: 0.5, opacity: 0.5 }}>
+              <Button
+                variant="text"
+                onClick={openPrivacy}
+                sx={{
+                  display: "list-item",
+                  mx: 0.5,
+                  opacity: 0.8,
+                  textTransform: "none",
+                  color: "text.secondary",
+                  justifyContent: "flex-start",
+                  minHeight: 44,
+                  minWidth: 180,
+                  textAlign: "left",
+                }}
+              >
+                Politique de confidentialité
+              </Button>
+              <Button
+                variant="text"
+                onClick={openPrivacy}
+                sx={{
+                  display: "list-item",
+                  mx: 0.5,
+                  opacity: 0.8,
+                  textTransform: "none",
+                  color: "text.secondary",
+                  justifyContent: "flex-start",
+                  minHeight: 44,
+                  minWidth: 180,
+                  textAlign: "left",
+                }}
+              >
                 Conditions générales
-              </Typography>
-              <Typography display="list-item" sx={{ mx: 0.5, opacity: 0.5 }}>
+              </Button>
+              <Button
+                variant="text"
+                onClick={openPrivacy}
+                sx={{
+                  display: "list-item",
+                  mx: 0.5,
+                  opacity: 0.8,
+                  textTransform: "none",
+                  color: "text.secondary",
+                  justifyContent: "flex-start",
+                  minHeight: 44,
+                  minWidth: 180,
+                  textAlign: "left",
+                }}
+              >
                 Mentions légales
-              </Typography>
+              </Button>
             </div>
             <div>
               <Link display="list-item" color="text.secondary" href="#top">
@@ -127,10 +173,20 @@ function Footer() {
             sx={{ alignSelf: "center" }}
             target="_blank"
           >
-            <InstagramIcon />
+            <Box
+              component="img"
+              src="/icons/instagram.svg"
+              alt="Instagram"
+              sx={{ width: 24, height: 24, display: "block" }}
+            />
           </IconButton>
         </Stack>
       </Box>
+      <PrivacyDialog
+        open={privacyOpen}
+        onClose={() => setPrivacyOpen(false)}
+        disableScrollReset
+      />
     </Container>
   );
 }

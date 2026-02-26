@@ -6,6 +6,7 @@ import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import ThumbUpAltRoundedIcon from "@mui/icons-material/ThumbUpAltRounded";
+import PickupAvif from "@app/assets/images/Pick-up.avif";
 import Pickup from "@app/assets/images/Pick-up.jpeg";
 import PickupWebp from "@app/assets/images/Pick-up.webp";
 import WebpPicture from "@shared/WebpPicture";
@@ -289,6 +290,7 @@ function IndividualEvent() {
       </Container>
       <div style={{ textAlign: "center" }}>
         <WebpPicture
+          avif={PickupAvif}
           webp={PickupWebp}
           fallback={Pickup}
           alt="Pick-up Fit on the road"

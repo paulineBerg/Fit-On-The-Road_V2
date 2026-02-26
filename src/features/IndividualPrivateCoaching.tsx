@@ -7,6 +7,7 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import privateCoachingPicAvif from "@assets/images/individual-private-coaching.avif";
 import privateCoachingPic from "@assets/images/individual-private-coaching.jpg";
 import privateCoachingPicWebp from "@assets/images/individual-private-coaching.webp";
 import WebpPicture from "@shared/WebpPicture";
@@ -16,13 +17,13 @@ const items = [
     title: "Coaching privé",
     description:
       "Notre coach sportif vous propose un suivi individuel adapté à vos besoins spécifiques, vos contraintes et vos envies.",
-    image: `image-set(url("${privateCoachingPicWebp}") type("image/webp"), url("${privateCoachingPic}") type("image/jpeg"))`,
+    image: `image-set(url("${privateCoachingPicAvif}") type("image/avif"), url("${privateCoachingPicWebp}") type("image/webp"), url("${privateCoachingPic}") type("image/jpeg"))`,
   },
   {
     title: "ou Coaching à distance",
     description:
       "Une grande flexibilité : Entraînez-vous où vous voulez, quand vous voulez, sans contrainte d'horaire.",
-    image: `image-set(url("${privateCoachingPicWebp}") type("image/webp"), url("${privateCoachingPic}") type("image/jpeg"))`,
+    image: `image-set(url("${privateCoachingPicAvif}") type("image/avif"), url("${privateCoachingPicWebp}") type("image/webp"), url("${privateCoachingPic}") type("image/jpeg"))`,
   },
 ];
 
@@ -63,6 +64,7 @@ function IndividualPrivateCoaching() {
               }}
             >
               <WebpPicture
+                avif={privateCoachingPicAvif}
                 webp={privateCoachingPicWebp}
                 fallback={privateCoachingPic}
                 alt="Coaching privé Fit On The Road"
@@ -74,6 +76,8 @@ function IndividualPrivateCoaching() {
                   objectPosition: "center",
                   display: "block",
                 }}
+                width={1944}
+                height={1944}
               />
             </Card>
           </Grid>

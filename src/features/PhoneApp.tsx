@@ -6,8 +6,10 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { alpha, Box, Container } from "@mui/material";
 import Grid from "@mui/material/Grid";
+import qrcodeAvif from "@app/assets/images/qrcode-appli.avif";
 import qrcodeJpg from "@app/assets/images/qrcode-appli.jpg";
 import qrcodeWebp from "@app/assets/images/qrcode-appli.webp";
+import applicationAvif from "@app/assets/images/application.avif";
 import applicationJpg from "@app/assets/images/application.jpg";
 import applicationWebp from "@app/assets/images/application.webp";
 import WebpPicture from "@shared/WebpPicture";
@@ -16,6 +18,7 @@ const userTestimonials = [
   {
     avatar: (
       <WebpPicture
+        avif={applicationAvif}
         webp={applicationWebp}
         fallback={applicationJpg}
         alt="Aperçu de l'application web Fit On The Road"
@@ -41,6 +44,7 @@ const userTestimonials = [
         rel="noopener noreferrer"
       >
         <WebpPicture
+          avif={qrcodeAvif}
           webp={qrcodeWebp}
           fallback={qrcodeJpg}
           alt="QR code vers le planning des cours Fit On The Road"

@@ -1,2 +1,6 @@
 src/assets/js/
 sauvegarde/**
+config/config.json
+api/contact.js
+server.js
+scripts/copy-config.js

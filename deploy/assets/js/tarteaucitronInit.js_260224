@@ -1,0 +1,92 @@
+(function initTacWithRetry(maxRetries) {
+  if (typeof window === "undefined") return;
+  if (window.tarteaucitron) {
+    const config = window.__FIT_CONFIG__ || {};
+    const siteUrl = (config.siteUrl || window.location.origin).replace(/\/$/, "");
+    const gtmId = config.gtmId;
+    const recaptchaSiteKey = config.captchaSiteKey;
+
+    const navigatorLang = (navigator.language || navigator.userLanguage || "fr")
+      .slice(0, 2)
+      .toLowerCase();
+    window.tarteaucitronForceLanguage =
+      navigatorLang === "en" ? "en" : "fr";
+
+    tarteaucitron.init({
+      privacyUrl: `${siteUrl}/terms`,
+      bodyPosition: "bottom",
+      hashtag: "#FitOnTheRoad",
+      cookieName: "fitontheroad",
+      orientation: "middle",
+      groupServices: false,
+      showDetailsOnClick: false,
+      serviceDefaultState: "wait",
+      showAlertSmall: false,
+      cookieslist: false,
+      showIcon: true,
+      iconSrc: "/favicon/favicon-kettle-red.png",
+      iconPosition: "BottomLeft",
+      adblocker: false,
+      DenyAllCta: true,
+      AcceptAllCta: true,
+      highPrivacy: true,
+      alwaysNeedConsent: false,
+      handleBrowserDNTRequest: false,
+      removeCredit: false,
+      moreInfoLink: false,
+      useExternalCss: false,
+      useExternalJs: false,
+      readmoreLink: "",
+      mandatory: true,
+      mandatoryCta: true,
+      googleConsentMode: true,
+      partnersList: false,
+    });
+
+    const addGooglePreconnects = () => {
+      const head = document.head;
+      const urls = [
+        "https://www.googletagmanager.com",
+        "https://www.google-analytics.com",
+      ];
+      urls.forEach((url) => {
+        if (head.querySelector(`link[rel=\"preconnect\"][href=\"${url}\"]`)) return;
+        const link = document.createElement("link");
+        link.rel = "preconnect";
+        link.href = url;
+        link.crossOrigin = "anonymous";
+        head.appendChild(link);
+      });
+    };
+
+    if (gtmId) {
+      tarteaucitron.user.googletagmanagerId = gtmId;
+      (tarteaucitron.job = tarteaucitron.job || []).push("googletagmanager");
+      document.addEventListener("googletagmanager_allowed", addGooglePreconnects, {
+        once: true,
+      });
+      document.addEventListener("googletagmanager_loaded", addGooglePreconnects, {
+        once: true,
+      });
+    } else {
+      window.dataLayer = window.dataLayer || [];
+      console.info("[tac] GTM disabled: VITE_GTM_ID not provided");
+    }
+
+    if (recaptchaSiteKey) {
+      tarteaucitron.user.recaptchaapi = recaptchaSiteKey;
+      (tarteaucitron.job = tarteaucitron.job || []).push("recaptcha");
+    }
+
+    const ensureTacLoad = () => tarteaucitron.initEvents.loadEvent(false);
+    if (document.readyState === "complete") {
+      ensureTacLoad();
+    } else {
+      window.addEventListener("load", ensureTacLoad, { once: true });
+    }
+    return;
+  }
+
+  if (maxRetries <= 0) return;
+  setTimeout(() => initTacWithRetry(maxRetries - 1), 50);
+})(200);

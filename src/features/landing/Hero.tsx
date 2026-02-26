@@ -10,12 +10,10 @@ import heroAvif480 from "@assets/images/optimized/overview-480.avif";
 import heroAvif768 from "@assets/images/optimized/overview-768.avif";
 import heroAvif1024 from "@assets/images/optimized/overview-1024.avif";
 import heroAvif1280 from "@assets/images/optimized/overview-1280.avif";
-import heroAvif1600 from "@assets/images/optimized/overview-1600.avif";
 import heroWebp480 from "@assets/images/optimized/overview-480.webp";
 import heroWebp768 from "@assets/images/optimized/overview-768.webp";
 import heroWebp1024 from "@assets/images/optimized/overview-1024.webp";
 import heroWebp1280 from "@assets/images/optimized/overview-1280.webp";
-import heroWebp1600 from "@assets/images/optimized/overview-1600.webp";
 import heroJpg1280 from "@assets/images/optimized/overview-1280.jpg";
 
 function Hero() {
@@ -69,10 +67,9 @@ function Hero() {
               ${heroAvif480} 480w,
               ${heroAvif768} 768w,
               ${heroAvif1024} 1024w,
-              ${heroAvif1280} 1280w,
-              ${heroAvif1600} 1600w
+              ${heroAvif1280} 1280w
             `}
-            sizes="(max-width: 600px) 100vw, (max-width: 1200px) 90vw, 100vw"
+            sizes="(max-width: 1200px) 100vw, 100vw"
           />
           <source
             type="image/webp"
@@ -80,10 +77,9 @@ function Hero() {
               ${heroWebp480} 480w,
               ${heroWebp768} 768w,
               ${heroWebp1024} 1024w,
-              ${heroWebp1280} 1280w,
-              ${heroWebp1600} 1600w
+              ${heroWebp1280} 1280w
             `}
-            sizes="(max-width: 600px) 100vw, (max-width: 1200px) 90vw, 100vw"
+            sizes="(max-width: 1200px) 100vw, 100vw"
           />
           <img
             ref={heroImgRef}
@@ -93,6 +89,9 @@ function Hero() {
             height={1600}
             decoding="async"
             loading="eager"
+            // React 18 ne connaît pas encore l'attribut natif fetchpriority en camelCase
+            /* eslint-disable-next-line react/no-unknown-property */
+            fetchpriority="high"
             style={{
               width: "100%",
               height: "100%",

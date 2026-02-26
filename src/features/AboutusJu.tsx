@@ -5,6 +5,7 @@ import Chip from "@mui/material/Chip";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import { Typography, alpha, Box, Container, Button } from "@mui/material";
+import julienAvif from "@assets/images/julien.avif";
 import julien from "@assets/images/julien.jpg";
 import julienWebp from "@assets/images/julien.webp";
 import SettingsSuggestRoundedIcon from "@mui/icons-material/SettingsSuggestRounded";
@@ -18,6 +19,8 @@ const items = [
       "Quand il s’agit de votre santé et bien-être, vous ne devriez pas avoir à adapter votre vie autour des cours de gym et des horaires, traitant l’exercice comme une autre corvée.",
   },
   {
+    icon: <SettingsSuggestRoundedIcon />,
+    title: "Du sport où vous êtes",
     description:
       "Ainsi, quel que soit votre niveau de pratique, vos besoins et votre localisation, nos Coachs viennent à vous et vous donnent rendez-vous dans l’espace de votre choix, intérieur ou extérieur, pour une pratique sportive pleine d’énergie et de bonne humeur.",
   },
@@ -25,6 +28,7 @@ const items = [
 
 function AboutusJu() {
   const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
+  const juAvifs = [julienAvif, julienAvif];
   const juWebps = [julienWebp, julienWebp];
   const juFallbacks = [julien, julien];
 
@@ -75,6 +79,7 @@ function AboutusJu() {
                 }}
               >
                 <WebpPicture
+                  avif={juAvifs[selectedItemIndex]}
                   webp={juWebps[selectedItemIndex]}
                   fallback={juFallbacks[selectedItemIndex]}
                   alt="Portrait de Julien"
@@ -86,6 +91,8 @@ function AboutusJu() {
                     objectPosition: "center",
                     display: "block",
                   }}
+                  width={392}
+                  height={264}
                 />
               </Card>
             </Grid>
@@ -148,6 +155,7 @@ function AboutusJu() {
                 }}
               >
                 <WebpPicture
+                  avif={juAvifs[selectedItemIndex]}
                   webp={juWebps[selectedItemIndex]}
                   fallback={juFallbacks[selectedItemIndex]}
                   alt="Portrait de Julien"
@@ -159,6 +167,8 @@ function AboutusJu() {
                     objectPosition: "center",
                     display: "block",
                   }}
+                  width={392}
+                  height={264}
                 />
                 <Box sx={{ px: 2, pb: 2, pt: 2 }}>
                   <Typography

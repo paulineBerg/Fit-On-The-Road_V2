@@ -18,6 +18,8 @@ function LogoClic() {
           width={140}
           height={44}
           alt="logo fit on the road"
+          loading="lazy"
+          decoding="async"
         />
       </Link>
     </Box>

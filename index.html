@@ -160,13 +160,27 @@
       }
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Preload hero mobile image to améliorer FCP/LCP -->
+    <!-- Hero preload removed to avoid unused-preload warning; Hero image already eager with fetchpriority -->
+    <!-- Inline base styles to avoid white flash and oversized icons before CSS loads -->
+    <style>
+      body {
+        margin: 0;
+        background: #0c0b0a;
+        color: #f5f5f5;
+        min-height: 100vh;
+      }
+      #root {
+        min-height: 100vh;
+      }
+      svg {
+        fill: currentColor;
+      }
+    </style>
     <title>Fit On The Road</title>
   </head>
   <body>
     <div id="root"></div>
-    <h1 style="display: none">
-      Fit On The Road, La salle de sport qui vient à vous
-    </h1>
     <script type="module" src="/src/main.tsx"></script>
     <script type="module">
       // Charge tarteaucitron uniquement après interaction utilisateur ou délai long (évite le chemin critique)
@@ -177,7 +191,7 @@
           const head = document.head;
           const tacStyles = document.createElement("link");
           tacStyles.rel = "stylesheet";
-          tacStyles.href = "/assets/js/tarteaucitronjs/css/tarteaucitron.css";
+          tacStyles.href = "/assets/js/tarteaucitronjs/css/tarteaucitron.min.css";
           tacStyles.media = "print";
           tacStyles.onload = () => {
             tacStyles.media = "all";

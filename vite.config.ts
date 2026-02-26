@@ -26,22 +26,6 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     mode === "development" ? eslint() : null,
     react(),
-    // Preload hashed CSS to reduce render-blocking time without changing critical path
-    {
-      name: "preload-css",
-      transformIndexHtml(_, ctx): IndexHtmlTransformResult {
-        if (!ctx.bundle) return _;
-        const cssLinks = Object.keys(ctx.bundle)
-          .filter((file) => file.endsWith(".css"))
-          .map((file) => ({
-            tag: "link",
-            attrs: { rel: "preload", as: "style", href: `/${file}` },
-            injectTo: "head",
-          }));
-        return { html: _, tags: cssLinks };
-      },
-      apply: "build",
-    },
   ].filter(Boolean) as any,
   test: {
     globals: true,
@@ -74,7 +58,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    chunkSizeWarningLimit: 1024, // Adjust the limit in kilobytes
+    chunkSizeWarningLimit: 512, // tighten warning for bundle size
     sourcemap: mode !== "production", // Keep maps in dev/staging only
   },
 }));

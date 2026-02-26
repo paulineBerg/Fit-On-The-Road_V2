@@ -6,8 +6,10 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
+import corinneAvif from "@app/assets/images/client-corinne.avif";
 import corinneJpg from "@app/assets/images/client-corinne.jpg";
 import corinneWebp from "@app/assets/images/client-corinne.webp";
+import vincentAvif from "@app/assets/images/client-vincent.avif";
 import vincentJpg from "@app/assets/images/client-vincent.jpg";
 import vincentWebp from "@app/assets/images/client-vincent.webp";
 import WebpPicture from "@shared/WebpPicture";
@@ -16,6 +18,7 @@ const userTestimonials = [
   {
     avatar: (
       <WebpPicture
+        avif={vincentAvif}
         webp={vincentWebp}
         fallback={vincentJpg}
         alt="Portrait de Vincent, client Fit On The Road"
@@ -38,6 +41,7 @@ const userTestimonials = [
   {
     avatar: (
       <WebpPicture
+        avif={corinneAvif}
         webp={corinneWebp}
         fallback={corinneJpg}
         alt="Portrait de Corinne, cliente Fit On The Road"

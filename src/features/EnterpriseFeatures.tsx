@@ -13,8 +13,10 @@ import DevicesRoundedIcon from "@mui/icons-material/DevicesRounded";
 import EdgesensorHighRoundedIcon from "@mui/icons-material/EdgesensorHighRounded";
 import ViewQuiltRoundedIcon from "@mui/icons-material/ViewQuiltRounded";
 
+import collectiveCoachingPicAvif from "@assets/images/entreprises-collective-coaching.avif";
 import collectiveCoachingPic from "@assets/images/entreprises-collective-coaching.jpeg";
 import collectiveCoachingPicWebp from "@assets/images/entreprises-collective-coaching.webp";
+import teamBuildingPicAvif from "@assets/images/entreprises-team-building.avif";
 import teamBuildingPic from "@assets/images/entreprises-team-building.jpeg";
 import teamBuildingPicWebp from "@assets/images/entreprises-team-building.webp";
 import WebpPicture from "@shared/WebpPicture";
@@ -26,7 +28,7 @@ const items = [
     title: "Cours collectifs en société",
     description:
       "Offrez à vos salariés le confort d'un coach qui se déplace sur site à l'année.",
-    image: `image-set(url("${collectiveCoachingPicWebp}") type("image/webp"), url("${collectiveCoachingPic}") type("image/jpeg"))`,
+    image: `image-set(url("${collectiveCoachingPicAvif}") type("image/avif"), url("${collectiveCoachingPicWebp}") type("image/webp"), url("${collectiveCoachingPic}") type("image/jpeg"))`,
   },
   {
     icon: <EdgesensorHighRoundedIcon />,
@@ -34,7 +36,7 @@ const items = [
     title: "Team building",
     description:
       "Créer un moment de partage, d'effort et de cohésion pour développer l'esprit d'équipe.",
-    image: `image-set(url("${teamBuildingPicWebp}") type("image/webp"), url("${teamBuildingPic}") type("image/jpeg"))`,
+    image: `image-set(url("${teamBuildingPicAvif}") type("image/avif"), url("${teamBuildingPicWebp}") type("image/webp"), url("${teamBuildingPic}") type("image/jpeg"))`,
   },
   {
     icon: <DevicesRoundedIcon />,
@@ -42,12 +44,17 @@ const items = [
     title: "Création d'espace forme",
     description:
       "Aménagez vos locaux en fonction de vos besoins afin de permettre à vos salariés de faire du sport en toute autonomie.",
-    image: `image-set(url("${collectiveCoachingPicWebp}") type("image/webp"), url("${collectiveCoachingPic}") type("image/jpeg"))`,
+    image: `image-set(url("${collectiveCoachingPicAvif}") type("image/avif"), url("${collectiveCoachingPicWebp}") type("image/webp"), url("${collectiveCoachingPic}") type("image/jpeg"))`,
   },
 ];
 
 function EnterpriseFeatures() {
   const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
+  const enterpriseAvifs = [
+    collectiveCoachingPicAvif,
+    teamBuildingPicAvif,
+    collectiveCoachingPicAvif,
+  ];
   const enterpriseWebps = [
     collectiveCoachingPicWebp,
     teamBuildingPicWebp,
@@ -57,6 +64,11 @@ function EnterpriseFeatures() {
     collectiveCoachingPic,
     teamBuildingPic,
     collectiveCoachingPic,
+  ];
+  const enterpriseSizes = [
+    { width: 1944, height: 1944 },
+    { width: 1506, height: 2000 },
+    { width: 1944, height: 1944 },
   ];
 
   const handleItemClick = (index: number) => {
@@ -300,9 +312,12 @@ function EnterpriseFeatures() {
                 width: "100%",
                 display: { xs: "none", sm: "flex" },
                 pointerEvents: "none",
+                bgcolor: "background.paper",
+                color: "text.primary",
               }}
             >
               <WebpPicture
+                avif={enterpriseAvifs[selectedItemIndex]}
                 webp={enterpriseWebps[selectedItemIndex]}
                 fallback={enterpriseFallbacks[selectedItemIndex]}
                 alt={items[selectedItemIndex].title}
@@ -314,6 +329,9 @@ function EnterpriseFeatures() {
                   objectPosition: "center",
                   display: "block",
                 }}
+                width={enterpriseSizes[selectedItemIndex].width}
+                height={enterpriseSizes[selectedItemIndex].height}
+                sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </Card>
           </Grid>

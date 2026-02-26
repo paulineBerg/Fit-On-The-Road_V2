@@ -13,6 +13,8 @@ lerna-debug.log*
 .env.local
 .env.development.local
 .env.test.local
+config/config.json
+config/config.php
 
 node_modules
 dist
