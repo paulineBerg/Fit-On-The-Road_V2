@@ -41,7 +41,11 @@
       name="twitter:image"
       content="https://fit-ontheroad.fr/logos/Full%20-%20Long%20-%20Kettle%20-%20Fond%20noir.svg"
     />
-    <script src="/config.js"></script>
+    <script>
+      // Configuration minimale inline pour éviter le blocage du rendu.
+      window.__FIT_CONFIG__ =
+        window.__FIT_CONFIG__ ?? { siteUrl: window.location.origin };
+    </script>
 
     <script type="application/ld+json">
       {
@@ -123,38 +127,6 @@
             "name": "Coaching en entreprise",
             "areaServed": "Île-de-France",
             "serviceType": "Corporate wellness & team building"
-          }
-        ]
-      }
-    </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Où se déroulent les cours collectifs à Bois d'Arcy ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Dans la zone d'activité sportive à Bois d'Arcy, près du Skate Park et du Tennis."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Comment se passe la réservation des séances ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Une application est mise à votre disposition pour la gestion du planning."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Y a t'il des séances différentes en fonction du niveau ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "La taille du groupe étant limitée, le coach peut personnaliser l'accompagnement tout en profitant de l'émulation collective."
-            }
           }
         ]
       }

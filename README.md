@@ -20,6 +20,9 @@ Voir :
 - Homepage (`/`) : title/meta refondus pour Versailles & Yvelines (78), FAQ visible + JSON-LD unique (FAQPage), hiérarchie Hn vérifiée (1 seul H1).
 - Bloc particuliers : FAQ enrichie (coaching à domicile Versailles/SQY, séance découverte, duo, reports).
 - Bundle et sitemap régénérés (`npm run deploy:bundle`).
+- Config runtime non bloquante : bootstrap inline `__FIT_CONFIG__` + `config.js` chargé en idle (plus de JS bloquant le premier paint).
+- Images entreprises responsives (AVIF/WEBP 480/768/1024) avec ratios fixes pour supprimer le CLS et réduire le poids chargé.
+- Accessibilité : skip link « Aller au contenu », `<main id="main-content">` et liens/boutons avec cibles tactiles ≥44px.
 
 ## Stack & structure
 - Vitrine **React 18 + TypeScript** (Vite) avec **Material UI** (thème sombre) et un socle Tailwind léger (`src/styles/index.css`). Stack police passée en **système** (aucune font externe à charger).

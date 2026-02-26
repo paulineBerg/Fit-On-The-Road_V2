@@ -68,13 +68,17 @@ describe("LandingPage", () => {
     ).toBeInTheDocument();
   });
 
-  it("met en avant les zones d'intervention locales", () => {
+  it("met en avant les zones d'intervention locales", async () => {
     renderWithProviders(<LandingPage />);
-    expect(
-      screen.getByRole("heading", {
-        name: /Zones d'intervention – Versailles & Yvelines \(78\)/i,
-      }),
-    ).toBeInTheDocument();
+    await waitFor(
+      () =>
+        expect(
+          screen.getByRole("heading", {
+            name: /Zones d'intervention – Versailles & Yvelines \(78\)/i,
+          }),
+        ).toBeInTheDocument(),
+      { timeout: 3000 },
+    );
     expect(screen.getAllByText(/Versailles/i)[0]).toBeInTheDocument();
   });
 });

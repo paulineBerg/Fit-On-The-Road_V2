@@ -14,9 +14,14 @@ const defaultTheme = createTheme(style);
 function Layout() {
   return (
     <ThemeProvider theme={defaultTheme}>
+      <a className="skip-link" href="#main-content">
+        Aller au contenu
+      </a>
       <CssBaseline />
       <AppAppBar />
-      <Outlet />
+      <main id="main-content">
+        <Outlet />
+      </main>
       <Divider />
       <Footer />
     </ThemeProvider>

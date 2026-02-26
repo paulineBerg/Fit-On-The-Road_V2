@@ -7,6 +7,7 @@ const Entreprises = lazy(() => import("@pages/entreprises"));
 const AboutUs = lazy(() => import("@pages/about-us"));
 const Particuliers = lazy(() => import("@pages/particuliers"));
 const Terms = lazy(() => import("@pages/terms"));
+const NotFound = lazy(() => import("@pages/not-found"));
 
 // Route metadata now lives in src/shared/routes.config.json for sitemap generation.
 
@@ -55,7 +56,7 @@ export const routes = [
       },
       {
         path: "*",
-        element: <Home />,
+        element: <NotFound />,
       },
     ],
   },

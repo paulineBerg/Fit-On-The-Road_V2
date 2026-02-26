@@ -12,6 +12,10 @@ type LazyOnVisibleProps = {
    * rootMargin passed to IntersectionObserver to start loading a bit avant l'écran
    */
   rootMargin?: string;
+  /**
+   * If false, do not render children during SSR/prerender (placeholder only).
+   */
+  ssr?: boolean;
 };
 
 /**
@@ -23,12 +27,16 @@ export default function LazyOnVisible({
   fallback = null,
   minHeight = 120,
   rootMargin = "200px",
+  ssr = true,
 }: LazyOnVisibleProps) {
   const [shouldLoad, setShouldLoad] = React.useState(false);
   const placeholderRef = React.useRef<HTMLDivElement | null>(null);
 
+  const isServer = typeof window === "undefined";
+  const blockRender = isServer && !ssr;
+
   React.useEffect(() => {
-    if (shouldLoad) return undefined;
+    if (blockRender || shouldLoad) return undefined;
     const node = placeholderRef.current;
     if (!node || typeof IntersectionObserver === "undefined") {
       setShouldLoad(true);
@@ -47,10 +55,10 @@ export default function LazyOnVisible({
     );
     observer.observe(node);
     return () => observer.disconnect();
-  }, [shouldLoad, rootMargin]);
+  }, [shouldLoad, rootMargin, blockRender]);
 
   React.useEffect(() => {
-    if (shouldLoad) return undefined;
+    if (blockRender || shouldLoad) return undefined;
     const ric =
       typeof window !== "undefined" && "requestIdleCallback" in window
         ? (window as any).requestIdleCallback
@@ -66,7 +74,20 @@ export default function LazyOnVisible({
       };
     }
     return undefined;
-  }, [shouldLoad]);
+  }, [shouldLoad, blockRender]);
+
+  if (blockRender) {
+    return (
+      <Box
+        sx={{
+          minHeight,
+          width: "100%",
+        }}
+      >
+        {fallback}
+      </Box>
+    );
+  }
 
   if (shouldLoad)
     return (

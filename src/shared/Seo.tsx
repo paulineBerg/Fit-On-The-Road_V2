@@ -31,9 +31,13 @@ function Seo({
   if (jsonLd) {
     jsonLdArray.push(...(Array.isArray(jsonLd) ? jsonLd : [jsonLd]));
   }
+  const jsonLdScripts = jsonLdArray.map((schema) => ({
+    type: "application/ld+json",
+    innerHTML: JSON.stringify(schema),
+  }));
 
   return (
-    <Helmet>
+    <Helmet script={jsonLdScripts}>
       <title>{title}</title>
       <meta name="description" content={description} />
       {keywords ? <meta name="keywords" content={keywords} /> : null}
@@ -52,18 +56,6 @@ function Seo({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={shareImage} />
       <meta name="twitter:site" content="@fitontheroad" />
-
-      {jsonLdArray.map((schema) => {
-        const key = JSON.stringify(schema);
-        return (
-          <script
-            key={key}
-            type="application/ld+json"
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-          />
-        );
-      })}
     </Helmet>
   );
 }

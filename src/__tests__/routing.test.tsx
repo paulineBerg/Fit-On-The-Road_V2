@@ -26,6 +26,10 @@ vi.mock("@pages/entreprises", () => ({
   default: () => <div data-testid="entreprises-page">Entreprises</div>,
 }));
 
+vi.mock("@pages/not-found", () => ({
+  default: () => <div data-testid="not-found-page">404</div>,
+}));
+
 describe("App routing", () => {
   const renderWithRoute = (initialPath: string) => {
     const router = createMemoryRouter(routes, {
@@ -44,8 +48,8 @@ describe("App routing", () => {
     expect(screen.getByTestId("layout")).toBeInTheDocument();
   });
 
-  it("retombe sur l'accueil pour une route inconnue", async () => {
+  it("affiche la page 404 pour une route inconnue", async () => {
     renderWithRoute("/non-trouvee");
-    expect(await screen.findByTestId("home-page")).toBeInTheDocument();
+    expect(await screen.findByTestId("not-found-page")).toBeInTheDocument();
   });
 });

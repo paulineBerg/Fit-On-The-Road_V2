@@ -41,6 +41,10 @@ function Footer() {
       }}
     >
       {/* FOOTER TOP */}
+      {/* LOGO BOX */}
+      <Box sx={{ ml: "-15px" }}>
+        <LogoClic />
+      </Box>
       <Box
         sx={{
           display: "flex",
@@ -57,10 +61,6 @@ function Footer() {
             minWidth: { xs: "100%", sm: "60%" },
           }}
         >
-          {/* LOGO BOX */}
-          <Box sx={{ ml: "-15px" }}>
-            <LogoClic />
-          </Box>
           {/* SECTIONS */}
           <Box
             sx={{
@@ -71,22 +71,47 @@ function Footer() {
             }}
           >
             <div>
-              <Link display="list-item" color="text.secondary" href="terms#top">
+              <Link
+                display="inline-flex"
+                color="text.secondary"
+                href="terms#top"
+                sx={{
+                  alignItems: "center",
+                  minHeight: 44,
+                  minWidth: 44,
+                  px: 1.5,
+                  py: 1,
+                  borderRadius: 1.5,
+                  textDecoration: "none",
+                  "&:hover": { textDecoration: "underline" },
+                  "&:focus-visible": {
+                    outline: "2px solid",
+                    outlineOffset: 2,
+                  },
+                }}
+              >
                 Fit on the road officiel
               </Link>
               <Button
                 variant="text"
                 onClick={openPrivacy}
                 sx={{
-                  display: "list-item",
+                  display: "inline-flex",
                   mx: 0.5,
-                  opacity: 0.8,
+                  opacity: 0.9,
                   textTransform: "none",
                   color: "text.secondary",
                   justifyContent: "flex-start",
                   minHeight: 44,
-                  minWidth: 180,
+                  minWidth: 44,
+                  px: 1.5,
+                  py: 1,
                   textAlign: "left",
+                  borderRadius: 1.5,
+                  "&:focus-visible": {
+                    outline: "2px solid",
+                    outlineOffset: 2,
+                  },
                 }}
               >
                 Politique de confidentialité
@@ -95,15 +120,22 @@ function Footer() {
                 variant="text"
                 onClick={openPrivacy}
                 sx={{
-                  display: "list-item",
+                  display: "inline-flex",
                   mx: 0.5,
-                  opacity: 0.8,
+                  opacity: 0.9,
                   textTransform: "none",
                   color: "text.secondary",
                   justifyContent: "flex-start",
                   minHeight: 44,
-                  minWidth: 180,
+                  minWidth: 44,
+                  px: 1.5,
+                  py: 1,
                   textAlign: "left",
+                  borderRadius: 1.5,
+                  "&:focus-visible": {
+                    outline: "2px solid",
+                    outlineOffset: 2,
+                  },
                 }}
               >
                 Conditions générales
@@ -112,22 +144,47 @@ function Footer() {
                 variant="text"
                 onClick={openPrivacy}
                 sx={{
-                  display: "list-item",
+                  display: "inline-flex",
                   mx: 0.5,
-                  opacity: 0.8,
+                  opacity: 0.9,
                   textTransform: "none",
                   color: "text.secondary",
                   justifyContent: "flex-start",
                   minHeight: 44,
-                  minWidth: 180,
+                  minWidth: 44,
+                  px: 1.5,
+                  py: 1,
                   textAlign: "left",
+                  borderRadius: 1.5,
+                  "&:focus-visible": {
+                    outline: "2px solid",
+                    outlineOffset: 2,
+                  },
                 }}
               >
                 Mentions légales
               </Button>
             </div>
             <div>
-              <Link display="list-item" color="text.secondary" href="#top">
+              <Link
+                display="inline-flex"
+                color="text.secondary"
+                href="#top"
+                sx={{
+                  alignItems: "center",
+                  minHeight: 44,
+                  minWidth: 44,
+                  px: 1.5,
+                  py: 1,
+                  borderRadius: 1.5,
+                  textDecoration: "none",
+                  "&:hover": { textDecoration: "underline" },
+                  "&:focus-visible": {
+                    outline: "2px solid",
+                    outlineOffset: 2,
+                  },
+                }}
+              >
                 TOP
               </Link>
             </div>
@@ -161,7 +218,14 @@ function Footer() {
             color="inherit"
             href="https://www.linkedin.com/in/fit-on-the-road-a938b312a?utm_source=share&utm_campaign=share_via&utm_content=profile"
             aria-label="LinkedIn"
-            sx={{ alignSelf: "center" }}
+            sx={{
+              alignSelf: "center",
+              p: 1.25,
+              "&:focus-visible": {
+                outline: "2px solid",
+                outlineOffset: 2,
+              },
+            }}
             target="_blank"
           >
             <LinkedInIcon />
@@ -170,7 +234,14 @@ function Footer() {
             color="inherit"
             href="https://www.instagram.com/fit.on.the.road?igsh=MWN1dTZ1M3RtZDhpaw=="
             aria-label="Instagram"
-            sx={{ alignSelf: "center" }}
+            sx={{
+              alignSelf: "center",
+              p: 1.25,
+              "&:focus-visible": {
+                outline: "2px solid",
+                outlineOffset: 2,
+              },
+            }}
             target="_blank"
           >
             <Box

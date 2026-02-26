@@ -5,9 +5,12 @@ import { Link as RouterLink } from "react-router-dom";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
-import b2bAvif from "@assets/images/entreprises-collective-coaching.avif";
-import b2bWebp from "@assets/images/entreprises-collective-coaching.webp";
-import b2bJpg from "@assets/images/entreprises-collective-coaching.jpeg";
+import b2bAvif480 from "@assets/images/optimized/entreprises-collective-coaching-480.avif";
+import b2bAvif768 from "@assets/images/optimized/entreprises-collective-coaching-768.avif";
+import b2bAvif1024 from "@assets/images/optimized/entreprises-collective-coaching-1024.avif";
+import b2bWebp480 from "@assets/images/optimized/entreprises-collective-coaching-480.webp";
+import b2bWebp768 from "@assets/images/optimized/entreprises-collective-coaching-768.webp";
+import b2bWebp1024 from "@assets/images/optimized/entreprises-collective-coaching-1024.webp";
 
 type CorporateBlockYvelinesProps = {
   title?: string;
@@ -117,8 +120,9 @@ function CorporateBlockYvelines({
                   label={pillar}
                   size="small"
                   sx={(theme) => ({
-                    borderColor: alpha(theme.palette.primary.main, 0.5),
-                    color: theme.palette.primary.light,
+                    bgcolor: alpha(theme.palette.primary.main, 0.24),
+                    color: theme.palette.primary.contrastText,
+                    border: `1px solid ${alpha(theme.palette.primary.light, 0.6)}`,
                     letterSpacing: "0.02em",
                   })}
                 />
@@ -126,7 +130,7 @@ function CorporateBlockYvelines({
             </Stack>
 
             <Stack spacing={1}>
-              <Typography variant="subtitle1" fontWeight={700}>
+              <Typography component="h3" variant="subtitle1" fontWeight={700}>
                 Programmes sur-mesure en Yvelines (78) :
               </Typography>
               <Stack spacing={1}>
@@ -136,13 +140,18 @@ function CorporateBlockYvelines({
                     direction="row"
                     spacing={1.2}
                     alignItems="center"
+                    component="li"
                   >
                     <CheckCircleRoundedIcon
                       fontSize="small"
                       htmlColor={alpha("#ed130d", 0.9)}
                       aria-hidden
                     />
-                    <Typography variant="body1" color="text.primary">
+                    <Typography
+                      component="span"
+                      variant="body1"
+                      color="text.primary"
+                    >
                       {item}
                     </Typography>
                   </Stack>
@@ -191,19 +200,33 @@ function CorporateBlockYvelines({
               borderRadius: 1,
               overflow: "hidden",
               boxShadow: "0 18px 55px rgba(0,0,0,0.55)",
+              position: "relative",
+              aspectRatio: "1 / 1",
             }}
           >
             <picture>
-              <source srcSet={b2bAvif} type="image/avif" />
-              <source srcSet={b2bWebp} type="image/webp" />
+              <source
+                type="image/avif"
+                srcSet={`${b2bAvif480} 480w, ${b2bAvif768} 768w, ${b2bAvif1024} 1024w`}
+                sizes="(max-width: 900px) 88vw, 520px"
+              />
+              <source
+                type="image/webp"
+                srcSet={`${b2bWebp480} 480w, ${b2bWebp768} 768w, ${b2bWebp1024} 1024w`}
+                sizes="(max-width: 900px) 88vw, 520px"
+              />
               <img
-                src={b2bJpg}
+                src={b2bWebp768}
                 alt="Coaching sportif en entreprise dans les Yvelines"
                 loading="lazy"
                 decoding="async"
+                width={1024}
+                height={1024}
+                sizes="(max-width: 900px) 88vw, 520px"
                 style={{
+                  position: "absolute",
+                  inset: 0,
                   width: "100%",
-                  display: "block",
                   height: "100%",
                   objectFit: "cover",
                 }}

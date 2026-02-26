@@ -16,6 +16,29 @@
   #root {
     @apply h-full;
   }
+
+  .skip-link {
+    position: absolute;
+    left: -999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .skip-link:focus {
+    left: 16px;
+    top: 16px;
+    width: auto;
+    height: auto;
+    padding: 12px 14px;
+    z-index: 9999;
+    border-radius: 10px;
+    background: #0c0b0a;
+    color: #fff;
+    outline: 2px solid #ed130d;
+    text-decoration: none;
+  }
 }
 
 @layer utilities {

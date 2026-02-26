@@ -192,6 +192,7 @@ function HeroSegmented() {
               }}
             >
               <Typography
+                component="p"
                 variant="h6"
                 sx={{
                   color: alpha("#ffffff", 0.9),

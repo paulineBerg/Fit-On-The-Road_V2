@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseRounded from "@mui/icons-material/CloseRounded";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import LogoClic from "@components/LogoClic";
 
 const scrollToTop = () => {
@@ -42,6 +42,16 @@ const sections = [
 export default function AppAppBar() {
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+  const isAbout = location.pathname === "/about-us";
+  const visibleSections = React.useMemo(
+    () =>
+      sections.filter(
+        (section) => !((isHome || isAbout) && section.dst === "pricing"),
+      ),
+    [isHome, isAbout],
+  );
 
   const blurActive = () => {
     if (document.activeElement instanceof HTMLElement) {
@@ -122,7 +132,7 @@ export default function AppAppBar() {
             >
               <LogoClic />
               <Box sx={{ display: { xs: "none", md: "flex" }, gap: 0.5 }}>
-                {sections.map((section) => (
+                {visibleSections.map((section) => (
                   <Button
                     key={section.dst}
                     color="inherit"
@@ -240,7 +250,7 @@ export default function AppAppBar() {
                     </Button>
                   </Box>
                   <Stack component="nav" spacing={1} aria-label="Navigation">
-                    {sections.map((section) => (
+                    {visibleSections.map((section) => (
                       <Button
                         key={`drawer-${section.dst}`}
                         color="inherit"

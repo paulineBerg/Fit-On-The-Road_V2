@@ -224,6 +224,268 @@
           background: transparent !important;
           border-color: #444c56 !important;
         }
+
+        /* Overrides tarteaucitron – CTA colors */
+        /* Accept / allow buttons (banner + panel) */
+        :where(#tarteaucitronRoot) :is(
+          .tarteaucitronAllow,
+          #tarteaucitronAllAllowed,
+          #tarteaucitronAllAllowed2,
+          #tarteaucitronSaveButton,
+          #tarteaucitronAlertBig #tarteaucitronAllAllowed,
+          #tarteaucitronAlertBig #tarteaucitronAllAllowed2,
+          #tarteaucitronAlertBig .tarteaucitronAllow,
+          button[id*="AllAllowed"],
+          button[id*="Allow"],
+          button[aria-label*="Allow" i]
+        ) {
+          background: #1fa857 !important;
+          border-color: #1fa857 !important;
+          color: #ffffff !important;
+        }
+        :where(#tarteaucitronRoot) :is(
+          .tarteaucitronAllow,
+          #tarteaucitronAllAllowed,
+          #tarteaucitronAllAllowed2,
+          #tarteaucitronSaveButton,
+          #tarteaucitronAlertBig #tarteaucitronAllAllowed,
+          #tarteaucitronAlertBig #tarteaucitronAllAllowed2,
+          #tarteaucitronAlertBig .tarteaucitronAllow,
+          button[id*="AllAllowed"],
+          button[id*="Allow"],
+          button[aria-label*="Allow" i]
+        ):hover:not(:disabled) {
+          background: #178745 !important;
+          border-color: #178745 !important;
+          color: #ffffff !important;
+        }
+        :where(#tarteaucitronRoot) :is(
+          .tarteaucitronAllow,
+          #tarteaucitronAllAllowed,
+          #tarteaucitronAllAllowed2,
+          #tarteaucitronSaveButton,
+          #tarteaucitronAlertBig #tarteaucitronAllAllowed,
+          #tarteaucitronAlertBig #tarteaucitronAllAllowed2,
+          #tarteaucitronAlertBig .tarteaucitronAllow,
+          button[id*="AllAllowed"],
+          button[id*="Allow"],
+          button[aria-label*="Allow" i]
+        ):active:not(:disabled) {
+          background: #116c37 !important;
+          border-color: #116c37 !important;
+          color: #ffffff !important;
+        }
+        :where(#tarteaucitronRoot) :is(
+          .tarteaucitronAllow,
+          #tarteaucitronAllAllowed,
+          #tarteaucitronAllAllowed2,
+          #tarteaucitronSaveButton,
+          #tarteaucitronAlertBig #tarteaucitronAllAllowed,
+          #tarteaucitronAlertBig #tarteaucitronAllAllowed2,
+          #tarteaucitronAlertBig .tarteaucitronAllow,
+          button[id*="AllAllowed"],
+          button[id*="Allow"],
+          button[aria-label*="Allow" i]
+        ):focus-visible {
+          outline: 2px solid #ffffff !important;
+          outline-offset: 2px !important;
+        }
+        :where(#tarteaucitronRoot) :is(
+          .tarteaucitronAllow,
+          #tarteaucitronAllAllowed,
+          #tarteaucitronAllAllowed2,
+          #tarteaucitronSaveButton,
+          #tarteaucitronAlertBig #tarteaucitronAllAllowed,
+          #tarteaucitronAlertBig #tarteaucitronAllAllowed2,
+          #tarteaucitronAlertBig .tarteaucitronAllow,
+          button[id*="AllAllowed"],
+          button[id*="Allow"],
+          button[aria-label*="Allow" i]
+        ):disabled {
+          background: #93c9a7 !important;
+          border-color: #93c9a7 !important;
+          color: #f1f5f1 !important;
+        }
+
+        /* Deny / refuse buttons */
+        :where(#tarteaucitronRoot) :is(
+          .tarteaucitronDeny,
+          #tarteaucitronAllDenied,
+          #tarteaucitronAllDenied2,
+          #tarteaucitronAlertBig #tarteaucitronAllDenied,
+          #tarteaucitronAlertBig #tarteaucitronAllDenied2,
+          #tarteaucitronAlertBig .tarteaucitronDeny,
+          button[id*="AllDenied"],
+          button[id*="Deny"],
+          button[aria-label*="Deny" i]
+        ) {
+          background: #d62828 !important;
+          border-color: #d62828 !important;
+          color: #ffffff !important;
+        }
+        :where(#tarteaucitronRoot) :is(
+          .tarteaucitronDeny,
+          #tarteaucitronAllDenied,
+          #tarteaucitronAllDenied2,
+          #tarteaucitronAlertBig #tarteaucitronAllDenied,
+          #tarteaucitronAlertBig #tarteaucitronAllDenied2,
+          #tarteaucitronAlertBig .tarteaucitronDeny,
+          button[id*="AllDenied"],
+          button[id*="Deny"],
+          button[aria-label*="Deny" i]
+        ):hover:not(:disabled) {
+          background: #b81f1f !important;
+          border-color: #b81f1f !important;
+          color: #ffffff !important;
+        }
+        :where(#tarteaucitronRoot) :is(
+          .tarteaucitronDeny,
+          #tarteaucitronAllDenied,
+          #tarteaucitronAllDenied2,
+          #tarteaucitronAlertBig #tarteaucitronAllDenied,
+          #tarteaucitronAlertBig #tarteaucitronAllDenied2,
+          #tarteaucitronAlertBig .tarteaucitronDeny,
+          button[id*="AllDenied"],
+          button[id*="Deny"],
+          button[aria-label*="Deny" i]
+        ):active:not(:disabled) {
+          background: #941717 !important;
+          border-color: #941717 !important;
+          color: #ffffff !important;
+        }
+        :where(#tarteaucitronRoot) :is(
+          .tarteaucitronDeny,
+          #tarteaucitronAllDenied,
+          #tarteaucitronAllDenied2,
+          #tarteaucitronAlertBig #tarteaucitronAllDenied,
+          #tarteaucitronAlertBig #tarteaucitronAllDenied2,
+          #tarteaucitronAlertBig .tarteaucitronDeny,
+          button[id*="AllDenied"],
+          button[id*="Deny"],
+          button[aria-label*="Deny" i]
+        ):focus-visible {
+          outline: 2px solid #ffffff !important;
+          outline-offset: 2px !important;
+        }
+        :where(#tarteaucitronRoot) :is(
+          .tarteaucitronDeny,
+          #tarteaucitronAllDenied,
+          #tarteaucitronAllDenied2,
+          #tarteaucitronAlertBig #tarteaucitronAllDenied,
+          #tarteaucitronAlertBig #tarteaucitronAllDenied2,
+          #tarteaucitronAlertBig .tarteaucitronDeny,
+          button[id*="AllDenied"],
+          button[id*="Deny"],
+          button[aria-label*="Deny" i]
+        ):disabled {
+          background: #e59c9c !important;
+          border-color: #e59c9c !important;
+          color: #fdf2f2 !important;
+        }
+
+        /* Personalize / customize buttons */
+        :where(#tarteaucitronRoot) :is(
+          .tarteaucitronPersonalize,
+          #tarteaucitronPersonalize,
+          #tarteaucitronPersonalize2,
+          #tarteaucitronCloseAlert,
+          button[id*="Personalize"],
+          button[id*="Customize"],
+          button[id*="Settings"],
+          button[aria-label*="Customize" i],
+          button[aria-label*="Settings" i]
+        ) {
+          background: #ffffff !important;
+          color: #0b0f12 !important;
+          border: 1px solid currentColor !important;
+        }
+        :where(#tarteaucitronRoot) :is(
+          .tarteaucitronPersonalize,
+          #tarteaucitronPersonalize,
+          #tarteaucitronPersonalize2,
+          #tarteaucitronCloseAlert,
+          button[id*="Personalize"],
+          button[id*="Customize"],
+          button[id*="Settings"],
+          button[aria-label*="Customize" i],
+          button[aria-label*="Settings" i]
+        ):hover:not(:disabled) {
+          background: #f5f5f5 !important;
+          color: #0b0f12 !important;
+          border-color: #0b0f12 !important;
+        }
+        :where(#tarteaucitronRoot) :is(
+          .tarteaucitronPersonalize,
+          #tarteaucitronPersonalize,
+          #tarteaucitronPersonalize2,
+          #tarteaucitronCloseAlert,
+          button[id*="Personalize"],
+          button[id*="Customize"],
+          button[id*="Settings"],
+          button[aria-label*="Customize" i],
+          button[aria-label*="Settings" i]
+        ):active:not(:disabled) {
+          background: #e8e8e8 !important;
+          color: #0b0f12 !important;
+          border-color: #0b0f12 !important;
+        }
+        :where(#tarteaucitronRoot) :is(
+          .tarteaucitronPersonalize,
+          #tarteaucitronPersonalize,
+          #tarteaucitronPersonalize2,
+          #tarteaucitronCloseAlert,
+          button[id*="Personalize"],
+          button[id*="Customize"],
+          button[id*="Settings"],
+          button[aria-label*="Customize" i],
+          button[aria-label*="Settings" i]
+        ):focus-visible {
+          outline: 2px solid #0b0f12 !important;
+          outline-offset: 2px !important;
+        }
+        :where(#tarteaucitronRoot) :is(
+          .tarteaucitronPersonalize,
+          #tarteaucitronPersonalize,
+          #tarteaucitronPersonalize2,
+          #tarteaucitronCloseAlert,
+          button[id*="Personalize"],
+          button[id*="Customize"],
+          button[id*="Settings"],
+          button[aria-label*="Customize" i],
+          button[aria-label*="Settings" i]
+        ):disabled {
+          background: #f2f2f2 !important;
+          color: #9da3ad !important;
+          border-color: #cfd3da !important;
+        }
+
+        /* Bold text when CTA is selected (focus/active) */
+        :where(#tarteaucitronRoot)
+        :is(
+          .tarteaucitronAllow,
+          .tarteaucitronDeny,
+          .tarteaucitronPersonalize,
+          #tarteaucitronAllAllowed,
+          #tarteaucitronAllAllowed2,
+          #tarteaucitronAllDenied,
+          #tarteaucitronAllDenied2,
+          #tarteaucitronSaveButton,
+          #tarteaucitronPersonalize,
+          #tarteaucitronPersonalize2,
+          button[id*="AllAllowed"],
+          button[id*="Allow"],
+          button[id*="AllDenied"],
+          button[id*="Deny"],
+          button[id*="Personalize"],
+          button[id*="Customize"],
+          button[id*="Settings"],
+          button[aria-label*="Allow" i],
+          button[aria-label*="Deny" i],
+          button[aria-label*="Customize" i],
+          button[aria-label*="Settings" i]
+        ):is(:focus-visible, :active) {
+          font-weight: 900 !important;
+        }
       `;
       document.head.appendChild(style);
     };

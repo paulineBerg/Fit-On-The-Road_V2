@@ -66,7 +66,7 @@ describe("Landing page sections", () => {
 
     expect(
       screen.getByRole("heading", {
-        name: /FIT ON THE ROAD : La salle de sport qui se déplace/i,
+        name: /Coach sportif à Versailles.*Yvelines.*Sport en entreprise/i,
       }),
     ).toBeInTheDocument();
 

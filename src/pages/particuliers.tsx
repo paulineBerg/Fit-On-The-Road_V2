@@ -13,9 +13,22 @@ import IndividualPrivateCoaching from "@features/IndividualPrivateCoaching";
 import IndividualEvent from "@features/IndividualEvent";
 import Testimonials from "@features/Testimonials";
 import Video from "@features/landing/Video";
-import FAQ from "@features/FAQ";
+import FAQ, { individualFaqs } from "@features/FAQ";
 
 function Particuliers() {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: individualFaqs.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+
   return (
     <>
       <Seo
@@ -23,6 +36,7 @@ function Particuliers() {
         description="Cours collectifs, coaching privé et événements sportifs en plein air ou à domicile. Programmes personnalisés et suivi."
         canonicalPath="/particuliers"
         keywords="coaching particulier, cours collectif, coaching privé, sport à domicile"
+        jsonLd={faqJsonLd}
       />
       <Box
         id="particular"

@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import React from "react";
 
 import ReactDOM from "react-dom/client";
@@ -11,48 +10,52 @@ import {
   DEFAULT_RECAPTCHA_ACTION,
   type FitConfig,
 } from "@app/types/config";
+import {
+  hydrateRuntimeConfigAsync,
+  initializeRuntimeConfig,
+} from "@shared/runtimeConfig";
 
-const { env } = import.meta;
+const env = (import.meta as { env?: Record<string, string> })?.env ?? {};
 
-const currentConfig =
-  (window as Record<string, FitConfig>).__FIT_CONFIG__ ?? {};
-
-(window as Record<string, FitConfig>).__FIT_CONFIG__ = {
-  ...currentConfig,
-  gtmId: currentConfig.gtmId ?? env.VITE_GTM_ID,
-  siteUrl: (
-    currentConfig.siteUrl ??
-    env.VITE_SITE_URL ??
-    window.location.origin
-  )?.replace(/\/$/, ""),
-  contactEndpoint: currentConfig.contactEndpoint ?? env.VITE_CONTACT_ENDPOINT,
-  contactCooldownSeconds:
-    currentConfig.contactCooldownSeconds ??
-    Number(
-      env.VITE_CONTACT_COOLDOWN_SECONDS ?? DEFAULT_CONTACT_COOLDOWN_SECONDS,
-    ),
+const envDefaults: FitConfig = {
+  gtmId: env.VITE_GTM_ID,
+  siteUrl: (env.VITE_SITE_URL ?? window.location.origin)?.replace(/\/$/, ""),
+  contactEndpoint: env.VITE_CONTACT_ENDPOINT,
+  contactCooldownSeconds: Number(
+    env.VITE_CONTACT_COOLDOWN_SECONDS ?? DEFAULT_CONTACT_COOLDOWN_SECONDS,
+  ),
   captchaProvider:
-    currentConfig.captchaProvider ??
     (env.VITE_CONTACT_CAPTCHA_PROVIDER as FitConfig["captchaProvider"]) ??
-    (currentConfig.captchaSiteKey ||
-    env.VITE_CONTACT_CAPTCHA_SITE_KEY ||
+    (env.VITE_CONTACT_CAPTCHA_SITE_KEY ||
     env.VITE_RECAPTCHA_SITE_KEY ||
     env.VITE_RECAPTCHA_V2_SITE_KEY
       ? "recaptcha"
       : undefined),
   captchaSiteKey:
-    currentConfig.captchaSiteKey ??
     env.VITE_CONTACT_CAPTCHA_SITE_KEY ??
     env.VITE_RECAPTCHA_SITE_KEY ??
     env.VITE_RECAPTCHA_V2_SITE_KEY,
-  recaptchaAction:
-    currentConfig.recaptchaAction ??
-    env.VITE_RECAPTCHA_ACTION ??
-    DEFAULT_RECAPTCHA_ACTION,
+  recaptchaAction: env.VITE_RECAPTCHA_ACTION ?? DEFAULT_RECAPTCHA_ACTION,
 };
+
+initializeRuntimeConfig(envDefaults);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <HelmetProvider>
     <App />
   </HelmetProvider>,
 );
+
+const scheduleHydration = () => {
+  const hydrate = () => {
+    hydrateRuntimeConfigAsync(envDefaults);
+  };
+
+  if ("requestIdleCallback" in window) {
+    (window as any).requestIdleCallback(hydrate, { timeout: 1500 });
+  } else {
+    setTimeout(hydrate, 0);
+  }
+};
+
+scheduleHydration();
