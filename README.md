@@ -1,6 +1,19 @@
 # app en Version 1, initiée par Clémence Bergon via https://github.com/cbergon/Fit-On-The-Road
 # app en Version 2 : https://github.com/paulineBerg/Fit-On-The-Road_V2
 
+## 📚 Documentation
+Toute la documentation stratégique et technique est disponible dans le dossier `/docs`.
+
+Voir :
+- Stratégie globale
+- Stratégie B2B
+- Stratégie B2C
+- SEO
+- Guide développement
+- Structure
+- Contribution
+- Github
+
 # Fit On The Road – Rapport d’audit (24 février 2026)
 
 ## Stack & structure
