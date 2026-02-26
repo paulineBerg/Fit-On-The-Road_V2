@@ -16,6 +16,11 @@ Voir :
 
 # Fit On The Road – Rapport d’audit (24 février 2026)
 
+## 📌 Mises à jour (26 février 2026)
+- Homepage (`/`) : title/meta refondus pour Versailles & Yvelines (78), FAQ visible + JSON-LD unique (FAQPage), hiérarchie Hn vérifiée (1 seul H1).
+- Bloc particuliers : FAQ enrichie (coaching à domicile Versailles/SQY, séance découverte, duo, reports).
+- Bundle et sitemap régénérés (`npm run deploy:bundle`).
+
 ## Stack & structure
 - Vitrine **React 18 + TypeScript** (Vite) avec **Material UI** (thème sombre) et un socle Tailwind léger (`src/styles/index.css`). Stack police passée en **système** (aucune font externe à charger).
 - Routage : `createBrowserRouter` (React Router 6.30) + `Suspense` global dans `src/App.tsx`; pages lazy (`/`, `/entreprises`, `/particuliers`, `/about-us`, `/terms`).

@@ -2,19 +2,18 @@ import React from "react";
 
 import { Box, Typography } from "@mui/material";
 import Divider from "@mui/material/Divider";
-
 import Contact from "@shared/Contact";
 import Seo from "@shared/Seo";
 import { UserType } from "@app/types/types";
-
-import Pricing from "@features/Pricing";
+import IndividualFeatures from "@features/IndividualFeatures";
+import PricingParticuliers from "@features/PricingParticuliers";
 import PhoneApp from "@features/PhoneApp";
 import IndividualCollectiveCoaching from "@features/IndividualCollectiveCoaching";
 import IndividualPrivateCoaching from "@features/IndividualPrivateCoaching";
 import IndividualEvent from "@features/IndividualEvent";
 import Testimonials from "@features/Testimonials";
 import Video from "@features/landing/Video";
-import LogoClic from "@components/LogoClic";
+import FAQ from "@features/FAQ";
 
 function Particuliers() {
   return (
@@ -58,30 +57,21 @@ function Particuliers() {
           <Divider />
           <Video />
           <Box id="services" />
+          <IndividualFeatures />
           <IndividualCollectiveCoaching />
           <IndividualPrivateCoaching />
           <IndividualEvent />
           <Divider />
           <Box id="pricing" />
-          <Pricing />
+          <PricingParticuliers />
           <Divider />
-          <Typography
-            textAlign="center"
-            color="text.secondary"
-            sx={{
-              py: 4,
-              alignSelf: "center",
-              width: { sm: "100%", md: "80%" },
-            }}
-          >
-            Comme une envie de sport ! 😉
-          </Typography>
+          <PhoneApp />
+          <Box id="contact" />
+          <Contact defaultUserType={UserType.INDIVIDUAL} />
           <Divider />
           <Box id="more" />
-          <PhoneApp />
           <Testimonials />
-          <Contact defaultUserType={UserType.INDIVIDUAL} />
-          <LogoClic />
+          <FAQ />
         </Box>
       </Box>
     </>

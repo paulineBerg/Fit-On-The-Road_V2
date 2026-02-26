@@ -1,14 +1,12 @@
 import React from "react";
-
 import PickupCollection from "@features/PickupCollection";
 import { Typography, Box } from "@mui/material";
-import LogoClic from "@components/LogoClic";
 import Video from "@features/landing/Video";
 import Contact from "@shared/Contact";
 import Seo from "@shared/Seo";
 import { UserType } from "@app/types/types";
-import Pricing from "@features/Pricing";
 import AboutusJu from "@features/AboutusJu";
+import Highlights from "@features/Highlights";
 import AboutusServices from "@features/AboutusServices";
 
 function AboutUs() {
@@ -55,9 +53,8 @@ function AboutUs() {
           <Box id="services" />
           <AboutusServices />
           <Video />
-          <Pricing />
+          <Highlights />
           <Contact defaultUserType={UserType.INDIVIDUAL} />
-          <LogoClic />
         </Box>
       </Box>
     </>

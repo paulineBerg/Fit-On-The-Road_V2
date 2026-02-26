@@ -7,11 +7,11 @@ import LogoCollection from "@components/LogoCollection";
 import { UserType } from "@app/types/types";
 import Contact from "@shared/Contact";
 import Seo from "@shared/Seo";
+import EnterpriseFeatures from "@features/EnterpriseFeatures";
 import EnterpriseCollectiveCoaching from "@features/EnterpriseCollectiveCoaching";
 import EnterpriseTeamBuilding from "@features/EnterpriseTeamBuilding";
 import EnterpriseSpaceCreation from "@features/EnterpriseSpaceCreation";
-import Pricing from "@features/Pricing";
-import LogoClic from "@components/LogoClic";
+import PricingEntreprises from "@features/PricingEntreprises";
 
 function Entreprises() {
   return (
@@ -53,12 +53,13 @@ function Entreprises() {
           </Typography>
           <LogoCollection />
           <Box id="services" />
+          <EnterpriseFeatures />
           <EnterpriseCollectiveCoaching />
           <EnterpriseTeamBuilding />
           <Box id="more" />
           <EnterpriseSpaceCreation />
           <Box id="pricing" />
-          <Pricing />
+          <PricingEntreprises />
           <Divider />
           <Typography
             textAlign="center"
@@ -73,7 +74,6 @@ function Entreprises() {
             dès maintenant pour une étude personnalisée de vos besoins.
           </Typography>
           <Contact defaultUserType={UserType.ENTERPRISE} />
-          <LogoClic />
         </Box>
       </Box>
     </>

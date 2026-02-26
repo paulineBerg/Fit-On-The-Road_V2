@@ -8,7 +8,6 @@ import Seo from "@shared/Seo";
 import TermsLegalTerms from "@features/TermsLegalTerms";
 import TermsPrivacyTerms from "@features/TermsPrivacyTerms";
 import TermsTermsAndConditions from "@features/TermsTermsAndConditions";
-import LogoClic from "@components/LogoClic";
 
 function Terms() {
   return (
@@ -58,7 +57,6 @@ function Terms() {
           <TermsTermsAndConditions />
           <TermsLegalTerms />
           <Contact defaultUserType={UserType.ENTERPRISE} />
-          <LogoClic />
         </Box>
       </Box>
     </>

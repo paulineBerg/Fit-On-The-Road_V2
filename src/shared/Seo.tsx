@@ -8,6 +8,7 @@ type SeoProps = {
   canonicalPath?: string;
   keywords?: string;
   image?: string;
+  jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
 };
 
 const SITE_URL = (
@@ -22,9 +23,14 @@ function Seo({
   canonicalPath = "/",
   keywords,
   image,
+  jsonLd,
 }: SeoProps) {
   const canonicalUrl = `${SITE_URL}${canonicalPath}`;
   const shareImage = image ?? DEFAULT_IMAGE;
+  const jsonLdArray: Array<Record<string, unknown>> = [];
+  if (jsonLd) {
+    jsonLdArray.push(...(Array.isArray(jsonLd) ? jsonLd : [jsonLd]));
+  }
 
   return (
     <Helmet>
@@ -46,6 +52,18 @@ function Seo({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={shareImage} />
       <meta name="twitter:site" content="@fitontheroad" />
+
+      {jsonLdArray.map((schema) => {
+        const key = JSON.stringify(schema);
+        return (
+          <script
+            key={key}
+            type="application/ld+json"
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          />
+        );
+      })}
     </Helmet>
   );
 }
