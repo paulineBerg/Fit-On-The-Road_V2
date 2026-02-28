@@ -1,3 +1,4 @@
+![Version](https://img.shields.io/badge/version-2.0.0-blue)
 # Fit On The Road
 
 ## Version
@@ -18,6 +19,8 @@ Le nom du repository est indépendant des versions produit.
 
 ## 📚 Documentation
 Toute la documentation stratégique et technique est disponible dans le dossier `/docs`.
+
+> Note dépôt : le dossier `/docs` est conservé **en local uniquement**. Ne commitez pas de modifications sur ce répertoire ; gardez vos notes/exports hors du suivi Git (Drive, copie locale…).
 
 Voir :
 - Stratégie globale
