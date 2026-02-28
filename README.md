@@ -1,11 +1,19 @@
 # Fit On The Road
 
-## Versioning
+## Version
 
-Le projet suit un versionnement sémantique (v1, v2, v3…).
-Le nom du repository est désormais indépendant des versions.
-- app en Version 1, initiée par Clémence Bergon sur https://github.com/cbergon/Fit-On-The-Road
-- app en Version 2 et suivantes par Pauline Berg sur: https://github.com/paulineBerg/Fit-On-The-Road
+Ce repository correspond à la **Version 2 et suivantes** de l'application Fit On The Road.
+
+Le projet suit un **versionnement sémantique** (v1, v2, v3…).
+Le nom du repository est indépendant des versions produit.
+
+### Historique
+
+- **Version 1** – Initiée par Clémence Bergon  
+  https://github.com/cbergon/Fit-On-The-Road
+
+- **Version 2 et suivantes** – Développées par Pauline Berg  
+  https://github.com/paulineBerg/Fit-On-The-Road
 
 
 ## 📚 Documentation
